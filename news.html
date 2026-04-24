@@ -14,13 +14,12 @@
 
         body {
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #fefcf8;  /* 柔和浅色主背景 */
+            background-color: #fefcf8;
             color: #1a1f2c;
             line-height: 1.5;
             scroll-behavior: smooth;
         }
 
-        /* 集团主色调橙色定义 */
         :root {
             --orange: #f15a24;
             --orange-dark: #d84315;
@@ -33,21 +32,18 @@
             --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.06);
         }
 
-        /* 容器 */
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 32px;
         }
 
-        /* 头部导航栏 */
         .site-header {
             background-color: #ffffff;
             box-shadow: 0 1px 0 var(--border-light);
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(0px);
         }
 
         .header-inner {
@@ -56,6 +52,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             min-height: 80px;
+            gap: 1rem;
         }
 
         .logo {
@@ -65,6 +62,7 @@
             color: var(--text-dark);
             text-decoration: none;
             transition: color 0.2s;
+            flex-shrink: 0;
         }
         .logo span {
             color: var(--orange);
@@ -74,12 +72,14 @@
             color: var(--orange);
         }
 
-        /* 桌面导航菜单 */
+        /* 导航菜单：所有设备完全一致的样式，无特殊移动端覆盖 */
         .nav-menu {
             display: flex;
             align-items: center;
             gap: 2rem;
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-menu li {
@@ -93,6 +93,7 @@
             padding: 0.5rem 0;
             transition: color 0.2s ease;
             font-size: 1rem;
+            white-space: nowrap;
         }
 
         .nav-menu > li > a {
@@ -103,7 +104,7 @@
             color: var(--orange);
         }
 
-        /* 二级菜单 - 桌面端 hover 显示 */
+        /* 二级菜单：统一使用 hover 显示，绝对定位，无移动端特殊处理 */
         .submenu {
             position: absolute;
             top: 100%;
@@ -138,43 +139,12 @@
             font-weight: 400;
             color: var(--text-muted);
             transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
         }
 
         .submenu a:hover {
             background-color: var(--orange-light);
             color: var(--orange);
-        }
-
-        /* 导航按钮（header 内右侧按钮） */
-        .nav-cta {
-            background-color: var(--orange);
-            color: white !important;
-            padding: 0.6rem 1.4rem;
-            border-radius: 40px;
-            margin-left: 0.5rem;
-            transition: background 0.2s, transform 0.1s;
-        }
-        .nav-cta:hover {
-            background-color: var(--orange-dark);
-            transform: translateY(-1px);
-        }
-
-        /* 移动端菜单按钮（纯文本，无图标） */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: 1px solid var(--border-light);
-            padding: 0.5rem 1.2rem;
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: 40px;
-            cursor: pointer;
-            color: var(--text-dark);
-            transition: all 0.2s;
-            font-family: inherit;
-        }
-        .mobile-menu-toggle:hover {
-            background-color: #f5f5f2;
         }
 
         /* Hero 区域 */
@@ -222,130 +192,8 @@
             max-width: 540px;
             margin-bottom: 2rem;
         }
-        .button-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .btn-primary {
-            background-color: var(--orange);
-            border: none;
-            padding: 0.9rem 2rem;
-            border-radius: 48px;
-            font-weight: 600;
-            font-size: 1rem;
-            color: white;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(241, 90, 36, 0.2);
-        }
-        .btn-primary:hover {
-            background-color: var(--orange-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(241, 90, 36, 0.25);
-        }
-        .btn-secondary {
-            background: transparent;
-            border: 1.5px solid var(--orange);
-            padding: 0.9rem 2rem;
-            border-radius: 48px;
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--orange);
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-        .btn-secondary:hover {
-            background-color: var(--orange-light);
-            border-color: var(--orange-dark);
-            color: var(--orange-dark);
-            transform: translateY(-2px);
-        }
 
-        /* 特色卡片区 (无图标) */
-        .features {
-            padding: 80px 0;
-            background-color: #ffffff;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: #1f2b38;
-        }
-        .section-title span {
-            color: var(--orange);
-        }
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        .card {
-            background: #ffffff;
-            border-radius: 28px;
-            padding: 2rem 1.8rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-light);
-            transition: all 0.25s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--orange-light);
-        }
-        .card h3 {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #253746;
-        }
-        .card p {
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* CTA横幅区 (简约按钮) */
-        .cta-banner {
-            background: var(--orange-light);
-            padding: 3rem 2rem;
-            border-radius: 32px;
-            margin: 0 0 80px;
-            text-align: center;
-        }
-        .cta-banner h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .cta-banner p {
-            max-width: 550px;
-            margin: 0 auto 2rem;
-            color: var(--text-muted);
-        }
-        .btn-cta {
-            background-color: var(--orange);
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 40px;
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .btn-cta:hover {
-            background-color: var(--orange-dark);
-        }
-
-        /* 底部双栏布局 */
+        /* 底部样式 */
         .site-footer {
             background-color: #1e2a36;
             color: #cddcec;
@@ -401,8 +249,11 @@
             font-size: 0.8rem;
             color: #8aa1b9;
         }
+        a {
+            text-decoration: none;
+        }
 
-        /* 响应式设计 */
+        /* 纯响应式布局微调（仅影响容器边距和文字大小，绝不改变菜单交互或结构） */
         @media (max-width: 880px) {
             .container {
                 padding: 0 24px;
@@ -414,79 +265,19 @@
 
         @media (max-width: 768px) {
             .header-inner {
+                flex-direction: row;
                 flex-wrap: wrap;
             }
-            .mobile-menu-toggle {
-                display: block;
-            }
+            /* 保持导航菜单原有 flex 布局，不改为垂直或隐藏，完全与桌面一致 */
             .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background: #ffffff;
-                padding: 1.5rem 0;
-                gap: 1rem;
-                border-top: 1px solid var(--border-light);
-                margin-top: 1rem;
-                box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
-            }
-            .nav-menu.active {
-                display: flex;
-            }
-            .nav-menu li {
-                width: 100%;
-                text-align: left;
-            }
-            /* 移动端二级菜单处理 */
-            .submenu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                background: #f8f9fc;
-                padding: 0.5rem 0 0.5rem 1.2rem;
-                margin-top: 0.5rem;
-                border-radius: 16px;
-                display: none;
-                border-left: 2px solid var(--orange);
-            }
-            .dropdown.open .submenu {
-                display: block;
-            }
-            .dropdown > a {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .dropdown > a::after {
-                content: "▾";
-                font-size: 1rem;
-                transition: transform 0.2s;
-                color: var(--orange);
-            }
-            .dropdown.open > a::after {
-                transform: rotate(180deg);
-            }
-            .nav-menu a {
-                padding: 0.6rem 0;
-                display: block;
-            }
-            .nav-cta {
-                display: inline-block;
-                text-align: center;
-                margin: 0.5rem 0 0;
-                width: fit-content;
-            }
-            .footer-inner {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.2rem;
             }
             .hero-title {
                 font-size: 2.2rem;
             }
-            .button-group {
-                justify-content: flex-start;
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
 
@@ -494,31 +285,64 @@
             .hero {
                 padding: 50px 0;
             }
-            .card h3 {
-                font-size: 1.4rem;
+            .hero-title {
+                font-size: 1.9rem;
             }
-            .section-title {
-                font-size: 1.8rem;
+            .nav-menu {
+                gap: 0.9rem;
+            }
+            .nav-menu > li > a {
+                font-size: 0.9rem;
+                white-space: normal;
+            }
+            .submenu {
+                min-width: 180px;
+            }
+            .submenu a {
+                white-space: normal;
+                padding: 0.5rem 1rem;
             }
         }
-
-        /* 一些细节装饰 */
-        .btn-primary, .btn-secondary, .nav-cta {
-            cursor: pointer;
-        }
-        a {
-            text-decoration: none;
-        }
-
-
-
-
-
-
-        
     </style>
 </head>
 <body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="#" class="logo">
+            <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
+        </a>
+        <!-- 导航菜单：无移动端按钮，无特殊切换逻辑，所有设备统一样式和交互 -->
+        <ul class="nav-menu">
+            <li><a href="index.html">首页</a></li>
+            <li class="dropdown">
+                <a href="#">驾驶员学习与考试</a>
+                <ul class="submenu">
+                    <li><a href="https://docs.qq.com/doc/DTUdVUW5Yc2hvVGdE">技术操作手册</a></li>
+                    <li><a href="https://ks.wjx.com/vm/YOEg4H6.aspx">前往考试</a></li>
+                    <li><a href="exam_tip.html">考试说明</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">服务与新闻</a>
+                <ul class="submenu">
+                    <li><a href="net_map.html">线路图查询</a></li>
+                    <li><a href="news.html">新闻</a></li>
+                    <li><a href="links.html">友情链接</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">项目与产品</a>
+                <ul class="submenu">
+                    <li><a href="games.html">神岛地图传送</a></li>
+                    <li><a href="#">视频</a></li>
+                </ul>
+            </li>
+            <li><a href="about_us.html">关于我们</a></li>
+        </ul>
+    </div>
+</header>
+
 
 
 <header class="site-header">
