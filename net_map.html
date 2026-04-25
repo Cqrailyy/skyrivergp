@@ -303,6 +303,121 @@
                 padding: 0.5rem 1rem;
             }
         }
+        /* 路线查询卡片样式 */
+        .route-card {
+            max-width: 880px;
+            margin: 2rem auto;
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2rem;
+            border: 1px solid #eaecef;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            text-align: left;
+        }
+        .route-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1f2b38;
+            margin-bottom: 1.5rem;
+        }
+        .route-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .route-field {
+            flex: 1;
+            min-width: 180px;
+        }
+        .route-field label {
+            display: block;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-bottom: 0.4rem;
+        }
+        .route-field select, .route-btn {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #dce2e8;
+            border-radius: 48px;
+            font-size: 1rem;
+            background: white;
+            outline: none;
+            cursor: pointer;
+        }
+        .route-btn {
+            background: #f15a24;
+            color: white;
+            font-weight: 600;
+            border: none;
+            transition: 0.2s;
+        }
+        .route-btn:hover {
+            background: #d84315;
+            transform: translateY(-1px);
+        }
+        .result-area {
+            border-top: 1px solid #eff2f6;
+            padding-top: 1.5rem;
+        }
+        .path-stations {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .station-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: #f8f9fc;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            border: 1px solid #e2e6ec;
+        }
+        .station-name {
+            font-size: 0.9rem;
+            color: #1f2b38;
+        }
+        .transfer-badge {
+            font-size: 0.7rem;
+            background: #fff0e6;
+            color: #f15a24;
+            padding: 0.1rem 0.5rem;
+            border-radius: 30px;
+            white-space: nowrap;
+        }
+        .arrow {
+            color: #f15a24;
+            font-weight: 500;
+        }
+        .info {
+            font-size: 0.9rem;
+            color: #5b6e8c;
+            margin-top: 0.8rem;
+        }
+        .line-tag {
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            color: white;
+        }
+        .line-tag.liner_error { background-color: #ffffff;}
+        .line-tag.line2 { background-color: #00b7ff; color: #ffffff; }
+        .line-tag.line3 { background-color: #1E3A8A; }
+        .line-tag.line-circle { background-color: #FBBF24; color: #ffffff; }
+        .error {
+            color: #d9534f;
+            background: #fff5f5;
+            padding: 0.6rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -352,24 +467,26 @@
     <img width="600" src="images/netmap.png"/>
 </div>
 <div style="height: 30px;"></div>
-<div class="route-card">
-    <h3>路线查询</h3>
-    <div class="route-form">
-        <div class="route-field">
-            <label>起点站</label>
-            <select id="startSelect"></select>
+<div style="text-align: center;">
+    <div class="route-card">
+        <h3>路线查询</h3>
+        <div class="route-form">
+            <div class="route-field">
+                <label>起点站</label>
+                <select id="startSelect"></select>
+            </div>
+            <div class="route-field">
+                <label>终点站</label>
+                <select id="endSelect"></select>
+            </div>
+            <div class="route-field">
+                <label>&nbsp;</label>
+                <button class="route-btn" id="queryBtn">查询</button>
+            </div>
         </div>
-        <div class="route-field">
-            <label>终点站</label>
-            <select id="endSelect"></select>
+        <div class="result-area" id="resultArea">
+            <div class="info">请选择起点和终点，然后点击查询</div>
         </div>
-        <div class="route-field">
-            <label>&nbsp;</label>
-            <button class="route-btn" id="queryBtn">查询</button>
-        </div>
-    </div>
-    <div class="result-area" id="resultArea">
-        <div class="info">请选择起点和终点，然后点击查询</div>
     </div>
 </div>
 <footer class="site-footer">
@@ -408,7 +525,7 @@
     const stations = [
         "仁和", "金土", "神岛交通大学", "枢纽站", "天河大道",
         "重庆东", "玉龙湖", "国宁", "凤凰湖风景区", "天河通用机场",
-        "沙坪坝", "奥坎", "冉家坝", "机场T1", "晨风", "机场T2"
+        "沙坪坝", "拗坎", "冉家坝", "机场T1", "晨风", "机场T2"
     ];
 
     // ============================================================
@@ -417,33 +534,26 @@
     const connections = [
         // 岛2号线有轨电车（原主线）
         ["仁和", "金土"],
-        ["金土", "神岛交通大学"],
-        ["神岛交通大学", "枢纽站"],
-        ["枢纽站", "天河大道"],
-        ["天河大道", "重庆东"],
-        ["重庆东", "玉龙湖"],
-        ["玉龙湖", "国宁"],
-        ["国宁", "凤凰湖风景区"],
-        ["凤凰湖风景区", "天河通用机场"],
-        ["天河通用机场", "沙坪坝"],
+        ["金土", "天河大道"],
+        ["天河大道", "国宁"],,
+        ["国宁", "天河通用机场"],
+        ["天河通用机场", "拗坎"],
+        ["拗坎", "晨风"],
         
-        // 3号线（机场支线 + 沙坪坝联络）
-        ["枢纽站", "奥坎"],
-        ["奥坎", "冉家坝"],
-        ["冉家坝", "机场T1"],
-        ["机场T1", "晨风"],
-        ["晨风", "机场T2"],
-        ["冉家坝", "沙坪坝"],   // 3号线连接沙坪坝
+        // 3号线
+        ["枢纽站", "重庆东"],
+        ["重庆东", "玉龙湖"],
+        ["玉龙湖", "凤凰湖风景区"],
+        ["凤凰湖风景区", "机场T1"],
+        ["机场T1", "机场T2"],
         
         // 环线（黄色）
-        ["机场T2", "沙坪坝"],
-        ["沙坪坝", "冉家坝"],
-        ["冉家坝", "机场T1"],
-        ["机场T1", "晨风"],
-        ["晨风", "机场T2"],
+        ["枢纽站", "冉家坝"],
+        ["冉家坝", "沙坪坝"],
+        ["机场T1", "机场T2"],
         
-        // 站外换乘联络（天河大道 - 冉家坝，视为3号线/环线联络）
-        ["天河大道", "冉家坝"]
+        // 站外换乘联络
+        ["天河大道", "枢纽站"]
     ];
 
     // ============================================================
@@ -453,20 +563,19 @@
         const key = [stationA, stationB].sort().join('|');
         // 岛2号线有轨电车（浅蓝）
         const line2Edges = [
-            "仁和|金土", "金土|神岛交通大学", "神岛交通大学|枢纽站",
-            "枢纽站|天河大道", "天河大道|重庆东", "重庆东|玉龙湖",
-            "玉龙湖|国宁", "国宁|凤凰湖风景区", "凤凰湖风景区|天河通用机场",
-            "天河通用机场|沙坪坝"
+            "仁和|金土", "金土|神岛交通大学", "神岛交通大学|天河大道", 
+            "天河大道|国宁", "国宁|天河通用机场",
+            "天河通用机场|拗坎","拗坎|晨风"
         ];
         // 3号线（深蓝）
         const line3Edges = [
-            "枢纽站|奥坎", "奥坎|冉家坝", "冉家坝|机场T1",
-            "机场T1|晨风", "晨风|机场T2", "冉家坝|沙坪坝"
+            "枢纽站|重庆东", "重庆东|玉龙湖", "玉龙湖|凤凰湖风景区",
+            "凤凰湖风景区|机场T1", "机场T1|机场T2"
         ];
         // 环线（黄）
         const circleEdges = [
-            "机场T2|沙坪坝", "沙坪坝|冉家坝", "冉家坝|机场T1",
-            "机场T1|晨风", "晨风|机场T2"
+            "枢纽站|冉家坝", "冉家坝|沙坪坝", "沙坪坝|机场T1",
+            "机场T1|机场T2"
         ];
         
         if (line2Edges.includes(key)) return { name: "岛2号线有轨电车", class: "line2" };
@@ -474,16 +583,16 @@
         if (circleEdges.includes(key)) return { name: "环线", class: "line-circle" };
         // 天河大道-冉家坝 属于站外换乘通道，不单独算线路，但为了显示，归为换乘提示处理
         if (key === "天河大道|冉家坝") return { name: "站外换乘通道", class: "line2" }; // 颜色沿用2号线，但实际提示换乘
-        return { name: "未知线路", class: "line2" };
+        return { name: "", class: "liner_error" };
     }
 
     // ============================================================
     // 4. 换乘点定义
     // ============================================================
     const transferPoints = {
-        "机场T1": "可换乘 3号线 ↔ 环线",
-        "机场T2": "可换乘 3号线 ↔ 环线",
-        "天河大道": "站外换乘枢纽（岛2号线 ↔ 3号线/环线）"
+        "机场T1": "可换乘 3号线 — 环线",
+        "机场T2": "可换乘 3号线 — 环线",
+        "天河大道": "可站外换乘 岛2号线 — 3号线/环线"
     };
 
     // ============================================================
@@ -556,7 +665,7 @@
             const hasTransfer = transferPoints[station];
             stationsHtml += `<div class="station-item">
                                 <span class="station-name">${station}</span>
-                                ${hasTransfer ? `<span class="transfer-badge">🔄 ${hasTransfer}</span>` : ''}
+                                ${hasTransfer ? `<span class="transfer-badge">${hasTransfer}</span>` : ''}
                             </div>`;
             if (i < path.length - 1) {
                 // 获取线路信息用于箭头提示
@@ -589,7 +698,7 @@
             <div class="info">共 ${totalStops} 站 | 预计约 ${estimatedTime} 分钟</div>
             <div class="info">途经线路：${linesHtml || '无'}</div>
             <div class="info">详细路径：${path.join(' → ')}</div>
-            <div class="info" style="background:#fef7e0; padding:0.5rem; border-radius:16px;">💡 换乘提示：机场T1/T2可同站换乘3号线与环线；天河大道为站外换乘枢纽，需出站换乘3号线/环线。</div>
+            <div class="info" style="background:#fef7e0; padding:0.5rem; border-radius:16px;">提示：机场T1/T2可同站换乘3号线与环线；天河大道为站外换乘枢纽，需出站换乘3号线/环线。</div>
         `;
     });
 </script>
