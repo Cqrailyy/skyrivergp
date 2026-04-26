@@ -302,6 +302,7 @@
                 white-space: normal;
                 padding: 0.5rem 1rem;
             }
+            
         }
     </style>
 </head>
@@ -312,13 +313,14 @@
         <a href="#" class="logo">
             <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
         </a>
-        <!-- 导航菜单：无移动端按钮，无特殊切换逻辑，所有设备统一样式和交互 -->
+        <!-- 导航菜单 -->
         <ul class="nav-menu">
             <li><a href="index.html">首页</a></li>
             <li class="dropdown">
                 <a href="#">驾驶员学习与考试</a>
                 <ul class="submenu">
                     <li><a href="https://docs.qq.com/doc/DTUdVUW5Yc2hvVGdE">技术操作手册</a></li>
+                    <li><a href="table.html">员工表</a></li>
                     <li><a href="https://ks.wjx.com/vm/YOEg4H6.aspx">前往考试</a></li>
                     <li><a href="exam_tip.html">考试说明</a></li>
                 </ul>
@@ -327,7 +329,6 @@
                 <a href="#">服务与新闻</a>
                 <ul class="submenu">
                     <li><a href="net_map.html">线路图查询</a></li>
-                    <li><a href="table.html">员工表</a></li>
                     <li><a href="news.html">新闻</a></li>
                     <li><a href="links.html">友情链接</a></li>
                 </ul>
@@ -343,21 +344,82 @@
         </ul>
     </div>
 </header>
-
-<main>
-    <section class="hero">
-        <div class="container hero-grid">
-            <div class="hero-content">
-                <div class="hero-badge">天河集团·为热爱掌舵</div>
-                <h1 class="hero-title">智行天下，<strong>幸福天河</strong></h1>
-                <p class="hero-desc">你许我在起点，我陪你到终点<br>以代码铺轨，用热爱驱动</p>
+<div style="height: 30px;"></div>
+<div style="margin-left: 20px; margin-right: 20px;">
+    <!-- 员工表组件 -->
+    <div class="tianhe-staff-module" style="display: flex; justify-content: center; width: 100%; margin: 0 auto;">
+    <div class="tianhe-card" style="max-width: 1280px; width: 100%; background: #ffffff; border-radius: 28px; box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.02); overflow: hidden; transition: all 0.2s;">
+        <!-- 头部标题区 -->
+        <div style="padding: 1.2rem 1.8rem 0.6rem 1.8rem; border-bottom: 1px solid #eef2f6; background: #ffffff;">
+        <div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; justify-content: space-between;">
+            <div>
+            <span style="font-size: 1.6rem; font-weight: 700; background: linear-gradient(120deg, #1f6e6b, #2a5f6e); background-clip: text; -webkit-background-clip: text; color: transparent;">天河集团 — 神岛岛2号线有轨电车 · 员工表</span>
             </div>
-            <div style="flex:0.8; min-width: 200px;"></div>
+            <div style="font-size: 0.7rem; background: #eef5f9; padding: 0.2rem 0.8rem; border-radius: 40px; color: #2c7f8c;">天河集团 · 实时档案</div>
         </div>
-    </section>
-    <!-- 原有 features 和 cta 区域已注释，保持干净 -->
-</main>
+        <div style="font-size: 0.7rem; color: #6f8f9c; margin-top: 0.5rem; border-left: 3px solid #48b5b0; padding-left: 0.8rem;">内测阶段 | 考试后请及时查阅</div>
+        </div>
 
+        <!-- 表格外层 -->
+        <div style="overflow-x: auto; width: 100%;">
+        <table style="width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; font-family: 'Inter', system-ui, 'Segoe UI', 'Roboto', 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 0.85rem; min-width: 860px;">
+            <thead>
+            <!-- 第一行：三个职能组，各占3列 -->
+            <tr>
+                <th colspan="3" style="background: #f7fbfe; font-size: 0.95rem; font-weight: 700; padding: 1rem 0.5rem; text-align: center; color: #1a5f6b; border-bottom: 1px solid #e2ecf3;">银河领航员</th>
+                <th colspan="3" style="background: #f7fbfe; font-size: 0.95rem; font-weight: 700; padding: 1rem 0.5rem; text-align: center; color: #1a5f6b; border-bottom: 1px solid #e2ecf3;">调度员</th>
+                <th colspan="3" style="background: #f7fbfe; font-size: 0.95rem; font-weight: 700; padding: 1rem 0.5rem; text-align: center; color: #1a5f6b; border-bottom: 1px solid #e2ecf3;">驾驶员</th>
+            </tr>
+            <!-- 第二行：子字段名称 -->
+            <tr>
+                <th style="background: #f1f7fb; font-weight: 600; font-size: 0.75rem; padding: 0.7rem 0.4rem; text-align: center; color: #2c7385; border-bottom: 1px solid #e1ecf3;">序列号</th>
+                <th style="background: #f1f7fb; font-weight: 600; font-size: 0.75rem; padding: 0.7rem 0.4rem; text-align: center; color: #2c7385; border-bottom: 1px solid #e1ecf3;">ID</th>
+                <th style="background: #f1f7fb; font-weight: 600; font-size: 0.75rem; padding: 0.7rem 0.4rem; text-align: left; color: #2c7385; border-bottom: 1px solid #e1ecf3;">账号名</th>
+                <th style="background: #f1f7fb; font-weight: 600; font-size: 0.75rem; padding: 0.7rem 0.4rem; text-align: center; color: #2c7385; border-bottom: 1px solid #e1ecf3;">序列号</th>
+                <th style="background: #f1f7fb; font-weight: 600; font-size: 0.75rem; padding: 0.7rem 0.4rem; text-align: center; color: #2c7385; border-bottom: 1px solid #e1ecf3;">ID</th>
+                <th style="background: #f1f7fb; font-weight: 600; font-size: 0.75rem; padding: 0.7rem 0.4rem; text-align: left; color: #2c7385; border-bottom: 1px solid #e1ecf3;">账号名</th>
+                <th style="background: #f1f7fb; font-weight: 600; font-size: 0.75rem; padding: 0.7rem 0.4rem; text-align: center; color: #2c7385; border-bottom: 1px solid #e1ecf3;">序列号</th>
+                <th style="background: #f1f7fb; font-weight: 600; font-size: 0.75rem; padding: 0.7rem 0.4rem; text-align: center; color: #2c7385; border-bottom: 1px solid #e1ecf3;">ID</th>
+                <th style="background: #f1f7fb; font-weight: 600; font-size: 0.75rem; padding: 0.7rem 0.4rem; text-align: left; color: #2c7385; border-bottom: 1px solid #e1ecf3;">账号名</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- 数据行 1 -->
+            <tr style="transition: background 0.2s;">
+                <td style="padding: 0.9rem 0.5rem; text-align: center; border-bottom: 1px solid #f0f4f8; font-family: monospace; font-weight: 500; color: #127c6b;">TL01</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: center; border-bottom: 1px solid #f0f4f8; font-family: monospace;">12892363</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: left; border-bottom: 1px solid #f0f4f8; font-weight: 500; color: #145c64;">化竞生重庆的渝渝</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: center; border-bottom: 1px solid #f0f4f8; font-family: monospace; font-weight: 500; color: #127c6b;">TD01</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: center; border-bottom: 1px solid #f0f4f8; font-family: monospace;">12892363</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: left; border-bottom: 1px solid #f0f4f8; font-weight: 500; color: #145c64;">化竞生重庆的渝渝</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: center; border-bottom: 1px solid #f0f4f8; font-family: monospace; font-weight: 500; color: #127c6b;">DR01</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: center; border-bottom: 1px solid #f0f4f8; font-family: monospace;">12892363</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: left; border-bottom: 1px solid #f0f4f8; font-weight: 500; color: #145c64;">化竞生重庆的渝渝</td>
+            </tr>
+            <!-- 数据行 2 -->
+            <tr style="transition: background 0.2s;">
+                <td style="padding: 0.9rem 0.5rem; text-align: center; border-bottom: 1px solid #f0f4f8; font-family: monospace; font-weight: 500; color: #127c6b;">TL02</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: center; border-bottom: 1px solid #f0f4f8; font-family: monospace;">50458693</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: left; border-bottom: 1px solid #f0f4f8; font-weight: 500; color: #145c64;">夜影行者</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: center; border-bottom: 1px solid #f0f4f8; font-family: monospace; font-weight: 500; color: #127c6b;">TD02</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: center; border-bottom: 1px solid #f0f4f8; font-family: monospace;">50458693</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: left; border-bottom: 1px solid #f0f4f8; font-weight: 500; color: #145c64;">夜影行者</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: center; border-bottom: 1px solid #f0f4f8; font-family: monospace; font-weight: 500; color: #127c6b;">DR02</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: center; border-bottom: 1px solid #f0f4f8; font-family: monospace;">50458693</td>
+                <td style="padding: 0.9rem 0.5rem; text-align: left; border-bottom: 1px solid #f0f4f8; font-weight: 500; color: #145c64;">夜影行者</td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <!-- 底部装饰-->
+        <div style="padding: 0.7rem 1.5rem; background: #fcfef9; border-top: 1px solid #eef3f8; font-size: 0.7rem; color: #5a828f; text-align: right; letter-spacing: 0.3px;">
+        <span>你许我在起点 · 我陪你到终点</span>
+        </div>
+    </div>
+    </div>
+</div>
+<div style="height: 30px;"></div>
 <footer class="site-footer">
     <div class="container footer-inner">
         <div class="footer-left">
