@@ -303,6 +303,52 @@
                 padding: 0.5rem 1rem;
             }
         }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex: wrap;
+        }
+        .btn-primary {
+            background-color: var(--orange);
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 48px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(241, 90, 36, 0.2);
+        }
+        .btn-primary:hover {
+            background-color: var(--orange-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(241, 90, 36, 0.25);
+        }
+        .btn-secondary {
+            background: transparent;
+            border: 1.5px solid var(--orange);
+            padding: 0.9rem 2rem;
+            border-radius: 48px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--orange);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn-secondary:hover {
+            background-color: var(--orange-light);
+            border-color: var(--orange-dark);
+            color: var(--orange-dark);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -327,8 +373,8 @@
                 <a href="#">服务与新闻</a>
                 <ul class="submenu">
                     <li><a href="net_map.html">线路图查询</a></li>
-                    <li><a href="table.html">员工表</a></li>
                     <li><a href="news.html">新闻</a></li>
+                    <li><a href="table.html">有轨电车成员表</a></li>
                     <li><a href="links.html">友情链接</a></li>
                 </ul>
             </li>
@@ -351,6 +397,10 @@
                 <div class="hero-badge">天河集团·为热爱掌舵</div>
                 <h1 class="hero-title">智行天下，<strong>幸福天河</strong></h1>
                 <p class="hero-desc">你许我在起点，我陪你到终点<br>以代码铺轨，用热爱驱动</p>
+                <div class="button-group">
+                    <a href="https://dao3.fun/profile/12892363" class="btn-primary">前往神岛总部</a>
+                    <a href="exam_tip.html" class="btn-secondary">考取驾驶员</a>
+                </div>
             </div>
             <div style="flex:0.8; min-width: 200px;"></div>
         </div>
