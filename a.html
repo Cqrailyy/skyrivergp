@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付成功</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: "Microsoft YaHei", sans-serif;
+            background: #fff;
+        }
+        /* 绿色对勾 */
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #07c160;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .success-icon::after {
+            content: "✓";
+            font-size: 40px;
+            color: white;
+            font-weight: bold;
+        }
+        /* 文字样式 */
+        .text {
+            font-size: 24px;
+            color: #333;
+            margin: 8px 0;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-icon"></div>
+    <div class="text">协议签署成功</div>
+    <div class="text">您的订单已处理完成</div>
+    <div class="text">感谢您的使用</div>
+    <br>
+        <div class="text">签署时间：2026 May 7th 23.00UCT - © 2026 杭州深度求索人工智能基础技术研究有限公司 版权所有</div>
+</body>
+</html>

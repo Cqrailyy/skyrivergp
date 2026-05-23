@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="images/icon.png" type="image/png">
@@ -28,7 +29,7 @@
             --border-light: #eaecef;
             --text-dark: #1e2a3a;
             --text-muted: #5b6e8c;
-            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0.05);
             --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.06);
         }
 
@@ -64,15 +65,16 @@
             transition: color 0.2s;
             flex-shrink: 0;
         }
+
         .logo span {
             color: var(--orange);
             font-weight: 800;
         }
+
         .logo:hover {
             color: var(--orange);
         }
 
-        /* 导航菜单：所有设备完全一致的样式，无特殊移动端覆盖 */
         .nav-menu {
             display: flex;
             align-items: center;
@@ -96,7 +98,7 @@
             white-space: nowrap;
         }
 
-        .nav-menu > li > a {
+        .nav-menu>li>a {
             display: inline-block;
         }
 
@@ -104,7 +106,6 @@
             color: var(--orange);
         }
 
-        /* 二级菜单：统一使用 hover 显示，绝对定位，无移动端特殊处理 */
         .submenu {
             position: absolute;
             top: 100%;
@@ -147,12 +148,12 @@
             color: var(--orange);
         }
 
-        /* Hero 区域 */
         .hero {
             padding: 80px 0 70px;
             background: linear-gradient(135deg, #ffffff 0%, #fffaf5 100%);
             border-bottom: 1px solid var(--border-light);
         }
+
         .hero-grid {
             display: flex;
             flex-wrap: wrap;
@@ -160,10 +161,12 @@
             justify-content: space-between;
             gap: 3rem;
         }
+
         .hero-content {
             flex: 1;
             min-width: 260px;
         }
+
         .hero-badge {
             display: inline-block;
             background: var(--orange-light);
@@ -174,6 +177,7 @@
             font-weight: 500;
             margin-bottom: 1.5rem;
         }
+
         .hero-title {
             font-size: 3.3rem;
             font-weight: 800;
@@ -182,10 +186,12 @@
             color: #1f2b38;
             margin-bottom: 1.2rem;
         }
+
         .hero-title strong {
             color: var(--orange);
             font-weight: 800;
         }
+
         .hero-desc {
             font-size: 1.2rem;
             color: var(--text-muted);
@@ -193,73 +199,199 @@
             margin-bottom: 2rem;
         }
 
-        /* 底部样式 */
+        .about-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .section-title span {
+            color: var(--orange);
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .about-features {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .feature-item::before {
+            content: "·";
+            color: var(--orange);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* 招聘板块样式 */
+        .recruit-section {
+            padding: 80px 0;
+            background-color: var(--gray-bg);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .recruit-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .recruit-job {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-light);
+        }
+
+        .recruit-job:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .job-desc {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
         .site-footer {
             background-color: #1e2a36;
             color: #cddcec;
             padding: 56px 0 40px;
             border-top: 4px solid var(--orange);
         }
+
         .footer-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
         }
+
         .footer-left {
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
         }
+
         .copyright {
             font-size: 0.9rem;
             color: #9aafc5;
         }
+
         .legal-links {
             display: flex;
             flex-wrap: wrap;
             gap: 1.8rem;
         }
+
         .legal-links a {
             color: #cddcec;
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.2s;
         }
+
         .legal-links a:hover {
             color: var(--orange);
             text-decoration: underline;
         }
+
         .footer-right {
             display: flex;
             flex-direction: column;
             gap: 0.9rem;
         }
+
         .contact-item {
             font-size: 1rem;
             line-height: 1.6;
             color: #eef3fc;
         }
+
         .contact-label {
             font-weight: 600;
             color: #ffffff;
             margin-right: 0.5rem;
         }
+
         .footer-note {
             margin-top: 0.5rem;
             font-size: 0.8rem;
             color: #8aa1b9;
         }
+
         a {
             text-decoration: none;
         }
 
-        /* 纯响应式布局微调（仅影响容器边距和文字大小，绝不改变菜单交互或结构） */
         @media (max-width: 880px) {
             .container {
                 padding: 0 24px;
             }
+
             .hero-title {
                 font-size: 2.6rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
             }
         }
 
@@ -268,13 +400,19 @@
                 flex-direction: row;
                 flex-wrap: wrap;
             }
-            /* 保持导航菜单原有 flex 布局，不改为垂直或隐藏，完全与桌面一致 */
+
             .nav-menu {
                 gap: 1.2rem;
             }
+
             .hero-title {
                 font-size: 2.2rem;
             }
+
+            .section-title {
+                font-size: 1.9rem;
+            }
+
             .footer-inner {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -285,30 +423,41 @@
             .hero {
                 padding: 50px 0;
             }
+
             .hero-title {
                 font-size: 1.9rem;
             }
+
             .nav-menu {
                 gap: 0.9rem;
             }
-            .nav-menu > li > a {
+
+            .nav-menu>li>a {
                 font-size: 0.9rem;
                 white-space: normal;
             }
+
             .submenu {
                 min-width: 180px;
             }
+
             .submenu a {
                 white-space: normal;
                 padding: 0.5rem 1rem;
+            }
+
+            .about-section,
+            .recruit-section {
+                padding: 50px 0;
             }
         }
 
         .button-group {
             display: flex;
             gap: 1rem;
-            flex: wrap;
+            flex-wrap: wrap;
         }
+
         .btn-primary {
             background-color: var(--orange);
             border: none;
@@ -324,11 +473,13 @@
             text-align: center;
             box-shadow: 0 4px 8px rgba(241, 90, 36, 0.2);
         }
+
         .btn-primary:hover {
             background-color: var(--orange-dark);
             transform: translateY(-2px);
             box-shadow: 0 8px 16px rgba(241, 90, 36, 0.25);
         }
+
         .btn-secondary {
             background: transparent;
             border: 1.5px solid var(--orange);
@@ -343,6 +494,7 @@
             display: inline-block;
             text-align: center;
         }
+
         .btn-secondary:hover {
             background-color: var(--orange-light);
             border-color: var(--orange-dark);
@@ -351,93 +503,178 @@
         }
     </style>
 </head>
+
 <body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li class="dropdown">
+                    <a href="#">驾驶员学习与考试</a>
+                    <ul class="submenu">
+                        <li><a href="https://docs.qq.com/doc/DTXZVQmpTSnZVaE9K">技术操作手册</a></li>
+                        <li><a href="https://ks.wjx.com/vm/YOEg4H6.aspx">前往考试</a></li>
+                        <li><a href="exam_tip">考试说明</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">服务与新闻</a>
+                    <ul class="submenu">
+                        <li><a href="net_map">线路图查询</a></li>
+                        <li><a href="news">新闻</a></li>
+                        <li><a href="chang_pt">更新日志</a></li>
+                        <li><a href="table">有轨电车成员表</a></li>
+                        <li><a href="links">友情链接</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">项目与产品</a>
+                    <ul class="submenu">
+                        <li><a href="games">神岛地图传送</a></li>
+                        <li><a href="https://space.bilibili.com/1785851106">视频</a></li>
+                    </ul>
+                </li>
+                <li><a href="about_us">关于我们</a></li>
+            </ul>
+        </div>
+    </header>
 
-<header class="site-header">
-    <div class="container header-inner">
-        <a href="#" class="logo">
-            <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
-        </a>
-        <!-- 导航菜单：无移动端按钮，无特殊切换逻辑，所有设备统一样式和交互 -->
-        <ul class="nav-menu">
-            <li><a href="index.html">首页</a></li>
-            <li class="dropdown">
-                <a href="#">驾驶员学习与考试</a>
-                <ul class="submenu">
-                    <li><a href="https://docs.qq.com/doc/DTXZVQmpTSnZVaE9K">技术操作手册</a></li>
-                    <li><a href="https://ks.wjx.com/vm/YOEg4H6.aspx">前往考试</a></li>
-                    <li><a href="exam_tip">考试说明</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">服务与新闻</a>
-                <ul class="submenu">
-                    <li><a href="net_map">线路图查询</a></li>
-                    <li><a href="news">新闻</a></li>
-                    <li><a href="chang_pt">更新日志</a></li>
-                    <li><a href="table">有轨电车成员表</a></li>
-                    <li><a href="links">友情链接</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">项目与产品</a>
-                <ul class="submenu">
-                    <li><a href="games">神岛地图传送</a></li>
-                    <li><a href="https://space.bilibili.com/1785851106">视频</a></li>
-                </ul>
-            </li>
-            <li><a href="about_us">关于我们</a></li>
-        </ul>
-    </div>
-</header>
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">天河集团·为热爱掌舵</div>
+                    <h1 class="hero-title">智行天下，<strong>幸福天河</strong></h1>
+                    <p class="hero-desc">你许我在起点，我陪你到终点<br>以代码铺轨，用热爱驱动<br><br>天河岛铁，友谊常青</p>
+                    <div class="button-group">
+                        <a href="https://dao3.fun/exp/experience/detail/100341636" class="btn-primary">有轨电车内测</a>
+                        <a href="exam_tip" class="btn-secondary">考驾驶员</a>
+                    </div>
+                </div>
+                <div style="flex:0.8; min-width: 200px;"></div>
+            </div>
+        </section>
 
-<main>
-    <section class="hero">
-        <div class="container hero-grid">
-            <div class="hero-content">
-                <div class="hero-badge">天河集团·为热爱掌舵</div>
-                <h1 class="hero-title">智行天下，<strong>幸福天河</strong></h1>
-                <p class="hero-desc">你许我在起点，我陪你到终点<br>以代码铺轨，用热爱驱动<br><br>天河岛铁，友谊常青</p>
-                <div class="button-group">
-                    <a href="https://dao3.fun/exp/experience/detail/100341636" class="btn-primary">有轨电车内测</a>
-                    <a href="exam_tip" class="btn-secondary">考驾驶员</a>
+        <section class="about-section" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><span>天河集团</span> 能为你做些什么</h2>
+                    <p class="section-desc">专注于虚拟轨道交通、创意编程与社群服务，用热爱与技术打造优质体验</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>我们是谁</h3>
+                        <p>天河集团是由一群热爱创作与技术的伙伴共创组建的创意团队，深耕虚拟轨道交通、趣味编程、Xp12插件服务/社群运营等领域，致力于打造安全、有趣、高质量的线上体验项目。</p>
+                        <p>从有轨电车系统开发、驾驶员培训考核，到每一次Xp12里的起飞，我们始终坚持“智行天下，幸福天河”的理念，陪伴每一位成员共同成长。</p>
+                        <div class="about-features">
+                            <div class="feature-item">专业神岛虚拟轨道交通运营</div>
+                            <div class="feature-item">持续更新的创意项目与工具</div>
+                            <div class="feature-item">开放友好的社群交流平台</div>
+                            <div class="feature-item">方便快捷的Xplane12插件下载</div>
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <h3>我们的理念</h3>
+                        <p>天河集团以“技术创造乐趣，陪伴传递温暖”为核心，致力于为所有爱好者提供稳定、优质、创新的服务，让每一位成员都能在这里找到归属感与乐趣。</p>
+                        <p>我们坚持免费开放、持续更新、用心维护，不断完善有轨电车系统、插件资源、社群服务等内容，用行动践行承诺，用热爱连接彼此。</p>
+                        <div class="about-features">
+                            <div class="feature-item">技术创新，体验优先</div>
+                            <div class="feature-item">免费开放，共享乐趣</div>
+                            <div class="feature-item">稳定运营，长期维护</div>
+                            <div class="feature-item">友谊至上，共同成长</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div style="flex:0.8; min-width: 200px;"></div>
-        </div>
-    </section>
-    <!-- 原有 features 和 cta 区域已注释，保持干净 -->
-</main>
+        </section>
 
-<footer class="site-footer">
-    <div class="container footer-inner">
-        <div class="footer-left">
-            <div class="copyright">
-                正在开发内测：自动化古诗文翻译工具 | 化学反应原理演示 | 图形化编程
-                <br>
-                © 2025 天河集团 | 版权所有
-                <br>
-                建议使用PC端访问此网站
-                <br>
-                <br>
-                <a href="https://dao3.fun" class="copyright" style="color:#cddcec;">
-                    岛ICP备20260418号
-                </a>
+        <!-- 招聘板块 -->
+        <section class="recruit-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">加入<span>天河</span>，携手同行</h2>
+                    <p class="section-desc">招募志同道合的伙伴加入天河服务，一起创作运维，共创辉煌</p>
+                </div>
+                <div class="about-grid">
+                    <div class="recruit-card">
+                        <div class="recruit-job">
+                            <h3 class="job-title">天河领航员</h3>
+                            <p class="job-desc">参与日常地图更新，代码维护，告示发布，活动组织</p>
+                            <div class="about-features">
+                                <div class="feature-item">熟练运用JavaScript与神岛API，以及storage数据库与HTML网页编写</div>
+                                <div class="feature-item">善于沟通交流，脑洞十分之大</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recruit-card">
+                        <div class="recruit-job">
+                            <h3 class="job-title">神岛轨道交通驾驶员</h3>
+                            <p class="job-desc">日常行车，保障地图可运营性</p>
+                            <div class="about-features">
+                                <div class="feature-item">熟悉行车逻辑，善于应急预案</div>
+                                <div class="feature-item">发布行车视频，吸引广大客流</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 30px;"></div>
+                <div class="about-grid">
+                    <div class="recruit-card">
+                        <div class="recruit-job">
+                            <h3 class="job-title">天河飞友</h3>
+                            <p class="job-desc">在Xplane12中进行航线飞行，同时完善官网Xp12插件</p>
+                            <div class="about-features">
+                                <div class="feature-item">主力熟练执飞（如 Zibo B737-800、Toliss A320 等）</div>
+                                <div class="feature-item">善于摘取插件，更新HTML插件版块</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recruit-card">
+                        <div class="recruit-job">
+                            <h3 class="job-title" style="text-align: center; ">加入我们，就在现在</h3>
+                    <div class="button-group" style="text-align: center; display: flex; justify-content: center;">
+                        <a href="https://qm.qq.com/q/HxjYIG4NSA" class="btn-primary" style="text-align: center;">招聘入口</a>
+                    </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="legal-links">
-                <!-- 预留法律链接位置 -->
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <div class="copyright">
+                    正在开发内测：自动化古诗文翻译工具 | 化学反应原理演示 | 图形化编程
+                    <br>
+                    © 2025 天河集团 | 版权所有
+                    <br>
+                    建议使用PC端访问此网站
+                    <br>
+                    <br>
+                    <a href="https://dao3.fun" class="copyright" style="color:#cddcec;">
+                        岛ICP备20260418号
+                    </a>
+                </div>
+                <div class="legal-links"></div>
+                <div class="footer-note">
+                    本网站内容受知识产权保护，未经许可不得转载。
+                </div>
             </div>
-            <div class="footer-note">
-                本网站内容受知识产权保护，未经许可不得转载。
+            <div class="footer-right">
+                <div class="contact-item"><span class="contact-label">联系我们</span></div>
+                <div class="contact-item"><span class="contact-label">渝渝QQ：</span> 3809150396</div>
+                <a href="https://space.bilibili.com/1785851106" class="contact-item" style="color:#eef3fc;"><span
+                        class="contact-label">渝渝B站：</span>https://space.bilibili.com/1785851106</a>
+                <a href="https://qm.qq.com/q/jpK9iH0VMI" class="contact-item" style="color:#eef3fc;"><span
+                        class="contact-label">QQ群：</span>553195523 岛铁共享</a>
             </div>
         </div>
-        <div class="footer-right">
-            <div class="contact-item"><span class="contact-label">联系我们</span></div>
-            <div class="contact-item"><span class="contact-label">渝渝QQ：</span> 3809150396</div>
-            <a href="https://space.bilibili.com/1785851106" class="contact-item" style="color:#eef3fc;"><span class="contact-label">渝渝B站：</span>https://space.bilibili.com/1785851106</a>
-            <a href="https://qm.qq.com/q/jpK9iH0VMI" class="contact-item" style="color:#eef3fc;"><span class="contact-label">QQ群：</span>553195523 岛铁共享</a>
-        </div>
-    </div>
-</footer>
+    </footer>
 </body>
+
 </html>
