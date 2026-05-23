@@ -284,11 +284,80 @@
             border-radius: 6px;
             text-decoration: none;
         }
+
+        /* 搜索框样式（调整后） */
+        .page-search-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 400px;
+            /* 加宽搜索框，适配页面标题区域 */
+            margin: 0 auto 20px;
+            /* 居中并增加底部间距 */
+        }
+
+        .page-search-input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--text-dark);
+            background-color: var(--gray-bg);
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .page-search-input:focus {
+            border-color: var(--orange);
+            background-color: #fff;
+            box-shadow: 0 0 0 2px rgba(241, 90, 36, 0.1);
+        }
+
+        .page-search-icon {
+            position: absolute;
+            left: 1rem;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        /* 返回顶部按钮样式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            background-color: var(--orange);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: none;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--orange-dark);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
+    <!-- 引入字体图标（用于搜索和返回顶部图标） -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-
     <header class="site-header">
         <div class="header-inner">
             <a href="#" class="logo">
@@ -322,12 +391,20 @@
                     </ul>
                 </li>
                 <li><a href="about_us">关于我们</a></li>
+                <!-- 移除导航栏中的搜索框 -->
             </ul>
         </div>
     </header>
 
     <div style="height: 30px;"></div>
     <h1 style="text-align: center;">Xplane12插件下载</h1>
+    <div style="height: 30px;"></div>
+    <!-- 新增：页面标题下方的搜索框 -->
+    <div class="page-search-container">
+        <i class="fas fa-search page-search-icon"></i>
+        <input type="text" class="page-search-input" placeholder="搜索插件/功能...">
+    </div>
+
     <div style="height: 30px;"></div>
     <div class="container">
         <div class="plugin-section">
@@ -426,6 +503,50 @@
         </div>
     </footer>
 
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 搜索框功能：实时筛选插件卡片（适配新的搜索框类名）
+        const searchInput = document.querySelector('.page-search-input');
+        const pluginCards = document.querySelectorAll('.plugin-card');
+
+        searchInput.addEventListener('input', function () {
+            const searchTerm = this.value.trim().toLowerCase();
+            pluginCards.forEach(card => {
+                const pluginName = card.querySelector('.plugin-name').textContent.toLowerCase();
+                const pluginDesc = card.querySelector('.plugin-desc').textContent.toLowerCase();
+                // 匹配插件名称或描述
+                if (pluginName.includes(searchTerm) || pluginDesc.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // 返回顶部按钮功能
+        const backToTopBtn = document.getElementById('backToTop');
+
+        // 滚动监听：控制按钮显示/隐藏
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) { // 滚动超过300px时显示
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // 点击返回顶部
+        backToTopBtn.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // 平滑滚动
+            });
+        });
+    </script>
 </body>
 
 </html>
