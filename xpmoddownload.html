@@ -35,7 +35,7 @@
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 0 10px;
         }
 
         .site-header {
@@ -53,6 +53,9 @@
             flex-wrap: wrap;
             min-height: 80px;
             gap: 1rem;
+            padding: 0 32px;
+            max-width: 1280px;
+            margin: 0 auto;
         }
 
         .logo {
@@ -72,7 +75,6 @@
             color: var(--orange);
         }
 
-        /* 导航菜单：所有设备完全一致的样式，无特殊移动端覆盖 */
         .nav-menu {
             display: flex;
             align-items: center;
@@ -104,7 +106,6 @@
             color: var(--orange);
         }
 
-        /* 二级菜单：统一使用 hover 显示，绝对定位，无移动端特殊处理 */
         .submenu {
             position: absolute;
             top: 100%;
@@ -147,53 +148,6 @@
             color: var(--orange);
         }
 
-        /* Hero 区域 */
-        .hero {
-            padding: 80px 0 70px;
-            background: linear-gradient(135deg, #ffffff 0%, #fffaf5 100%);
-            border-bottom: 1px solid var(--border-light);
-        }
-        .hero-grid {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 3rem;
-        }
-        .hero-content {
-            flex: 1;
-            min-width: 260px;
-        }
-        .hero-badge {
-            display: inline-block;
-            background: var(--orange-light);
-            color: var(--orange);
-            padding: 0.25rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-        }
-        .hero-title {
-            font-size: 3.3rem;
-            font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            color: #1f2b38;
-            margin-bottom: 1.2rem;
-        }
-        .hero-title strong {
-            color: var(--orange);
-            font-weight: 800;
-        }
-        .hero-desc {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 540px;
-            margin-bottom: 2rem;
-        }
-
-        /* 底部样式 */
         .site-footer {
             background-color: #1e2a36;
             color: #cddcec;
@@ -204,6 +158,9 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
+            padding: 0 32px;
+            max-width: 1280px;
+            margin: 0 auto;
         }
         .footer-left {
             display: flex;
@@ -253,111 +210,68 @@
             text-decoration: none;
         }
 
-        /* 纯响应式布局微调（仅影响容器边距和文字大小，绝不改变菜单交互或结构） */
-        @media (max-width: 880px) {
-            .container {
-                padding: 0 24px;
-            }
-            .hero-title {
-                font-size: 2.6rem;
-            }
+        /* 插件卡片样式 */
+        .plugin-section {
+            margin-bottom: 45px;
         }
-
-        @media (max-width: 768px) {
-            .header-inner {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            /* 保持导航菜单原有 flex 布局，不改为垂直或隐藏，完全与桌面一致 */
-            .nav-menu {
-                gap: 1.2rem;
-            }
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            .footer-inner {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+        .plugin-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 18px;
+            padding-left: 6px;
+            border-left: 4px solid var(--orange);
         }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding: 50px 0;
-            }
-            .hero-title {
-                font-size: 1.9rem;
-            }
-            .nav-menu {
-                gap: 0.9rem;
-            }
-            .nav-menu > li > a {
-                font-size: 0.9rem;
-                white-space: normal;
-            }
-            .submenu {
-                min-width: 180px;
-            }
-            .submenu a {
-                white-space: normal;
-                padding: 0.5rem 1rem;
-            }
-        }
-        .button-group {
+        .plugin-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 12px;
+            width: 100%;
             display: flex;
-            gap: 1rem;
-            flex: wrap;
+            align-items: center;
+            justify-content: space-between;
         }
-        .btn-primary {
-            background-color: var(--orange);
-            border: none;
-            padding: 0.9rem 2rem;
-            border-radius: 48px;
+        .plugin-info {
+            flex: 1;
+        }
+        .plugin-name {
+            font-size: 16px;
             font-weight: 600;
-            font-size: 1rem;
-            color: white;
-            cursor: pointer;
-            transition: all 0.2s;
+            margin-bottom: 6px;
+            color: #222;
+        }
+        .plugin-desc {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+        .plugin-btn {
+            padding: 6px 12px;
+            background: var(--orange);
+            color: #fff;
+            font-size: 13px;
+            border-radius: 6px;
             text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(241, 90, 36, 0.2);
         }
-        .btn-primary:hover {
-            background-color: var(--orange-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(241, 90, 36, 0.25);
-        }
-        .btn-secondary {
-            background: transparent;
-            border: 1.5px solid var(--orange);
-            padding: 0.9rem 2rem;
-            border-radius: 48px;
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--orange);
-            cursor: pointer;
-            transition: all 0.2s;
+        .plugin-btn1 {
+            padding: 6px 12px;
+            background: #00aeff;
+            color: #fff;
+            font-size: 13px;
+            border-radius: 6px;
             text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-        .btn-secondary:hover {
-            background-color: var(--orange-light);
-            border-color: var(--orange-dark);
-            color: var(--orange-dark);
-            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
 
 <header class="site-header">
-    <div class="container header-inner">
+    <div class="header-inner">
         <a href="#" class="logo">
             <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
         </a>
-        <!-- 导航菜单：无移动端按钮，无特殊切换逻辑，所有设备统一样式和交互 -->
         <ul class="nav-menu">
             <li><a href="index">首页</a></li>
             <li class="dropdown">
@@ -373,14 +287,14 @@
                 <ul class="submenu">
                     <li><a href="net_map">线路图查询</a></li>
                     <li><a href="news">新闻</a></li>
-                    <li><a href="table">有轨电车成员表</a></li>
+                    <li><a href="table">有轨电车成员表</li>
                     <li><a href="links">友情链接</a></li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#">项目与产品</a>
                 <ul class="submenu">
-                    <li><a href="xpmoddownload">神岛地图传送</a></li>
+                    <li><a href="xpmoddownload">Xplane12插件</a></li>
                     <li><a href="games">神岛地图传送</a></li>
                     <li><a href="https://space.bilibili.com/1785851106">视频</a></li>
                 </ul>
@@ -391,26 +305,71 @@
 </header>
 
 <div style="height: 30px;"></div>
-<h1 style="text-align: center;">考试说明</h1>
+<h1 style="text-align: center;">Xplane12插件下载</h1>
 <div style="height: 30px;"></div>
-<div style="margin: 0 15px;">如需申请驾驶员请先通过驾驶员测试！</div>
-<div style="height: 15px;"></div>
-<div style="margin: 0 15px;">隔15天一期驾驶员测试</div>
-<div style="height: 15px;"></div>
-<div style="margin: 0 15px;">请先在游戏—商城中购买考试资格后，凭订单号在考试答题卡基础信息中—订单号填写个人订单号</div>
-<div style="height: 15px;"></div>
-<div style="margin: 0 15px;">考试前务必打开天河集团官网—驾驶员学习与考试—技术操作手册，进行扎实学习</div>
-<div style="height: 15px;"></div>
-<div style="margin: 0 15px;">考试总分90分，须达到70分即可通过测试，每期后15天将会获得驾驶员权利，请及时到官网—服务与新闻查看录取名单</div>
-<div style="height: 30px;"></div>
-<div style="text-align: center;">
-    <a href="https://docs.qq.com/doc/DTUdVUW5Yc2hvVGdE" class="btn-secondary">技术操作手册</a>
-    <span>   </span>
-    <a href="https://ks.wjx.com/vm/YOEg4H6.aspx" class="btn-secondary">前往考试</a>
+<div class="container">
+    <div class="plugin-section">
+        <div class="plugin-title">玩法插件</div>
+        <div class="plugin-card">
+            <div class="plugin-info">
+                <div class="plugin-name">BetterPushBack 更好推出</div>
+                <div class="plugin-desc">还在担心官方推出的不可用吗，你看对了！提取码：u5aD</div>
+            </div>
+            <a href="https://www.fsx.org.cn/forum.php?mod=viewthread&tid=37309&highlight=betterpushback" class="plugin-btn1">关于</a>
+            <div style="width: 5px;"></div>
+            <a href="https://pan.baidu.com/s/1lnw5E_Jg5CSWZCv0z0osAA?pwd=u5aD" class="plugin-btn">下载</a>
+        </div>
+        <div class="plugin-card">
+            <div class="plugin-info">
+                <div class="plugin-name">WebFMC 网页FMC</div>
+                <div class="plugin-desc">仅支持Zibo737-800，你可以在网页上使用CDU面板，注意使用http://你的网络NDS:9090进行搜索，提取码: wfmc</div>
+            </div>
+            <a href="https://www.fsx.org.cn/forum.php?mod=viewthread&tid=37777&highlight=webFMC" class="plugin-btn1">关于</a>
+            <div style="width: 5px;"></div>
+            <a href="https://pan.baidu.com/s/1ROrVZ0JvqyiTmTLuAwzsaA " class="plugin-btn">下载</a>
+        </div>
+    </div>
+    <div class="plugin-section">
+        <div class="plugin-title">机模插件</div>
+        <div class="plugin-card">
+            <div class="plugin-info">
+                <div class="plugin-name">Zibo737-800</div>
+                <div class="plugin-desc">提取码: 6eei</div>
+            </div>
+            <a href="https://www.fsx.org.cn/forum.php?mod=viewthread&tid=26526&highlight=zibo" class="plugin-btn1">关于</a>
+            <div style="width: 5px;"></div>
+            <a href="https://pan.baidu.com/s/11vL-glfEq_vTV61E4h64tw" class="plugin-btn">下载</a>
+        </div>
+    </div>
+    <div class="plugin-section">
+        <div class="plugin-title">涂装插件</div>
+        <div class="plugin-card">
+            <div class="plugin-info">
+                <div class="plugin-name">活力珠海号</div>
+                <div class="plugin-desc">仅支持Zibo737-800 China Southern B-1781 提取码: hlzh</div>
+            </div>
+            <a href="https://www.fsx.org.cn/forum.php?mod=viewthread&tid=29767&highlight=活力珠海" class="plugin-btn1">关于</a>
+            <div style="width: 5px;"></div>
+            <a href="https://pan.baidu.com/s/13dogqnm-uEkvNx-9rOOnRA" class="plugin-btn">下载</a>
+        </div>
+    </div>
+    <div class="plugin-section">
+        <div class="plugin-title">地景插件</div>
+        <div class="plugin-card">
+            <div class="plugin-info">
+                <div class="plugin-name">深圳宝安国际机场</div>
+                <div class="plugin-desc">真实地景 SZX ZGSZ 提取码: NSS1</div>
+            </div>
+            <a href="https://www.fsx.org.cn/forum.php?mod=viewthread&tid=16748&highlight=深圳机场" class="plugin-btn1">关于</a>
+            <div style="width: 5px;"></div>
+            <a href="https://pan.baidu.com/share/init?surl=VeLmn7RkyuYOfAAj3pDpwA" class="plugin-btn">下载</a>
+        </div>
+    </div>
 </div>
+
 <div style="height: 30px;"></div>
 <footer class="site-footer">
-    <div class="container footer-inner">
+    <div class="footer-inner">
         <div class="footer-left">
             <div class="copyright">
                 正在开发内测：自动化古诗文翻译工具 | 化学反应原理演示 | 图形化编程
@@ -424,9 +383,7 @@
                     岛ICP备20260418号
                 </a>
             </div>
-            <div class="legal-links">
-                <!-- 预留法律链接位置 -->
-            </div>
+            <div class="legal-links"></div>
             <div class="footer-note">
                 本网站内容受知识产权保护，未经许可不得转载。
             </div>
@@ -440,6 +397,5 @@
     </div>
 </footer>
 
-<!-- 无任何 JavaScript 代码：完全移除移动端特殊交互逻辑（菜单按钮、二级菜单点击展开、open 类等），PC 与移动端行为统一，子菜单均通过 hover 显示。 -->
 </body>
 </html>
