@@ -75,7 +75,6 @@
             color: var(--orange);
         }
 
-        /* 导航菜单：所有设备完全一致的样式，无特殊移动端覆盖 */
         .nav-menu {
             display: flex;
             align-items: center;
@@ -107,7 +106,6 @@
             color: var(--orange);
         }
 
-        /* 二级菜单：统一使用 hover 显示，绝对定位，无移动端特殊处理 */
         .submenu {
             position: absolute;
             top: 100%;
@@ -150,7 +148,6 @@
             color: var(--orange);
         }
 
-        /* Hero 区域 */
         .hero {
             padding: 80px 0 70px;
             background: linear-gradient(135deg, #ffffff 0%, #fffaf5 100%);
@@ -202,7 +199,6 @@
             margin-bottom: 2rem;
         }
 
-        /* 底部样式 */
         .site-footer {
             background-color: #1e2a36;
             color: #cddcec;
@@ -273,14 +269,46 @@
             text-decoration: none;
         }
 
-        /* 纯响应式布局微调（仅影响容器边距和文字大小，绝不改变菜单交互或结构） */
+        /* 中间内容统一样式 */
+        .page-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        .page-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--orange);
+            color: #fff;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .btn:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 880px) {
             .container {
                 padding: 0 24px;
             }
-
             .hero-title {
                 font-size: 2.6rem;
+            }
+            .page-title {
+                font-size: 2.2rem;
             }
         }
 
@@ -289,16 +317,12 @@
                 flex-direction: row;
                 flex-wrap: wrap;
             }
-
-            /* 保持导航菜单原有 flex 布局，不改为垂直或隐藏，完全与桌面一致 */
             .nav-menu {
                 gap: 1.2rem;
             }
-
             .hero-title {
                 font-size: 2.2rem;
             }
-
             .footer-inner {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -309,27 +333,25 @@
             .hero {
                 padding: 50px 0;
             }
-
             .hero-title {
                 font-size: 1.9rem;
             }
-
             .nav-menu {
                 gap: 0.9rem;
             }
-
             .nav-menu>li>a {
                 font-size: 0.9rem;
                 white-space: normal;
             }
-
             .submenu {
                 min-width: 180px;
             }
-
             .submenu a {
                 white-space: normal;
                 padding: 0.5rem 1rem;
+            }
+            .page-title {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -341,7 +363,6 @@
             <a href="#" class="logo">
                 <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
             </a>
-            <!-- 导航菜单：无移动端按钮，无特殊切换逻辑，所有设备统一样式和交互 -->
             <ul class="nav-menu">
                 <li><a href="index">首页</a></li>
                 <li class="dropdown">
@@ -374,17 +395,15 @@
         </div>
     </header>
 
-
-    <div style="height: 50px;"></div>
-    <div style="text-align: center;">
-        <h1>神岛地图传送</h1>.
-        <div style="height: 50px;"></div>
-        <h2>神岛重庆轨道交通模拟</h2>
-        <div class="hero-buttons">
+    <!-- 👇 这里是我帮你修好的中间内容，排版超级舒服！ -->
+    <section class="page-section">
+        <div class="container">
+            <h1 class="page-title">神岛地图传送</h1>
+            <h2 class="page-subtitle">神岛重庆轨道交通模拟</h2>
             <a href="https://dao3.fun/exp/experience/detail/100087244" class="btn">进入地图 >>></a>
         </div>
-    </div>
-    <div style="height: 30px;"></div>
+    </section>
+
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-left">
@@ -400,9 +419,7 @@
                         岛ICP备20260418号
                     </a>
                 </div>
-                <div class="legal-links">
-                    <!-- 预留法律链接位置 -->
-                </div>
+                <div class="legal-links"></div>
                 <div class="footer-note">
                     本网站内容受知识产权保护，未经许可不得转载。
                 </div>
@@ -418,7 +435,5 @@
         </div>
     </footer>
 
-    <!-- 无任何 JavaScript 代码：完全移除移动端特殊交互逻辑（菜单按钮、二级菜单点击展开、open 类等），PC 与移动端行为统一，子菜单均通过 hover 显示。 -->
 </body>
-
 </html>
