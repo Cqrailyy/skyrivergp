@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="images/icon.png" type="image/png">
@@ -64,10 +65,12 @@
             transition: color 0.2s;
             flex-shrink: 0;
         }
+
         .logo span {
             color: var(--orange);
             font-weight: 800;
         }
+
         .logo:hover {
             color: var(--orange);
         }
@@ -96,7 +99,7 @@
             white-space: nowrap;
         }
 
-        .nav-menu > li > a {
+        .nav-menu>li>a {
             display: inline-block;
         }
 
@@ -153,6 +156,7 @@
             background: linear-gradient(135deg, #ffffff 0%, #fffaf5 100%);
             border-bottom: 1px solid var(--border-light);
         }
+
         .hero-grid {
             display: flex;
             flex-wrap: wrap;
@@ -160,10 +164,12 @@
             justify-content: space-between;
             gap: 3rem;
         }
+
         .hero-content {
             flex: 1;
             min-width: 260px;
         }
+
         .hero-badge {
             display: inline-block;
             background: var(--orange-light);
@@ -174,6 +180,7 @@
             font-weight: 500;
             margin-bottom: 1.5rem;
         }
+
         .hero-title {
             font-size: 3.3rem;
             font-weight: 800;
@@ -182,10 +189,12 @@
             color: #1f2b38;
             margin-bottom: 1.2rem;
         }
+
         .hero-title strong {
             color: var(--orange);
             font-weight: 800;
         }
+
         .hero-desc {
             font-size: 1.2rem;
             color: var(--text-muted);
@@ -200,55 +209,66 @@
             padding: 56px 0 40px;
             border-top: 4px solid var(--orange);
         }
+
         .footer-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
         }
+
         .footer-left {
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
         }
+
         .copyright {
             font-size: 0.9rem;
             color: #9aafc5;
         }
+
         .legal-links {
             display: flex;
             flex-wrap: wrap;
             gap: 1.8rem;
         }
+
         .legal-links a {
             color: #cddcec;
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.2s;
         }
+
         .legal-links a:hover {
             color: var(--orange);
             text-decoration: underline;
         }
+
         .footer-right {
             display: flex;
             flex-direction: column;
             gap: 0.9rem;
         }
+
         .contact-item {
             font-size: 1rem;
             line-height: 1.6;
             color: #eef3fc;
         }
+
         .contact-label {
             font-weight: 600;
             color: #ffffff;
             margin-right: 0.5rem;
         }
+
         .footer-note {
             margin-top: 0.5rem;
             font-size: 0.8rem;
             color: #8aa1b9;
         }
+
         a {
             text-decoration: none;
         }
@@ -258,6 +278,7 @@
             .container {
                 padding: 0 24px;
             }
+
             .hero-title {
                 font-size: 2.6rem;
             }
@@ -268,13 +289,16 @@
                 flex-direction: row;
                 flex-wrap: wrap;
             }
+
             /* 保持导航菜单原有 flex 布局，不改为垂直或隐藏，完全与桌面一致 */
             .nav-menu {
                 gap: 1.2rem;
             }
+
             .hero-title {
                 font-size: 2.2rem;
             }
+
             .footer-inner {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -285,24 +309,30 @@
             .hero {
                 padding: 50px 0;
             }
+
             .hero-title {
                 font-size: 1.9rem;
             }
+
             .nav-menu {
                 gap: 0.9rem;
             }
-            .nav-menu > li > a {
+
+            .nav-menu>li>a {
                 font-size: 0.9rem;
                 white-space: normal;
             }
+
             .submenu {
                 min-width: 180px;
             }
+
             .submenu a {
                 white-space: normal;
                 padding: 0.5rem 1rem;
             }
         }
+
         /* 路线查询卡片样式 */
         .route-card {
             max-width: 880px;
@@ -311,32 +341,38 @@
             border-radius: 28px;
             padding: 2rem;
             border: 1px solid #eaecef;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
             text-align: left;
         }
+
         .route-card h3 {
             font-size: 1.6rem;
             font-weight: 700;
             color: #1f2b38;
             margin-bottom: 1.5rem;
         }
+
         .route-form {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             margin-bottom: 2rem;
         }
+
         .route-field {
             flex: 1;
             min-width: 180px;
         }
+
         .route-field label {
             display: block;
             font-size: 0.85rem;
             color: #5b6e8c;
             margin-bottom: 0.4rem;
         }
-        .route-field select, .route-btn {
+
+        .route-field select,
+        .route-btn {
             width: 100%;
             padding: 0.8rem 1rem;
             border: 1px solid #dce2e8;
@@ -346,6 +382,7 @@
             outline: none;
             cursor: pointer;
         }
+
         .route-btn {
             background: #f15a24;
             color: white;
@@ -353,14 +390,17 @@
             border: none;
             transition: 0.2s;
         }
+
         .route-btn:hover {
             background: #d84315;
             transform: translateY(-1px);
         }
+
         .result-area {
             border-top: 1px solid #eff2f6;
             padding-top: 1.5rem;
         }
+
         .path-stations {
             display: flex;
             flex-wrap: wrap;
@@ -368,6 +408,7 @@
             gap: 0.5rem;
             margin: 1rem 0;
         }
+
         .station-item {
             display: inline-flex;
             align-items: center;
@@ -377,10 +418,12 @@
             border-radius: 40px;
             border: 1px solid #e2e6ec;
         }
+
         .station-name {
             font-size: 0.9rem;
             color: #1f2b38;
         }
+
         .transfer-badge {
             font-size: 0.7rem;
             background: #fff0e6;
@@ -389,15 +432,18 @@
             border-radius: 30px;
             white-space: nowrap;
         }
+
         .arrow {
             color: #f15a24;
             font-weight: 500;
         }
+
         .info {
             font-size: 0.9rem;
             color: #5b6e8c;
             margin-top: 0.8rem;
         }
+
         .line-tag {
             display: inline-block;
             padding: 0.2rem 0.7rem;
@@ -407,10 +453,25 @@
             margin-right: 0.5rem;
             color: white;
         }
-        .line-tag.liner_error { background-color: #ffffff;}
-        .line-tag.line2 { background-color: #00b7ff; color: #ffffff; }
-        .line-tag.line3 { background-color: #1E3A8A; }
-        .line-tag.line-circle { background-color: #FBBF24; color: #ffffff; }
+
+        .line-tag.liner_error {
+            background-color: #ffffff;
+        }
+
+        .line-tag.line2 {
+            background-color: #00b7ff;
+            color: #ffffff;
+        }
+
+        .line-tag.line3 {
+            background-color: #1E3A8A;
+        }
+
+        .line-tag.line-circle {
+            background-color: #FBBF24;
+            color: #ffffff;
+        }
+
         .error {
             color: #d9534f;
             background: #fff5f5;
@@ -420,285 +481,288 @@
         }
     </style>
 </head>
+
 <body>
-<header class="site-header">
-    <div class="container header-inner">
-        <a href="#" class="logo">
-            <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
-        </a>
-        <!-- 导航菜单：无移动端按钮，无特殊切换逻辑，所有设备统一样式和交互 -->
-        <ul class="nav-menu">
-            <li><a href="index">首页</a></li>
-            <li class="dropdown">
-                <a href="#">驾驶员学习与考试</a>
-                <ul class="submenu">
-                    <li><a href="https://docs.qq.com/doc/DTXZVQmpTSnZVaE9K">技术操作手册</a></li>
-                    <li><a href="https://ks.wjx.com/vm/YOEg4H6.aspx">前往考试</a></li>
-                    <li><a href="exam_tip.html">考试说明</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">服务与新闻</a>
-                <ul class="submenu">
-                    <li><a href="net_map">线路图查询</a></li>
-                    <li><a href="news">新闻</a></li>
-                    <li><a href="table">有轨电车成员表</a></li>
-                    <li><a href="links">友情链接</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">项目与产品</a>
-                <ul class="submenu">
-                    <li><a href="xpmoddownload">神岛地图传送</a></li>
-                    <li><a href="games">神岛地图传送</a></li>
-                    <li><a href="https://space.bilibili.com/1785851106">视频</a></li>
-                </ul>
-            </li>
-            <li><a href="about_us">关于我们</a></li>
-        </ul>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
+            </a>
+            <!-- 导航菜单：无移动端按钮，无特殊切换逻辑，所有设备统一样式和交互 -->
+            <ul class="nav-menu">
+                <li><a href="index">首页</a></li>
+                <li class="dropdown">
+                    <a href="#">驾驶员学习与考试</a>
+                    <ul class="submenu">
+                        <li><a href="https://docs.qq.com/doc/DTXZVQmpTSnZVaE9K">技术操作手册</a></li>
+                        <li><a href="https://ks.wjx.com/vm/YOEg4H6.aspx">前往考试</a></li>
+                        <li><a href="exam_tip.html">考试说明</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">服务与新闻</a>
+                    <ul class="submenu">
+                        <li><a href="net_map">线路图查询</a></li>
+                        <li><a href="news">新闻</a></li>
+                        <li><a href="table">有轨电车成员表</a></li>
+                        <li><a href="links">友情链接</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">项目与产品</a>
+                    <ul class="submenu">
+                        <li><a href="xpmoddownload">Xplane12插件下载</a></li>
+                        <li><a href="games">神岛地图传送</a></li>
+                        <li><a href="https://space.bilibili.com/1785851106">视频</a></li>
+                    </ul>
+                </li>
+                <li><a href="about_us">关于我们</a></li>
+            </ul>
+        </div>
+    </header>
+    <div style="height: 30px;"></div>
+    <h1 style="text-align: center;">线网示意图</h1>
+    <div style="height: 30px;"></div>
+    <div style="text-align: center;">
+        <img width="600" src="images/netmap.png" />
     </div>
-</header>
-<div style="height: 30px;"></div>
-<h1 style="text-align: center;">线网示意图</h1>
-<div style="height: 30px;"></div>
-<div style="text-align: center;">
-    <img width="600" src="images/netmap.png"/>
-</div>
-<div style="height: 30px;"></div>
-<div style="text-align: center;">
-    <div class="route-card">
-        <h3>路线查询</h3>
-        <div class="route-form">
-            <div class="route-field">
-                <label>起点站</label>
-                <select id="startSelect"></select>
+    <div style="height: 30px;"></div>
+    <div style="text-align: center;">
+        <div class="route-card">
+            <h3>路线查询</h3>
+            <div class="route-form">
+                <div class="route-field">
+                    <label>起点站</label>
+                    <select id="startSelect"></select>
+                </div>
+                <div class="route-field">
+                    <label>终点站</label>
+                    <select id="endSelect"></select>
+                </div>
+                <div class="route-field">
+                    <label>&nbsp;</label>
+                    <button class="route-btn" id="queryBtn">查询</button>
+                </div>
             </div>
-            <div class="route-field">
-                <label>终点站</label>
-                <select id="endSelect"></select>
+            <div class="result-area" id="resultArea">
+                <div class="info">请选择起点和终点，然后点击查询</div>
             </div>
-            <div class="route-field">
-                <label>&nbsp;</label>
-                <button class="route-btn" id="queryBtn">查询</button>
-            </div>
-        </div>
-        <div class="result-area" id="resultArea">
-            <div class="info">请选择起点和终点，然后点击查询</div>
-        </div>
-    </div>
-</div>
-<footer class="site-footer">
-    <div class="container footer-inner">
-        <div class="footer-left">
-            <div class="copyright">
-                正在开发内测：自动化古诗文翻译工具 | 化学反应原理演示 | 图形化编程
-                <br>
-                © 2025 天河集团 | 版权所有
-                <br>
-                建议使用PC端访问此网站
-                <br>
-                <br>
-                <a href="https://dao3.fun" class="copyright" style="color:#cddcec;">
-                    岛ICP备20260418号
-                </a>
-            </div>
-            <div class="legal-links">
-                <!-- 预留法律链接位置 -->
-            </div>
-            <div class="footer-note">
-                本网站内容受知识产权保护，未经许可不得转载。
-            </div>
-        </div>
-        <div class="footer-right">
-            <div class="contact-item"><span class="contact-label">联系我们</span></div>
-            <div class="contact-item"><span class="contact-label">渝渝QQ：</span> 3809150396</div>
-            <a href="https://space.bilibili.com/1785851106" class="contact-item" style="color:#eef3fc;"><span class="contact-label">渝渝B站：</span> https://space.bilibili.com/1785851106</a>
         </div>
     </div>
-</footer>
-<script>
-    // ============================================================
-    // 1. 车站列表
-    // ============================================================
-    const stations = [
-        "仁和", "金土", "神岛交通大学", "枢纽站", "天河大道",
-        "重庆东", "玉龙湖", "国宁", "凤凰湖风景区", "天河通用机场",
-        "沙坪坝", "拗坎", "冉家坝", "机场T1", "晨风", "机场T2"
-    ];
-
-    // ============================================================
-    // 2. 连接关系（相邻站点）
-    // ============================================================
-    const connections = [
-        // 岛2号线有轨电车（原主线）
-        ["仁和", "金土"],
-        ["金土", "天河大道"],
-        ["天河大道", "国宁"],,
-        ["国宁", "天河通用机场"],
-        ["天河通用机场", "拗坎"],
-        ["拗坎", "晨风"],
-        
-        // 3号线
-        ["枢纽站", "重庆东"],
-        ["重庆东", "玉龙湖"],
-        ["玉龙湖", "凤凰湖风景区"],
-        ["凤凰湖风景区", "机场T1"],
-        ["机场T1", "机场T2"],
-        
-        // 环线（黄色）
-        ["枢纽站", "冉家坝"],
-        ["冉家坝", "沙坪坝"],
-        ["机场T1", "机场T2"],
-        
-        // 站外换乘联络
-        ["天河大道", "枢纽站"]
-    ];
-
-    // ============================================================
-    // 3. 线路定义（每条边所属线路）
-    // ============================================================
-    function getLineInfo(stationA, stationB) {
-        const key = [stationA, stationB].sort().join('|');
-        // 岛2号线有轨电车（浅蓝）
-        const line2Edges = [
-            "仁和|金土", "金土|神岛交通大学", "神岛交通大学|天河大道", 
-            "天河大道|国宁", "国宁|天河通用机场",
-            "天河通用机场|拗坎","拗坎|晨风"
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <div class="copyright">
+                    正在开发内测：自动化古诗文翻译工具 | 化学反应原理演示 | 图形化编程
+                    <br>
+                    © 2025 天河集团 | 版权所有
+                    <br>
+                    建议使用PC端访问此网站
+                    <br>
+                    <br>
+                    <a href="https://dao3.fun" class="copyright" style="color:#cddcec;">
+                        岛ICP备20260418号
+                    </a>
+                </div>
+                <div class="legal-links">
+                    <!-- 预留法律链接位置 -->
+                </div>
+                <div class="footer-note">
+                    本网站内容受知识产权保护，未经许可不得转载。
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="contact-item"><span class="contact-label">联系我们</span></div>
+                <div class="contact-item"><span class="contact-label">渝渝QQ：</span> 3809150396</div>
+                <a href="https://space.bilibili.com/1785851106" class="contact-item" style="color:#eef3fc;"><span
+                        class="contact-label">渝渝B站：</span> https://space.bilibili.com/1785851106</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // ============================================================
+        // 1. 车站列表
+        // ============================================================
+        const stations = [
+            "仁和", "金土", "神岛交通大学", "枢纽站", "天河大道",
+            "重庆东", "玉龙湖", "国宁", "凤凰湖风景区", "天河通用机场",
+            "沙坪坝", "拗坎", "冉家坝", "机场T1", "晨风", "机场T2"
         ];
-        // 3号线（深蓝）
-        const line3Edges = [
-            "枢纽站|重庆东", "重庆东|玉龙湖", "玉龙湖|凤凰湖风景区",
-            "凤凰湖风景区|机场T1", "机场T1|机场T2"
-        ];
-        // 环线（黄）
-        const circleEdges = [
-            "枢纽站|冉家坝", "冉家坝|沙坪坝", "沙坪坝|机场T1",
-            "机场T1|机场T2"
-        ];
-        
-        if (line2Edges.includes(key)) return { name: "岛2号线有轨电车", class: "line2" };
-        if (line3Edges.includes(key)) return { name: "3号线", class: "line3" };
-        if (circleEdges.includes(key)) return { name: "环线", class: "line-circle" };
-        // 天河大道-冉家坝 属于站外换乘通道，不单独算线路，但为了显示，归为换乘提示处理
-        if (key === "天河大道|冉家坝") return { name: "站外换乘通道", class: "line2" }; // 颜色沿用2号线，但实际提示换乘
-        return { name: "", class: "liner_error" };
-    }
 
-    // ============================================================
-    // 4. 换乘点定义
-    // ============================================================
-    const transferPoints = {
-        "机场T1": "可换乘 3号线 — 环线",
-        "机场T2": "可换乘 3号线 — 环线",
-        "天河大道": "可站外换乘 岛2号线 — 3号线/环线"
-    };
+        // ============================================================
+        // 2. 连接关系（相邻站点）
+        // ============================================================
+        const connections = [
+            // 岛2号线有轨电车（原主线）
+            ["仁和", "金土"],
+            ["金土", "天河大道"],
+            ["天河大道", "国宁"], ,
+            ["国宁", "天河通用机场"],
+            ["天河通用机场", "拗坎"],
+            ["拗坎", "晨风"],
 
-    // ============================================================
-    // 5. 构建图 & 最短路径
-    // ============================================================
-    const graph = {};
-    stations.forEach(s => { graph[s] = []; });
-    connections.forEach(conn => {
-        const [a, b] = conn;
-        if (graph[a] && graph[b]) {
-            if (!graph[a].includes(b)) graph[a].push(b);
-            if (!graph[b].includes(a)) graph[b].push(a);
+            // 3号线
+            ["枢纽站", "重庆东"],
+            ["重庆东", "玉龙湖"],
+            ["玉龙湖", "凤凰湖风景区"],
+            ["凤凰湖风景区", "机场T1"],
+            ["机场T1", "机场T2"],
+
+            // 环线（黄色）
+            ["枢纽站", "冉家坝"],
+            ["冉家坝", "沙坪坝"],
+            ["机场T1", "机场T2"],
+
+            // 站外换乘联络
+            ["天河大道", "枢纽站"]
+        ];
+
+        // ============================================================
+        // 3. 线路定义（每条边所属线路）
+        // ============================================================
+        function getLineInfo(stationA, stationB) {
+            const key = [stationA, stationB].sort().join('|');
+            // 岛2号线有轨电车（浅蓝）
+            const line2Edges = [
+                "仁和|金土", "金土|神岛交通大学", "神岛交通大学|天河大道",
+                "天河大道|国宁", "国宁|天河通用机场",
+                "天河通用机场|拗坎", "拗坎|晨风"
+            ];
+            // 3号线（深蓝）
+            const line3Edges = [
+                "枢纽站|重庆东", "重庆东|玉龙湖", "玉龙湖|凤凰湖风景区",
+                "凤凰湖风景区|机场T1", "机场T1|机场T2"
+            ];
+            // 环线（黄）
+            const circleEdges = [
+                "枢纽站|冉家坝", "冉家坝|沙坪坝", "沙坪坝|机场T1",
+                "机场T1|机场T2"
+            ];
+
+            if (line2Edges.includes(key)) return { name: "岛2号线有轨电车", class: "line2" };
+            if (line3Edges.includes(key)) return { name: "3号线", class: "line3" };
+            if (circleEdges.includes(key)) return { name: "环线", class: "line-circle" };
+            // 天河大道-冉家坝 属于站外换乘通道，不单独算线路，但为了显示，归为换乘提示处理
+            if (key === "天河大道|冉家坝") return { name: "站外换乘通道", class: "line2" }; // 颜色沿用2号线，但实际提示换乘
+            return { name: "", class: "liner_error" };
         }
-    });
 
-    function findShortestPath(start, end) {
-        if (start === end) return [start];
-        if (!graph[start] || !graph[end]) return null;
-        const queue = [[start]];
-        const visited = new Set([start]);
-        while (queue.length) {
-            const path = queue.shift();
-            const current = path[path.length - 1];
-            for (const neighbor of graph[current]) {
-                if (!visited.has(neighbor)) {
-                    visited.add(neighbor);
-                    const newPath = [...path, neighbor];
-                    if (neighbor === end) return newPath;
-                    queue.push(newPath);
+        // ============================================================
+        // 4. 换乘点定义
+        // ============================================================
+        const transferPoints = {
+            "机场T1": "可换乘 3号线 — 环线",
+            "机场T2": "可换乘 3号线 — 环线",
+            "天河大道": "可站外换乘 岛2号线 — 3号线/环线"
+        };
+
+        // ============================================================
+        // 5. 构建图 & 最短路径
+        // ============================================================
+        const graph = {};
+        stations.forEach(s => { graph[s] = []; });
+        connections.forEach(conn => {
+            const [a, b] = conn;
+            if (graph[a] && graph[b]) {
+                if (!graph[a].includes(b)) graph[a].push(b);
+                if (!graph[b].includes(a)) graph[b].push(a);
+            }
+        });
+
+        function findShortestPath(start, end) {
+            if (start === end) return [start];
+            if (!graph[start] || !graph[end]) return null;
+            const queue = [[start]];
+            const visited = new Set([start]);
+            while (queue.length) {
+                const path = queue.shift();
+                const current = path[path.length - 1];
+                for (const neighbor of graph[current]) {
+                    if (!visited.has(neighbor)) {
+                        visited.add(neighbor);
+                        const newPath = [...path, neighbor];
+                        if (neighbor === end) return newPath;
+                        queue.push(newPath);
+                    }
                 }
             }
+            return null;
         }
-        return null;
-    }
 
-    // 填充下拉框
-    const startSelect = document.getElementById('startSelect');
-    const endSelect = document.getElementById('endSelect');
-    stations.forEach(station => {
-        const opt1 = document.createElement('option');
-        opt1.value = station;
-        opt1.textContent = station;
-        startSelect.appendChild(opt1);
-        const opt2 = document.createElement('option');
-        opt2.value = station;
-        opt2.textContent = station;
-        endSelect.appendChild(opt2);
-    });
-    startSelect.value = "仁和";
-    endSelect.value = "机场T2";
+        // 填充下拉框
+        const startSelect = document.getElementById('startSelect');
+        const endSelect = document.getElementById('endSelect');
+        stations.forEach(station => {
+            const opt1 = document.createElement('option');
+            opt1.value = station;
+            opt1.textContent = station;
+            startSelect.appendChild(opt1);
+            const opt2 = document.createElement('option');
+            opt2.value = station;
+            opt2.textContent = station;
+            endSelect.appendChild(opt2);
+        });
+        startSelect.value = "仁和";
+        endSelect.value = "机场T2";
 
-    document.getElementById('queryBtn').addEventListener('click', () => {
-        const start = startSelect.value;
-        const end = endSelect.value;
-        const resultDiv = document.getElementById('resultArea');
-        if (!start || !end) {
-            resultDiv.innerHTML = '<div class="error">请选择起点和终点</div>';
-            return;
-        }
-        const path = findShortestPath(start, end);
-        if (!path) {
-            resultDiv.innerHTML = `<div class="error">未找到从“${start}”到“${end}”的路线，请检查线路连接设置。</div>`;
-            return;
-        }
-        
-        // 生成站点展示（带换乘标签）
-        let stationsHtml = '<div class="path-stations">';
-        for (let i = 0; i < path.length; i++) {
-            const station = path[i];
-            const hasTransfer = transferPoints[station];
-            stationsHtml += `<div class="station-item">
+        document.getElementById('queryBtn').addEventListener('click', () => {
+            const start = startSelect.value;
+            const end = endSelect.value;
+            const resultDiv = document.getElementById('resultArea');
+            if (!start || !end) {
+                resultDiv.innerHTML = '<div class="error">请选择起点和终点</div>';
+                return;
+            }
+            const path = findShortestPath(start, end);
+            if (!path) {
+                resultDiv.innerHTML = `<div class="error">未找到从“${start}”到“${end}”的路线，请检查线路连接设置。</div>`;
+                return;
+            }
+
+            // 生成站点展示（带换乘标签）
+            let stationsHtml = '<div class="path-stations">';
+            for (let i = 0; i < path.length; i++) {
+                const station = path[i];
+                const hasTransfer = transferPoints[station];
+                stationsHtml += `<div class="station-item">
                                 <span class="station-name">${station}</span>
                                 ${hasTransfer ? `<span class="transfer-badge">${hasTransfer}</span>` : ''}
                             </div>`;
-            if (i < path.length - 1) {
-                // 获取线路信息用于箭头提示
-                const lineInfo = getLineInfo(path[i], path[i+1]);
-                stationsHtml += `<span class="arrow" style="background: none; padding: 0;">→</span>`;
+                if (i < path.length - 1) {
+                    // 获取线路信息用于箭头提示
+                    const lineInfo = getLineInfo(path[i], path[i + 1]);
+                    stationsHtml += `<span class="arrow" style="background: none; padding: 0;">→</span>`;
+                }
             }
-        }
-        stationsHtml += '</div>';
-        
-        const totalStops = path.length - 1;
-        const estimatedTime = totalStops * 2 + (totalStops > 5 ? 3 : 0);
-        
-        // 收集经过的线路（去重，按出现顺序）
-        const linesPassed = [];
-        for (let i = 0; i < path.length - 1; i++) {
-            const line = getLineInfo(path[i], path[i+1]).name;
-            if (!linesPassed.includes(line)) {
-                linesPassed.push(line);
+            stationsHtml += '</div>';
+
+            const totalStops = path.length - 1;
+            const estimatedTime = totalStops * 2 + (totalStops > 5 ? 3 : 0);
+
+            // 收集经过的线路（去重，按出现顺序）
+            const linesPassed = [];
+            for (let i = 0; i < path.length - 1; i++) {
+                const line = getLineInfo(path[i], path[i + 1]).name;
+                if (!linesPassed.includes(line)) {
+                    linesPassed.push(line);
+                }
             }
-        }
-        const linesHtml = linesPassed.map(line => {
-            let cls = "line2";
-            if (line === "3号线") cls = "line3";
-            else if (line === "环线") cls = "line-circle";
-            return `<span class="line-tag ${cls}">${line}</span>`;
-        }).join('');
-        
-        resultDiv.innerHTML = `
+            const linesHtml = linesPassed.map(line => {
+                let cls = "line2";
+                if (line === "3号线") cls = "line3";
+                else if (line === "环线") cls = "line-circle";
+                return `<span class="line-tag ${cls}">${line}</span>`;
+            }).join('');
+
+            resultDiv.innerHTML = `
             ${stationsHtml}
             <div class="info">共 ${totalStops} 站 | 预计约 ${estimatedTime} 分钟</div>
             <div class="info">途经线路：${linesHtml || '无'}</div>
             <div class="info">详细路径：${path.join(' → ')}</div>
             <div class="info" style="background:#fef7e0; padding:0.5rem; border-radius:16px;">提示：机场T1/T2可同站换乘3号线与环线；天河大道为站外换乘枢纽，需出站换乘3号线/环线。</div>
         `;
-    });
-</script>
+        });
+    </script>
 </body>
+
 </html>
