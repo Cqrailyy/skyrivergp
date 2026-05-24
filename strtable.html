@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>天河集团 - 特殊符号粘贴表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fefcf8;
+            color: #1a1f2c;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --orange: #f15a24;
+            --orange-dark: #d84315;
+            --orange-light: #fff2eb;
+            --gray-bg: #f9f9f7;
+            --border-light: #eaecef;
+            --text-dark: #1e2a3a;
+            --text-muted: #5b6e8c;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.06);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        .site-header {
+            background-color: #ffffff;
+            box-shadow: 0 1px 0 var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            min-height: 80px;
+            gap: 1rem;
+            padding: 0 32px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .logo span {
+            color: var(--orange);
+            font-weight: 800;
+        }
+
+        .logo:hover {
+            color: var(--orange);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2c3e4e;
+            padding: 0.5rem 0;
+            transition: color 0.2s ease;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .nav-menu>li>a {
+            display: inline-block;
+        }
+
+        .nav-menu a:hover {
+            color: var(--orange);
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #ffffff;
+            min-width: 200px;
+            box-shadow: var(--shadow-md);
+            border-radius: 16px;
+            padding: 0.75rem 0;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.25s ease;
+            border: 1px solid var(--border-light);
+            z-index: 99;
+        }
+
+        .dropdown:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu li {
+            width: 100%;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 0.6rem 1.5rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+
+        .submenu a:hover {
+            background-color: var(--orange-light);
+            color: var(--orange);
+        }
+
+        .site-footer {
+            background-color: #1e2a36;
+            color: #cddcec;
+            padding: 56px 0 40px;
+            border-top: 4px solid var(--orange);
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 0 32px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: #9aafc5;
+        }
+
+        .legal-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+        }
+
+        .legal-links a {
+            color: #cddcec;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .legal-links a:hover {
+            color: var(--orange);
+            text-decoration: underline;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .contact-item {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #eef3fc;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: #ffffff;
+            margin-right: 0.5rem;
+        }
+
+        .footer-note {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: #8aa1b9;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* 一排4个核心样式 */
+        .plugin-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .plugin-section {
+            margin-bottom: 35px;
+        }
+
+        .plugin-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 12px;
+            padding-left: 6px;
+            border-left: 4px solid var(--orange);
+        }
+
+        .sub-title {
+            font-size: 15px;
+            margin: 10px 0 8px 6px;
+            color: #444;
+        }
+
+        .plugin-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 12px 14px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .plugin-info {
+            flex: 1;
+        }
+
+        .plugin-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .copy-btn {
+            padding: 5px 10px;
+            background: var(--orange);
+            color: #fff;
+            font-size: 12px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: var(--orange-dark);
+        }
+
+        .copy-btn.copied {
+            background: #28a745;
+        }
+
+        /* 搜索框 */
+        .page-search-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 400px;
+            margin: 0 auto 20px;
+        }
+
+        .page-search-input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--text-dark);
+            background-color: var(--gray-bg);
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .page-search-input:focus {
+            border-color: var(--orange);
+            background-color: #fff;
+            box-shadow: 0 0 0 2px rgba(241, 90, 36, 0.1);
+        }
+
+        .page-search-icon {
+            position: absolute;
+            left: 1rem;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        /* 返回顶部 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            background-color: var(--orange);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: none;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--orange-dark);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index">首页</a></li>
+                <li class="dropdown">
+                    <a href="#">驾驶员学习与考试</a>
+                    <ul class="submenu">
+                        <li><a href="https://docs.qq.com/doc/DTXZVQmpTSnZVaE9K">技术操作手册</a></li>
+                        <li><a href="https://ks.wjx.com/vm/YOEg4H6.aspx">前往考试</a></li>
+                        <li><a href="exam_tip.html">考试说明</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">服务与新闻</a>
+                    <ul class="submenu">
+                        <li><a href="net_map">线路图查询</a></li>
+                        <li><a href="news">新闻</a></li>
+                        <li><a href="table">有轨电车成员表</a></li>
+                        <li><a href="links">友情链接</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">项目与产品</a>
+                    <ul class="submenu">
+                        <li><a href="strtable">特殊符号粘贴表</a></li>
+                        <li><a href="xpmoddownload">Xplane12插件下载</a></li>
+                        <li><a href="games">神岛地图传送</a></li>
+                        <li><a href="https://space.bilibili.com/1785851106">视频</a></li>
+                    </ul>
+                </li>
+                <li><a href="about_us">关于我们</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div style="height: 30px;"></div>
+    <h1 style="text-align: center;">特殊符号粘贴表</h1>
+    <div style="height: 20px;"></div>
+
+    <div class="page-search-container">
+        <i class="fas fa-search page-search-icon"></i>
+        <input type="text" class="page-search-input" placeholder="搜索符号名称...">
+    </div>
+
+    <div class="container">
+        <!-- 数学符号 -->
+        <div class="plugin-section">
+            <div class="plugin-title">数学符号</div>
+            <div class="sub-title">运算</div>
+            <div class="plugin-grid">
+                <div class="plugin-card" data-copy="+">
+                    <div class="plugin-info">
+                        <div class="plugin-name">加号 +</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="-">
+                    <div class="plugin-info">
+                        <div class="plugin-name">减号 -</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="×">
+                    <div class="plugin-info">
+                        <div class="plugin-name">乘号 ×</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="÷">
+                    <div class="plugin-info">
+                        <div class="plugin-name">除号 ÷</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+            </div>
+            <div class="sub-title">条件</div>
+            <div class="plugin-grid">
+                <div class="plugin-card" data-copy="=">
+                    <div class="plugin-info">
+                        <div class="plugin-name">等于号 =</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="≠">
+                    <div class="plugin-info">
+                        <div class="plugin-name">不等于 ≠</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="≈">
+                    <div class="plugin-info">
+                        <div class="plugin-name">约等于 ≈</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="＞">
+                    <div class="plugin-info">
+                        <div class="plugin-name">大于号 ＞</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="＜">
+                    <div class="plugin-info">
+                        <div class="plugin-name">小于号 ＜</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="≥">
+                    <div class="plugin-info">
+                        <div class="plugin-name">大于等于 ≥</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="≤">
+                    <div class="plugin-info">
+                        <div class="plugin-name">小于等于 ≤</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="∈">
+                    <div class="plugin-info">
+                        <div class="plugin-name">属于 ∈</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="∉">
+                    <div class="plugin-info">
+                        <div class="plugin-name">不属于 ∉</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="⊆">
+                    <div class="plugin-info">
+                        <div class="plugin-name">包含于 ⊆</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="⊇">
+                    <div class="plugin-info">
+                        <div class="plugin-name">包含 ⊇</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="∪">
+                    <div class="plugin-info">
+                        <div class="plugin-name">并集 ∪</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="∩">
+                    <div class="plugin-info">
+                        <div class="plugin-name">交集 ∩</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="∞">
+                    <div class="plugin-info">
+                        <div class="plugin-name">无穷大 ∞</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="π">
+                    <div class="plugin-info">
+                        <div class="plugin-name">圆周率 π</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="√">
+                    <div class="plugin-info">
+                        <div class="plugin-name">根号 √</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="%">
+                    <div class="plugin-info">
+                        <div class="plugin-name">百分号 %</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="‰">
+                    <div class="plugin-info">
+                        <div class="plugin-name">千分号 ‰</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+            </div>
+            <div class="sub-title">几何</div>
+            <div class="plugin-grid">
+                <div class="plugin-card" data-copy="∠">
+                    <div class="plugin-info">
+                        <div class="plugin-name">角 ∠</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="⊥">
+                    <div class="plugin-info">
+                        <div class="plugin-name">垂直 ⊥</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="∥">
+                    <div class="plugin-info">
+                        <div class="plugin-name">平行 ∥</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="△">
+                    <div class="plugin-info">
+                        <div class="plugin-name">三角形 △</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="°">
+                    <div class="plugin-info">
+                        <div class="plugin-name">度 °</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="⊙">
+                    <div class="plugin-info">
+                        <div class="plugin-name">圆 ⊙</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+            </div>
+
+            <div class="sub-title">头标与角标</div>
+            <div class="plugin-grid">
+                <div class="plugin-card" data-copy="⁰"><div class="plugin-info"><div class="plugin-name">上标0 ⁰</div></div><button class="copy-btn">粘贴</button></div>
+                <div class="plugin-card" data-copy="¹"><div class="plugin-info"><div class="plugin-name">上标1 ¹</div></div><button class="copy-btn">粘贴</button></div>
+                <div class="plugin-card" data-copy="²"><div class="plugin-info"><div class="plugin-name">平方 ²</div></div><button class="copy-btn">粘贴</button></div>
+                <div class="plugin-card" data-copy="³"><div class="plugin-info"><div class="plugin-name">立方 ³</div></div><button class="copy-btn">粘贴</button></div>
+
+                <div class="plugin-card" data-copy="⁴"><div class="plugin-info"><div class="plugin-name">四次方 ⁴</div></div><button class="copy-btn">粘贴</button></div>
+                <div class="plugin-card" data-copy="⁺"><div class="plugin-info"><div class="plugin-name">正上标 ⁺</div></div><button class="copy-btn">粘贴</button></div>
+                <div class="plugin-card" data-copy="⁻"><div class="plugin-info"><div class="plugin-name">负上标 ⁻</div></div><button class="copy-btn">粘贴</button></div>
+                <div class="plugin-card" data-copy="₀"><div class="plugin-info"><div class="plugin-name">下标0 ₀</div></div><button class="copy-btn">粘贴</button></div>
+
+                <div class="plugin-card" data-copy="₁"><div class="plugin-info"><div class="plugin-name">下标1 ₁</div></div><button class="copy-btn">粘贴</button></div>
+                <div class="plugin-card" data-copy="₂"><div class="plugin-info"><div class="plugin-name">下标2 ₂</div></div><button class="copy-btn">粘贴</button></div>
+                <div class="plugin-card" data-copy="₃"><div class="plugin-info"><div class="plugin-name">下标3 ₃</div></div><button class="copy-btn">粘贴</button></div>
+                <div class="plugin-card" data-copy="̅"><div class="plugin-info"><div class="plugin-name">平均值 ̅</div></div><button class="copy-btn">粘贴</button></div>
+
+                <div class="plugin-card" data-copy="̂"><div class="plugin-info"><div class="plugin-name">尖顶符号 ̂</div></div><button class="copy-btn">粘贴</button></div>
+                <div class="plugin-card" data-copy="⃗"><div class="plugin-info"><div class="plugin-name">矢量箭头 ⃗</div></div><button class="copy-btn">粘贴</button></div>
+            </div>
+        </div>
+
+        <!-- 货币符号 -->
+        <div class="plugin-section">
+            <div class="plugin-title">货币符号</div>
+            <div class="plugin-grid">
+                <div class="plugin-card" data-copy="¥">
+                    <div class="plugin-info">
+                        <div class="plugin-name">人民币 ¥</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="$">
+                    <div class="plugin-info">
+                        <div class="plugin-name">美元 $</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="€">
+                    <div class="plugin-info">
+                        <div class="plugin-name">欧元 €</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="£">
+                    <div class="plugin-info">
+                        <div class="plugin-name">英镑 £</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="₩">
+                    <div class="plugin-info">
+                        <div class="plugin-name">韩元 ₩</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="₽">
+                    <div class="plugin-info">
+                        <div class="plugin-name">卢布 ₽</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 物理单位符号 -->
+        <div class="plugin-section">
+            <div class="plugin-title">物理单位符号</div>
+            <div class="sub-title">声学部分</div>
+            <div class="plugin-grid">
+                <div class="plugin-card" data-copy="λ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">波长 λ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ω">
+                    <div class="plugin-info">
+                        <div class="plugin-name">角频率 ω</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="α">
+                    <div class="plugin-info">
+                        <div class="plugin-name">吸声系数 α</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="β">
+                    <div class="plugin-info">
+                        <div class="plugin-name">隔声量 β</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="τ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">透射系数 τ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ξ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">阻尼系数 ξ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+            </div>
+
+            <div class="sub-title">光学部分</div>
+            <div class="plugin-grid">
+                <div class="plugin-card" data-copy="λ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">光的波长 λ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="θ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">通用角度 θ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="α">
+                    <div class="plugin-info">
+                        <div class="plugin-name">偏折角 α</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+            </div>
+
+            <div class="sub-title">电学磁学部分</div>
+            <div class="plugin-grid">
+                <div class="plugin-card" data-copy="φ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">电势 φ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ε">
+                    <div class="plugin-info">
+                        <div class="plugin-name">介电常数 ε</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="Φ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">磁通量 Φ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="Ω">
+                    <div class="plugin-info">
+                        <div class="plugin-name">欧姆电阻 Ω</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+            </div>
+
+            <div class="sub-title">热学部分</div>
+            <div class="plugin-grid">
+                <div class="plugin-card" data-copy="λ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">熔汽化热 λ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="℃">
+                    <div class="plugin-info">
+                        <div class="plugin-name">摄氏度 ℃</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="℉">
+                    <div class="plugin-info">
+                        <div class="plugin-name">华氏度 ℉</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+            </div>
+
+            <div class="sub-title">力学运动学部分</div>
+            <div class="plugin-grid">
+                <div class="plugin-card" data-copy="μ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">动摩擦因数 μ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 拼音声调符号 -->
+        <div class="plugin-section">
+            <div class="plugin-title">拼音声调符号</div>
+            <div class="plugin-grid">
+                <div class="plugin-card" data-copy="ā">
+                    <div class="plugin-info">
+                        <div class="plugin-name">a 一声 ā</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="á">
+                    <div class="plugin-info">
+                        <div class="plugin-name">a 二声 á</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ǎ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">a 三声 ǎ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="à">
+                    <div class="plugin-info">
+                        <div class="plugin-name">a 四声 à</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ē">
+                    <div class="plugin-info">
+                        <div class="plugin-name">e 一声 ē</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="é">
+                    <div class="plugin-info">
+                        <div class="plugin-name">e 二声 é</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ě">
+                    <div class="plugin-info">
+                        <div class="plugin-name">e 三声 ě</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="è">
+                    <div class="plugin-info">
+                        <div class="plugin-name">e 四声 è</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ī">
+                    <div class="plugin-info">
+                        <div class="plugin-name">i 一声 ī</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="í">
+                    <div class="plugin-info">
+                        <div class="plugin-name">i 二声 í</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ǐ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">i 三声 ǐ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ì">
+                    <div class="plugin-info">
+                        <div class="plugin-name">i 四声 ì</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ō">
+                    <div class="plugin-info">
+                        <div class="plugin-name">o 一声 ō</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ó">
+                    <div class="plugin-info">
+                        <div class="plugin-name">o 二声 ó</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ǒ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">o 三声 ǒ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ò">
+                    <div class="plugin-info">
+                        <div class="plugin-name">o 四声 ò</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ū">
+                    <div class="plugin-info">
+                        <div class="plugin-name">u 一声 ū</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ú">
+                    <div class="plugin-info">
+                        <div class="plugin-name">u 二声 ú</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ǔ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">u 三声 ǔ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ù">
+                    <div class="plugin-info">
+                        <div class="plugin-name">u 四声 ù</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ǖ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">ü 一声 ǖ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ǘ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">ü 二声 ǘ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ǚ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">ü 三声 ǚ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+                <div class="plugin-card" data-copy="ǜ">
+                    <div class="plugin-info">
+                        <div class="plugin-name">ü 四声 ǜ</div>
+                    </div><button class="copy-btn">粘贴</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 40px;"></div>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <div class="copyright">
+                    正在开发内测：自动化古诗文翻译工具 | 化学反应原理演示 | 图形化编程
+                    <br>
+                    © 2025 天河集团 | 版权所有
+                    <br>
+                    建议使用PC端访问此网站
+                    <br>
+                    <br>
+                    <a href="https://dao3.fun" class="copyright" style="color:#cddcec;">
+                        岛ICP备20260418号
+                    </a>
+                </div>
+                <div class="legal-links"></div>
+                <div class="footer-note">
+                    本网站内容受知识产权保护，未经许可不得转载。
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="contact-item"><span class="contact-label">联系我们</span></div>
+                <div class="contact-item"><span class="contact-label">渝渝QQ：</span> 3809150396</div>
+                <a href="https://space.bilibili.com/1785851106" class="contact-item" style="color:#eef3fc;"><span
+                        class="contact-label">渝渝B站：</span>https://space.bilibili.com/1785851106</a>
+                <a href="https://qm.qq.com/q/jpK9iH0VMI" class="contact-item" style="color:#eef3fc;"><span
+                        class="contact-label">QQ群：</span>553195523</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 搜索功能
+        const searchInput = document.querySelector('.page-search-input');
+        const pluginCards = document.querySelectorAll('.plugin-card');
+
+        searchInput.addEventListener('input', function () {
+            const searchTerm = this.value.trim().toLowerCase();
+            pluginCards.forEach(card => {
+                const name = card.querySelector('.plugin-name').textContent.toLowerCase();
+                if (name.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // 一键复制到剪贴板
+        const copyBtns = document.querySelectorAll('.copy-btn');
+        copyBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const card = this.closest('.plugin-card');
+                const text = card.getAttribute('data-copy');
+
+                navigator.clipboard.writeText(text).then(() => {
+                    this.textContent = '已复制';
+                    this.classList.add('copied');
+
+                    setTimeout(() => {
+                        this.textContent = '粘贴';
+                        this.classList.remove('copied');
+                    }, 1000);
+                });
+            });
+        });
+
+        // 返回顶部
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+
+</html>
