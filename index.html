@@ -501,6 +501,29 @@
             color: var(--orange-dark);
             transform: translateY(-2px);
         }
+
+        .countdown-bar {
+            width: 100%;
+            background: linear-gradient(135deg, #ffffff 0%, #fffaf5 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            padding: 40px 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-weight: bold;
+        }
+
+        .countdown-number {
+            color: var(--orange);
+            font-weight: 800;
+            font-size: 1.4rem;
+        }
     </style>
 </head>
 
@@ -543,6 +566,26 @@
             </ul>
         </div>
     </header>
+    <div class="countdown-bar">
+        <div class="countdown-item">
+            距2026中考：
+            <span id="zk_day" class="countdown-number"></span> 天
+            <span id="zk_totalH" class="countdown-number"></span> 时
+            <span id="zk_min" class="countdown-number"></span> 分
+            <span id="zk_sec" class="countdown-number"></span> 秒
+        </div>
+        <div class="countdown-item">
+            距2026高考：
+            <span id="gk_day" class="countdown-number"></span> 天
+            <span id="gk_totalH" class="countdown-number"></span> 小时
+            <span id="gk_min" class="countdown-number"></span> 分
+            <span id="gk_sec" class="countdown-number"></span> 秒
+        </div>
+        <br>
+        <div class="countdown-item">
+            预祝各位中高考生考试顺利！金榜题名！
+        </div>
+    </div>
 
     <main>
         <section class="hero">
@@ -679,6 +722,62 @@
             </div>
         </div>
     </footer>
+
+
+    <script>
+        function addZero(n) {
+            return n < 10 ? '0' + n : n;
+        }
+
+        function countdown() {
+            const zkTime = new Date('2026-06-14 00:00:00').getTime();
+            const gkTime = new Date('2026-06-07 00:00:00').getTime();
+            const now = Date.now();
+
+            // 中考
+            let diffZk = zkTime - now;
+            if (diffZk <= 0) {
+                document.getElementById('zk_day').innerText = '';
+                document.getElementById('zk_totalH').innerText = '考试已结束';
+                document.getElementById('zk_min').innerText = '';
+                document.getElementById('zk_sec').innerText = '';
+            } else {
+                let dayZk = Math.floor(diffZk / 86400000);
+                let totalHZk = Math.floor(diffZk / 3600000);
+                let remZk = diffZk % 3600000;
+                let minZk = Math.floor(remZk / 60000);
+                let secZk = Math.floor((remZk % 60000) / 1000);
+
+                document.getElementById('zk_day').innerText = dayZk;
+                document.getElementById('zk_totalH').innerText = totalHZk;
+                document.getElementById('zk_min').innerText = addZero(minZk);
+                document.getElementById('zk_sec').innerText = addZero(secZk);
+            }
+
+            // 高考
+            let diffGk = gkTime - now;
+            if (diffGk <= 0) {
+                document.getElementById('gk_day').innerText = '';
+                document.getElementById('gk_totalH').innerText = '时辰已至！努力发挥！';
+                document.getElementById('gk_min').innerText = '';
+                document.getElementById('gk_sec').innerText = '';
+            } else {
+                let dayGk = Math.floor(diffGk / 86400000);
+                let totalHGk = Math.floor(diffGk / 3600000);
+                let remGk = diffGk % 3600000;
+                let minGk = Math.floor(remGk / 60000);
+                let secGk = Math.floor((remGk % 60000) / 1000);
+
+                document.getElementById('gk_day').innerText = dayGk;
+                document.getElementById('gk_totalH').innerText = totalHGk;
+                document.getElementById('gk_min').innerText = addZero(minGk);
+                document.getElementById('gk_sec').innerText = addZero(secGk);
+            }
+        }
+
+        countdown();
+        setInterval(countdown, 1000);
+    </script>
 </body>
 
 </html>
