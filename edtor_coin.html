@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>天河集团</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fefcf8;
+            color: #1a1f2c;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --orange: #f15a24;
+            --orange-dark: #d84315;
+            --orange-light: #fff2eb;
+            --gray-bg: #f9f9f7;
+            --border-light: #eaecef;
+            --text-dark: #1e2a3a;
+            --text-muted: #5b6e8c;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .site-header {
+            background-color: #ffffff;
+            box-shadow: 0 1px 0 var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            min-height: 80px;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .logo span {
+            color: var(--orange);
+            font-weight: 800;
+        }
+
+        .logo:hover {
+            color: var(--orange);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2c3e4e;
+            padding: 0.5rem 0;
+            transition: color 0.2s ease;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .nav-menu>li>a {
+            display: inline-block;
+        }
+
+        .nav-menu a:hover {
+            color: var(--orange);
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #ffffff;
+            min-width: 200px;
+            border-radius: 16px;
+            padding: 0.75rem 0;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.25s ease;
+            border: 1px solid var(--border-light);
+            z-index: 99;
+        }
+
+        .dropdown:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu li {
+            width: 100%;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 0.6rem 1.5rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+
+        .submenu a:hover {
+            background-color: var(--orange-light);
+            color: var(--orange);
+        }
+
+        .site-footer {
+            background-color: #1e2a36;
+            color: #cddcec;
+            padding: 56px 0 40px;
+            border-top: 4px solid var(--orange);
+            margin-top: 50px;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: #9aafc5;
+        }
+
+        .legal-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+        }
+
+        .legal-links a {
+            color: #cddcec;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .legal-links a:hover {
+            color: var(--orange);
+            text-decoration: underline;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .contact-item {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #eef3fc;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: #ffffff;
+            margin-right: 0.5rem;
+        }
+
+        .footer-note {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: #8aa1b9;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 880px) {
+            .container {
+                padding: 0 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .nav-menu {
+                gap: 1.2rem;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-menu {
+                gap: 0.9rem;
+            }
+
+            .nav-menu>li>a {
+                font-size: 0.9rem;
+                white-space: normal;
+            }
+
+            .submenu {
+                min-width: 180px;
+            }
+
+            .submenu a {
+                white-space: normal;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        /* 查询区样式 - 强迫症等高版 */
+        .query-section {
+            max-width: 500px;
+            margin: 30px auto;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            /* 输入框和按钮的间距 */
+        }
+
+        /* 统一高度！！！ */
+        .query-input,
+        .query-btn {
+            height: 48px;
+            /* 固定相同高度 */
+            box-sizing: border-box;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            line-height: 1;
+            box-shadow: none !important;
+        }
+
+        /* 输入框样式 */
+        .query-input {
+            width: 300px;
+            padding: 0 16px;
+            background: white;
+            border: 1px solid var(--border-light);
+            color: var(--text-dark);
+        }
+
+        .query-input:focus {
+            border-color: var(--orange);
+        }
+
+        /* 按钮样式 */
+        .query-btn {
+            background-color: var(--orange);
+            color: white;
+            font-weight: 600;
+            padding: 0 24px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .query-btn:hover {
+            background-color: var(--orange-dark);
+        }
+
+        /* 结果展示区域 */
+        .result-box {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            text-align: left;
+            display: none;
+        }
+
+        .result-box h3 {
+            color: var(--orange);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .result-box p {
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index">首页</a></li>
+                <li class="dropdown">
+                    <a href="#">驾驶员学习与考试</a>
+                    <ul class="submenu">
+                        <li><a href="https://docs.qq.com/doc/DTXZVQmpTSnZVaE9K">技术操作手册</a></li>
+                        <li><a href="https://ks.wjx.com/vm/YOEg4H6.aspx">前往考试</a></li>
+                        <li><a href="exam_tip.html">考试说明</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">服务与新闻</a>
+                    <ul class="submenu">
+                        <li><a href="net_map">线路图查询</a></li>
+                        <li><a href="news">新闻</a></li>
+                        <li><a href="table">有轨电车成员表</a></li>
+                        <li><a href="links">友情链接</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">项目与产品</a>
+                    <ul class="submenu">
+                        <li><a href="strtable">特殊符号粘贴表</a></li>
+                        <li><a href="xpmoddownload">Xplane12插件下载</a></li>
+                        <li><a href="games">神岛地图传送</a></li>
+                        <li><a href="https://space.bilibili.com/1785851106">视频</a></li>
+                    </ul>
+                </li>
+                <li><a href="about_us">关于我们</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div style="height: 30px;"></div>
+    <h1 style="text-align: center;">天河领航员天河币查询</h1>
+
+    <!-- 查询版块 - 等高版 -->
+    <div class="query-section">
+        <input type="text" class="query-input" id="nameInput" placeholder="请输入姓名查询">
+        <button class="query-btn" onclick="queryCoin()">搜索</button>
+    </div>
+
+    <!-- 结果展示框 -->
+    <div class="result-box" id="resultBox">
+        <h3 id="resultName"></h3>
+        <p id="resultCoin"></p>
+        <p id="resultRules"></p>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <div class="copyright">
+                    正在开发内测：自动化古诗文翻译工具 | 化学反应原理演示 | 图形化编程
+                    <br>
+                    © 2025 天河集团 | 版权所有
+                    <br>
+                    建议使用PC端访问此网站
+                    <br>
+                    <br>
+                    <a href="https://dao3.fun" class="copyright" style="color:#cddcec;">
+                        岛ICP备20260418号
+                    </a>
+                </div>
+                <div class="legal-links"></div>
+                <div class="footer-note">
+                    本网站内容受知识产权保护，未经许可不得转载。
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="contact-item"><span class="contact-label">联系我们</span></div>
+                <div class="contact-item"><span class="contact-label">渝渝QQ：</span> 3809150396</div>
+                <a href="https://space.bilibili.com/1785851106" class="contact-item" style="color:#eef3fc;"><span
+                        class="contact-label">渝渝B站：</span>https://space.bilibili.com/1785851106</a>
+                <a href="https://qm.qq.com/q/jpK9iH0VMI" class="contact-item" style="color:#eef3fc;"><span
+                        class="contact-label">QQ群：</span>553195523</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 模拟天河币数据
+        const coinData = {
+            "吉祥喵": {
+                coin: 100,
+                rules: `2026.5.26 初始天河币与接触网检测效果`
+            },
+            "古稀阶": {
+                coin: 100,
+                rules: "2026.5.26 初始天河币"
+            },
+            "银蓝": {
+                coin: 100,
+                rules: "2026.5.26 初始天河币"
+            },
+            "夜影行者": {
+                coin: 100,
+                rules: "2026.5.26 初始天河币"
+            },
+        };
+
+        // 查询天河币函数
+        function queryCoin() {
+            // 获取输入的姓名
+            const name = document.getElementById("nameInput").value.trim();
+            // 清空结果框
+            const resultBox = document.getElementById("resultBox");
+            resultBox.style.display = "none";
+
+            // 验证输入
+            if (!name) {
+                alert("请输入昵称！");
+                return;
+            }
+
+            // 查询数据
+            if (coinData[name]) {
+                // 填充结果
+                document.getElementById("resultName").textContent = `${name} 的天河币信息`;
+                document.getElementById("resultCoin").textContent = `当前天河币余额：${coinData[name].coin} 枚`;
+                document.getElementById("resultRules").textContent = `明细：${coinData[name].rules}`;
+                // 显示结果框
+                resultBox.style.display = "block";
+            } else {
+                // 未查询到提示
+                alert("未查询到该人员的天河币信息！");
+            }
+        }
+
+        // 支持回车查询
+        document.getElementById("nameInput").addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                queryCoin();
+            }
+        });
+    </script>
+</body>
+
+</html>

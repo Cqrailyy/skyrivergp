@@ -274,17 +274,20 @@
             padding: 80px 0;
             text-align: center;
         }
+
         .page-title {
             font-size: 2.8rem;
             font-weight: 800;
             color: var(--text-dark);
             margin-bottom: 20px;
         }
+
         .page-subtitle {
             font-size: 1.4rem;
             color: var(--text-muted);
             margin-bottom: 40px;
         }
+
         .btn {
             display: inline-block;
             padding: 14px 32px;
@@ -295,18 +298,186 @@
             font-weight: 600;
             transition: all 0.2s ease;
         }
+
         .btn:hover {
             background: var(--orange-dark);
             transform: translateY(-2px);
+        }
+
+        /* ========== 板块标题样式 ========== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .section-title span {
+            color: var(--orange);
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ========== 小尺寸 圆角橙色方块按钮（无阴影） ========== */
+        .btn-primary {
+            background-color: var(--orange);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-shadow: none !important;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--orange-dark);
+        }
+
+        /* ========== 神岛地图传送 滑动卡片模块 ========== */
+        .map-trans-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .slider-wrap {
+            position: relative;
+            overflow: hidden;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .slider-list {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.3s ease;
+            padding: 0 10px;
+            justify-content: center;
+            width: fit-content;
+        }
+
+        .map-card {
+            flex: 0 0 220px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            padding: 16px;
+        }
+
+        .map-card-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 12px;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 12px;
+            background-color: var(--orange-light);
+        }
+
+        .map-card-title {
+            font-size: 1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .map-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* 翻页箭头按钮 */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background-color: #fff;
+            color: var(--orange);
+            font-size: 18px;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s;
+        }
+
+        .slider-btn:hover {
+            background-color: var(--orange);
+            color: #fff;
+        }
+
+        .slider-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .prev-btn {
+            left: 10px;
+        }
+
+        .next-btn {
+            right: 10px;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .map-card {
+                flex: 0 0 180px;
+            }
+
+            .slider-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .map-trans-section {
+                padding: 50px 0;
+            }
+
+            .map-card {
+                flex: 0 0 160px;
+            }
         }
 
         @media (max-width: 880px) {
             .container {
                 padding: 0 24px;
             }
+
             .hero-title {
                 font-size: 2.6rem;
             }
+
             .page-title {
                 font-size: 2.2rem;
             }
@@ -317,12 +488,15 @@
                 flex-direction: row;
                 flex-wrap: wrap;
             }
+
             .nav-menu {
                 gap: 1.2rem;
             }
+
             .hero-title {
                 font-size: 2.2rem;
             }
+
             .footer-inner {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -333,23 +507,29 @@
             .hero {
                 padding: 50px 0;
             }
+
             .hero-title {
                 font-size: 1.9rem;
             }
+
             .nav-menu {
                 gap: 0.9rem;
             }
+
             .nav-menu>li>a {
                 font-size: 0.9rem;
                 white-space: normal;
             }
+
             .submenu {
                 min-width: 180px;
             }
+
             .submenu a {
                 white-space: normal;
                 padding: 0.5rem 1rem;
             }
+
             .page-title {
                 font-size: 1.8rem;
             }
@@ -396,12 +576,40 @@
         </div>
     </header>
 
-    <!-- 👇 这里是我帮你修好的中间内容，排版超级舒服！ -->
-    <section class="page-section">
+    <!-- 神岛地图传送 滑动卡片板块 -->
+    <section class="map-trans-section">
         <div class="container">
-            <h1 class="page-title">神岛地图传送</h1>
-            <h2 class="page-subtitle">神岛重庆轨道交通模拟</h2>
-            <a href="https://dao3.fun/exp/experience/detail/100087244" class="btn">进入地图 >>></a>
+            <div class="section-header">
+                <h2 class="section-title"><span>神岛</span> 地图传送</h2>
+                <p class="section-desc">多款地图场景一键直达，体验多样虚拟轨道交通乐趣</p>
+            </div>
+
+            <div class="slider-wrap">
+                <button class="slider-btn prev-btn">&lt;</button>
+                <button class="slider-btn next-btn">&gt;</button>
+
+                <div class="slider-list" id="sliderList">
+                    <div class="map-card">
+                        <img src="images/chongqingrailmoni_icon.png" alt="地图封面" class="map-card-img">
+                        <h3 class="map-card-title">重庆轨道交通模拟</h3>
+                        <p class="map-card-desc">天河集团最为经典的作品之一，从2022风靡全岛</p>
+                        <a href="https://dao3.fun/exp/experience/detail/100087244" class="btn-primary" style="display:block;text-align:center;">立即传送</a>
+                    </div>
+                    <div class="map-card">
+                        <img src="images/shendaogdjt_icon.png" alt="地图封面" class="map-card-img">
+                        <h3 class="map-card-title">神岛有轨电车模拟</h3>
+                        <p class="map-card-desc">非常好van，风景优美，适合休闲驾驶体验</p>
+                        <a href="https://dao3.fun/exp/experience/detail/100566914" class="btn-primary" style="display:block;text-align:center;">立即传送</a>
+                    </div>
+                    <div class="map-card">
+                        <img src="images/shendaogdjt_icon.png" alt="地图封面" class="map-card-img">
+                        <h3 class="map-card-title">神岛有轨模拟二服</h3>
+                        <p class="map-card-desc">非常好van，风景优美，适合休闲驾驶体验</p>
+                        <a href="https://dao3.fun/exp/experience/detail/100341636" class="btn-primary" style="display:block;text-align:center;">立即传送</a>
+                    </div>
+                </div>
+                <div style="height: 10px;"></div>
+            </div>
         </div>
     </section>
 
@@ -431,10 +639,48 @@
                 <a href="https://space.bilibili.com/1785851106" class="contact-item" style="color:#eef3fc;"><span
                         class="contact-label">渝渝B站：</span>https://space.bilibili.com/1785851106</a>
                 <a href="https://qm.qq.com/q/jpK9iH0VMI" class="contact-item" style="color:#eef3fc;"><span
-                        class="contact-label">QQ群：</span>553195523</a>
+                        class="contact-label">QQ群：</span>553195523 岛铁共享</a>
             </div>
         </div>
     </footer>
 
+    <script>
+        const sliderList = document.getElementById('sliderList');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const cardWidth = 240;
+        let currentX = 0;
+
+        function getMaxTranslate() {
+            const wrapWidth = document.querySelector('.slider-wrap').offsetWidth;
+            const listWidth = sliderList.scrollWidth;
+            return listWidth - wrapWidth;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentX += cardWidth;
+            if (currentX > 0) currentX = 0;
+            sliderList.style.transform = `translateX(${currentX}px)`;
+            checkBtnStatus();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const maxMove = -getMaxTranslate();
+            currentX -= cardWidth;
+            if (currentX < maxMove) currentX = maxMove;
+            sliderList.style.transform = `translateX(${currentX}px)`;
+            checkBtnStatus();
+        });
+
+        function checkBtnStatus() {
+            const maxMove = -getMaxTranslate();
+            prevBtn.disabled = currentX >= 0;
+            nextBtn.disabled = currentX <= maxMove;
+        }
+
+        window.addEventListener('resize', checkBtnStatus);
+        checkBtnStatus();
+    </script>
 </body>
+
 </html>
