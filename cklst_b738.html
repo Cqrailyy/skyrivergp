@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天河检查单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #0f243d;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #2980b9;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #3498db;
+            font-size: 32px;
+            letter-spacing: 2px;
+        }
+
+        .lang-switch-wrap {
+            margin-top: 12px;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .box h2 {
+            color: #74b9ff;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        /* 飞行计划区域 */
+        .plan-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .plan-row label {
+            width: 130px;
+        }
+
+        .plan-input {
+            flex: 1;
+            min-width: 200px;
+            background: #1a3552;
+            border: 1px solid #3498db;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+
+        .btn-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            padding: 9px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .btn-blue {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-red {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-gray {
+            background: #636e72;
+            color: #fff;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        /* 检查单左右双栏布局，还原波音原版 */
+        .check-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .check-block {
+            border: 1px solid #74b9ff;
+            padding: 12px;
+            margin-bottom: 18px;
+        }
+
+        .check-block h3 {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #aed6f1;
+            border-bottom: 1px solid #4477aa;
+            padding-bottom: 6px;
+        }
+
+        .check-line {
+            display: flex;
+            align-items: center;
+            padding: 6px 0;
+            gap: 8px;
+            font-size: 15px;
+        }
+
+        .check-line input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        .blank-input {
+            background: #1a3552;
+            border: 1px solid #5577aa;
+            color: #fff;
+            width: 70px;
+            padding: 2px 4px;
+            margin: 0 4px;
+        }
+
+        .tip {
+            color: #b2bec3;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        /* 双语切换控制 */
+        .en {
+            display: none;
+        }
+
+        body.en-mode .zh {
+            display: none;
+        }
+
+        body.en-mode .en {
+            display: inline;
+        }
+
+        body.en-mode h1,
+        body.en-mode h3,
+        body.en-mode .check-line {
+            font-family: Arial, sans-serif;
+        }
+
+        .boeing-footer {
+            text-align: center;
+            margin-top: 30px;
+            opacity: 0.7;
+        }
+        .site-footer {
+            background-color: #1e2a36;
+            color: #cddcec;
+            padding: 56px 0 40px;
+            border-top: 4px solid var(--orange);
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: #9aafc5;
+        }
+        .legal-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+        }
+
+        .legal-links a {
+            color: #cddcec;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .legal-links a:hover {
+            color: var(--orange);
+            text-decoration: underline;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .contact-item {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #eef3fc;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: #ffffff;
+            margin-right: 0.5rem;
+        }
+
+        .footer-note {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: #8aa1b9;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                <span class="zh">波音737-800 标准程序检查单</span>
+                <span class="en">BOEING 737-800 NORMAL CHECKLIST</span>
+            </h1>
+            <p class="tip">
+                <span class="zh">注：填写数据可本地保存</span>
+            </p>
+            <div style="margin-left: 10px; text-align: left;"><a href="index" style="text-decoration: none; color: #3498db;">返回官网</a></div>
+        </header>
+        <div class="box flight-plan">
+            <h2>
+                <span class="zh">飞行计划</span>
+                <span class="en">FLIGHT PLAN</span>
+            </h2>
+            <div class="plan-row">
+                <label><span class="zh">航班号：</span><span class="en">Flight No.:</span></label>
+                <input class="plan-input plan-field" placeholder="请输入航班号，如：CSN3501">
+                <label><span class="zh">机型识别：</span><span class="en">Flight No.:</span></label>
+                <input class="plan-input plan-field" placeholder="请输入航班号，如：CSN3501">
+            </div>
+            <div class="plan-row">
+                <label><span class="zh">起飞机场：</span><span class="en">Departure ICAO:</span></label>
+                <input class="plan-input plan-field" placeholder="请输入起飞机场ICAO，如：ZGSZ">
+                <label><span class="zh">目的地机场：</span><span class="en">Destination ICAO:</span></label>
+                <input class="plan-input plan-field" placeholder="请输入到达机场ICAO，如：ZSLC">
+            </div>
+            <div class="plan-row">
+                <label><span class="zh">备降机场：</span><span class="en">Alternate ICAO:</span></label>
+                <input class="plan-input plan-field" placeholder="请输入备降机场ICAO，如：ZUCK">
+                <label><span class="zh">计划巡航高度：</span><span class="en">Cruise FL:</span></label>
+                <input class="plan-input plan-field" placeholder="请输入，如：FL350">
+            </div>
+            <div class="plan-row">
+                <label><span class="zh">起飞总油量(kg)：</span><span class="en">Fuel Load(kg):</span></label>
+                <input class="plan-input plan-field" placeholder="请输入，如：12500">
+                <label><span class="zh">起飞总重量(kg)：</span><span class="en">Takeoff Weight(kg):</span></label>
+                <input class="plan-input plan-field" placeholder="请输入，如：62000">
+            </div>
+            <div class="plan-row">
+                <label><span class="zh">航路天气：</span><span class="en">Route Weather:</span></label>
+                <input class="plan-input plan-field" placeholder="Clear / TS">
+                <label><span class="zh">机组人数：</span><span class="en">Crew:</span></label>
+                <input class="plan-input plan-field" placeholder="2P+4FA">
+            </div>
+            <div class="btn-group">
+                <button class="btn-blue" onclick="savePlan()"><span class="zh">保存计划</span><span class="en">Save
+                        Plan</span></button>
+                <button class="btn-red" onclick="clearPlan()"><span class="zh">清空计划</span><span class="en">Clear
+                        Plan</span></button>
+            </div>
+        </div>
+
+        <!-- 检查单主体，左右双栏完全复刻原图 -->
+        <div class="box">
+            <div class="btn-group" style="margin-bottom:20px">
+                <button class="btn-red" onclick="resetAllCheck()"><span class="zh">重置全部检查项</span><span class="en">Reset
+                        All Checklist</span></button>
+            </div>
+            <div class="check-wrap">
+                <!-- 左栏 -->
+                <div class="col-left">
+                    <!-- PREFLIGHT 起飞前外部检查 -->
+                    <div class="check-block">
+                        <h3><span class="zh">起飞前检查 PREFLIGHT</span><span class="en">PREFLIGHT</span></h3>
+                        <div class="check-line"><input type="checkbox" class="check data-val">IRS <span
+                                class="zh">关闭，后切换导航</span><span class="en">OFF, then NAV</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Emergency light <span
+                                class="zh">自动</span><span class="en">AUTO</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Hydraulic panel <span
+                                class="zh">检查，接通</span><span class="en">CHECKED, ON</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Oxygen <span
+                                class="zh">测试100%</span><span class="en">TESTED, 100%</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Parking brake <span
+                                class="zh">设置</span><span class="en">SET</span></div>
+                    </div>
+
+                    <!-- BEFORE START 启动前 -->
+                    <div class="check-block">
+                        <h3><span class="zh">启动前 BEFORE START</span><span class="en">BEFORE START</span></h3>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Seat belt sign <span
+                                class="zh">接通</span><span class="en">ON</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Window heat <span
+                                class="zh">接通</span><span class="en">ON</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Pressurization <span
+                                class="zh">设置</span><span class="en">SET</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">MCP V2 <input
+                                class="blank-input data-val"> HDG <input class="blank-input data-val"> ALT <input
+                                class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Takeoff speeds V1 <input
+                                class="blank-input data-val"> VR <input class="blank-input data-val"> V2 <input
+                                class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">CDU preflight <span
+                                class="zh">完成</span><span class="en">COMPLETED</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Trim <span
+                                class="zh">单位0,0</span><span class="en">UNITS, 0, 0</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Taxi and takeoff briefing
+                            <span class="zh">完成</span><span class="en">COMPLETED</span>
+                        </div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Anti collision light <span
+                                class="zh">接通</span><span class="en">ON</span></div>
+                    </div>
+
+                    <!-- AFTER START 启动后 -->
+                    <div class="check-block">
+                        <h3><span class="zh">启动后 AFTER START</span><span class="en">AFTER START</span></h3>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Generators <span
+                                class="zh">接通</span><span class="en">ON</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Probe heat <span
+                                class="zh">接通</span><span class="en">ON</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Anti-ice <input
+                                class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Isolation valve <input
+                                class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">APU <input
+                                class="blank-input data-val"></div>
+                    </div>
+
+                    <!-- BEFORE TAXI 滑行前 -->
+                    <div class="check-block">
+                        <h3><span class="zh">滑行前 BEFORE TAXI</span><span class="en">BEFORE TAXI</span></h3>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Recall <span
+                                class="zh">检查无故障</span><span class="en">CHECKED</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Flight controls <span
+                                class="zh">检查</span><span class="en">CHECKED</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Flaps <input
+                                class="blank-input data-val"> <span class="zh">绿灯</span><span class="en">GREEN
+                                LIGHT</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Autobrake <span
+                                class="zh">预位中断起飞</span><span class="en">RTO</span></div>
+                    </div>
+
+                    <!-- BEFORE TAKEOFF 起飞前 -->
+                    <div class="check-block">
+                        <h3><span class="zh">起飞前 BEFORE TAKEOFF</span><span class="en">BEFORE TAKEOFF</span></h3>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Engine bleeds <input
+                                class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Engine start switches
+                            <span class="zh">连续位</span><span class="en">CONT</span>
+                        </div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Radar <input
+                                class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Transponder <span
+                                class="zh">TA/RA</span><span class="en">TA/RA</span></div>
+                    </div>
+
+                    <!-- AFTER TAKEOFF 起飞后 -->
+                    <div class="check-block">
+                        <h3><span class="zh">起飞后 AFTER TAKEOFF</span><span class="en">AFTER TAKEOFF</span></h3>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Engine bleeds <span
+                                class="zh">接通</span><span class="en">ON</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Packs <span
+                                class="zh">自动</span><span class="en">AUTO</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Engine start switches
+                            <span class="zh">断开</span><span class="en">OFF</span>
+                        </div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Landing gear <span
+                                class="zh">收起无灯</span><span class="en">UP and OFF, NO LIGHT</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Flaps <span
+                                class="zh">收起无灯</span><span class="en">UP, NO LIGHT</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Autobrake <span
+                                class="zh">断开</span><span class="en">OFF</span></div>
+                    </div>
+                </div>
+
+                <!-- 右栏 -->
+                <div class="col-right">
+                    <!-- DESCENT 下降 -->
+                    <div class="check-block">
+                        <h3><span class="zh">下降 DESCENT</span><span class="en">DESCENT</span></h3>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Pressurization LDG ALT
+                            <input class="blank-input data-val">
+                        </div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Recall <span
+                                class="zh">检查无故障</span><span class="en">CHECKED</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Autobrake <input
+                                class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Landing data VREF <input
+                                class="blank-input data-val"> Minimums <input class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Approach briefing <span
+                                class="zh">完成</span><span class="en">COMPLETED</span></div>
+                    </div>
+
+                    <!-- APPROACH 进近 -->
+                    <div class="check-block">
+                        <h3><span class="zh">进近 APPROACH</span><span class="en">APPROACH</span></h3>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Altimeters <span
+                                class="zh">调定</span><span class="en">SET</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">NAV aids <span
+                                class="zh">调定</span><span class="en">SET</span></div>
+                    </div>
+
+                    <!-- LANDING 着陆 -->
+                    <div class="check-block">
+                        <h3><span class="zh">着陆 LANDING</span><span class="en">LANDING</span></h3>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Engine start switches
+                            <span class="zh">连续位</span><span class="en">CONT</span>
+                        </div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Speedbrake <span
+                                class="zh">预位</span><span class="en">ARMED</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Landing gear <span
+                                class="zh">放下三绿灯</span><span class="en">DOWN, 3 GREEN</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Flaps <input
+                                class="blank-input data-val"> <span class="zh">绿灯</span><span class="en">GREEN
+                                LIGHT</span></div>
+                    </div>
+
+                    <!-- AFTER LANDING 着陆后 -->
+                    <div class="check-block">
+                        <h3><span class="zh">着陆后 AFTER LANDING</span><span class="en">AFTER LANDING</span></h3>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Anti-ice <input
+                                class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">APU <input
+                                class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Engine start switches
+                            <span class="zh">断开</span><span class="en">OFF</span>
+                        </div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Radar <span
+                                class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Speedbrake <span
+                                class="zh">放下卡位</span><span class="en">DOWN, DETENT</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Flaps <span
+                                class="zh">收起无灯</span><span class="en">UP, NO LIGHT</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Autobrake <span
+                                class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Transponder <span
+                                class="zh">设置</span><span class="en">SET</span></div>
+                    </div>
+
+                    <!-- SHUTDOWN 关车 -->
+                    <div class="check-block">
+                        <h3><span class="zh">关车 SHUTDOWN</span><span class="en">SHUTDOWN</span></h3>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Fuel pumps <span
+                                class="zh">设置</span><span class="en">SET</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Probe heat / anti-ice
+                            <span class="zh">断开</span><span class="en">OFF</span>
+                        </div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Hydraulic panel <span
+                                class="zh">设置</span><span class="en">SET</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Parking brake <span
+                                class="zh">设置</span><span class="en">SET</span></div>
+                    </div>
+
+                    <!-- SECURE 离机封存 -->
+                    <div class="check-block">
+                        <h3><span class="zh">离机封存 SECURE</span><span class="en">SECURE</span></h3>
+                        <div class="check-line"><input type="checkbox" class="check data-val">IRS <span
+                                class="zh">关闭</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Emergency light <span
+                                class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Window heat <span
+                                class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">Packs <span
+                                class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val">APU <span
+                                class="zh">断开</span><span class="en">OFF</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="boeing-footer">
+                <span class="zh">波音737-800 标准程序检查单</span>
+                <span class="en">BOEING 737-800 NORMAL CHECKLIST</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 本地存储键值
+        const CHECK_KEY = "b737_check_tick";
+        const INPUT_KEY = "b737_fill_data";
+        const PLAN_KEY = "b737_flight_plan";
+        const LANG_KEY = "checklist_language";
+
+        const allCheck = document.querySelectorAll(".check");
+        const allFillInput = document.querySelectorAll(".blank-input");
+        const planInputs = document.querySelectorAll(".plan-field");
+
+        // 语言切换函数
+        function switchLang(lang) {
+            if (lang === "en") document.body.classList.add("en-mode");
+            else document.body.classList.remove("en-mode");
+            localStorage.setItem(LANG_KEY, lang);
+        }
+
+        // 页面加载初始化
+        window.onload = function () {
+            // 读取语言
+            let saveLang = localStorage.getItem(LANG_KEY) || "zh";
+            switchLang(saveLang);
+
+            // 读取飞行计划
+            let planArr = JSON.parse(localStorage.getItem(PLAN_KEY) || "[]");
+            planInputs.forEach((inp, i) => {
+                inp.value = planArr[i] || "";
+                inp.oninput = saveAllData;
+            });
+
+            // 读取勾选框
+            let tickArr = JSON.parse(localStorage.getItem(CHECK_KEY) || "[]");
+            allCheck.forEach((ck, i) => {
+                ck.checked = tickArr[i] || false;
+                ck.onchange = saveAllData;
+            });
+
+            // 读取填写空白框
+            let fillArr = JSON.parse(localStorage.getItem(INPUT_KEY) || "[]");
+            allFillInput.forEach((inp, i) => {
+                inp.value = fillArr[i] || "";
+                inp.oninput = saveAllData;
+            });
+        }
+
+        // 统一保存全部数据
+        function saveAllData() {
+            // 保存勾选
+            let tickList = [];
+            allCheck.forEach(item => tickList.push(item.checked));
+            localStorage.setItem(CHECK_KEY, JSON.stringify(tickList));
+            // 保存填写框
+            let fillList = [];
+            allFillInput.forEach(item => fillList.push(item.value));
+            localStorage.setItem(INPUT_KEY, JSON.stringify(fillList));
+            // 保存飞行计划
+            let planList = [];
+            planInputs.forEach(item => planList.push(item.value));
+            localStorage.setItem(PLAN_KEY, JSON.stringify(planList));
+        }
+
+        // 重置全部检查单（勾选+填写框，不清除飞行计划）
+        function resetAllCheck() {
+            allCheck.forEach(ck => ck.checked = false);
+            allFillInput.forEach(inp => inp.value = "");
+            saveAllData();
+            let lang = localStorage.getItem(LANG_KEY) || "zh";
+            if (lang === "zh") alert("所有检查勾选与填写数值已清空，飞行计划保留");
+            else alert("All checklist ticks & values cleared, flight plan kept");
+        }
+
+        // 保存飞行计划
+        function savePlan() {
+            saveAllData();
+            let lang = localStorage.getItem(LANG_KEY) || "zh";
+            if (lang === "zh") alert("飞行计划已保存");
+            else alert("Flight plan saved");
+        }
+
+        // 清空飞行计划
+        function clearPlan() {
+            planInputs.forEach(inp => inp.value = "");
+            saveAllData();
+            let lang = localStorage.getItem(LANG_KEY) || "zh";
+            if (lang === "zh") alert("全部飞行计划字段已清空");
+            else alert("All flight plan fields cleared");
+        }
+    </script>
+</body>
+
+</html>
