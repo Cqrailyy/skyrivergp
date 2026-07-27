@@ -677,7 +677,7 @@
                 <div class="copyright">
                     正在开发内测：自动化古诗文翻译工具 | 图形化编程 | <a href="edtor_coin" style="color: inherit; text-decoration: none;">领航员天河币查询</a>
                     <br>
-                    © 2025 天河集团 | 版权所有
+                    © 2025-2026 天河集团 | 版权所有
                     <br>
                     建议使用PC端访问此网站
                     <br>
@@ -701,62 +701,6 @@
             </div>
         </div>
     </footer>
-
-
-    <script>
-        function addZero(n) {
-            return n < 10 ? '0' + n : n;
-        }
-
-        function countdown() {
-            const zkTime = new Date('2026-06-14 00:00:00').getTime();
-            const gkTime = new Date('2026-06-07 00:00:00').getTime();
-            const now = Date.now();
-
-            // 中考
-            let diffZk = zkTime - now;
-            if (diffZk <= 0) {
-                document.getElementById('zk_day').innerText = '';
-                document.getElementById('zk_totalH').innerText = '考试已结束';
-                document.getElementById('zk_min').innerText = '';
-                document.getElementById('zk_sec').innerText = '';
-            } else {
-                let dayZk = Math.floor(diffZk / 86400000);
-                let totalHZk = Math.floor(diffZk / 3600000);
-                let remZk = diffZk % 3600000;
-                let minZk = Math.floor(remZk / 60000);
-                let secZk = Math.floor((remZk % 60000) / 1000);
-
-                document.getElementById('zk_day').innerText = dayZk;
-                document.getElementById('zk_totalH').innerText = totalHZk;
-                document.getElementById('zk_min').innerText = addZero(minZk);
-                document.getElementById('zk_sec').innerText = addZero(secZk);
-            }
-
-            // 高考
-            let diffGk = gkTime - now;
-            if (diffGk <= 0) {
-                document.getElementById('gk_day').innerText = '';
-                document.getElementById('gk_totalH').innerText = '时辰已至！努力发挥！';
-                document.getElementById('gk_min').innerText = '';
-                document.getElementById('gk_sec').innerText = '';
-            } else {
-                let dayGk = Math.floor(diffGk / 86400000);
-                let totalHGk = Math.floor(diffGk / 3600000);
-                let remGk = diffGk % 3600000;
-                let minGk = Math.floor(remGk / 60000);
-                let secGk = Math.floor((remGk % 60000) / 1000);
-
-                document.getElementById('gk_day').innerText = dayGk;
-                document.getElementById('gk_totalH').innerText = totalHGk;
-                document.getElementById('gk_min').innerText = addZero(minGk);
-                document.getElementById('gk_sec').innerText = addZero(secGk);
-            }
-        }
-
-        countdown();
-        setInterval(countdown, 1000);
-    </script>
 </body>
 
 </html>

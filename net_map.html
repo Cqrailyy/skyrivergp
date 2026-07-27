@@ -75,7 +75,6 @@
             color: var(--orange);
         }
 
-        /* 导航菜单：所有设备完全一致的样式，无特殊移动端覆盖 */
         .nav-menu {
             display: flex;
             align-items: center;
@@ -107,7 +106,6 @@
             color: var(--orange);
         }
 
-        /* 二级菜单：统一使用 hover 显示，绝对定位，无移动端特殊处理 */
         .submenu {
             position: absolute;
             top: 100%;
@@ -150,7 +148,6 @@
             color: var(--orange);
         }
 
-        /* Hero 区域 */
         .hero {
             padding: 80px 0 70px;
             background: linear-gradient(135deg, #ffffff 0%, #fffaf5 100%);
@@ -202,7 +199,6 @@
             margin-bottom: 2rem;
         }
 
-        /* 底部样式 */
         .site-footer {
             background-color: #1e2a36;
             color: #cddcec;
@@ -273,7 +269,6 @@
             text-decoration: none;
         }
 
-        /* 纯响应式布局微调（仅影响容器边距和文字大小，绝不改变菜单交互或结构） */
         @media (max-width: 880px) {
             .container {
                 padding: 0 24px;
@@ -290,7 +285,6 @@
                 flex-wrap: wrap;
             }
 
-            /* 保持导航菜单原有 flex 布局，不改为垂直或隐藏，完全与桌面一致 */
             .nav-menu {
                 gap: 1.2rem;
             }
@@ -333,7 +327,6 @@
             }
         }
 
-        /* 路线查询卡片样式 */
         .route-card {
             max-width: 880px;
             margin: 2rem auto;
@@ -453,22 +446,35 @@
             margin-right: 0.5rem;
             color: white;
         }
-
+        .line-tag:empty {
+            display: none;
+        }
         .line-tag.liner_error {
             background-color: #ffffff;
+            border: 1px solid red;
+            color: red;
         }
-
+        .line-tag.line1 {
+            background-color: #149621;
+            color: #ffffff;
+        }
         .line-tag.line2 {
             background-color: #00b7ff;
             color: #ffffff;
         }
-
         .line-tag.line3 {
             background-color: #1E3A8A;
         }
-
         .line-tag.line-circle {
-            background-color: #FBBF24;
+            background-color: #b89029;
+            color: #ffffff;
+        }
+        .line-tag.line13 {
+            background-color: #dc8709;
+            color: #ffffff;
+        }
+        .line-tag.line20 {
+            background-color: #448f9b;
             color: #ffffff;
         }
 
@@ -488,7 +494,6 @@
             <a href="#" class="logo">
                 <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
             </a>
-            <!-- 导航菜单：无移动端按钮，无特殊切换逻辑，所有设备统一样式和交互 -->
             <ul class="nav-menu">
                 <li><a href="index">首页</a></li>
                 <li class="dropdown">
@@ -566,7 +571,6 @@
                     </a>
                 </div>
                 <div class="legal-links">
-                    <!-- 预留法律链接位置 -->
                 </div>
                 <div class="footer-note">
                     本网站内容受知识产权保护，未经许可不得转载。
@@ -581,188 +585,197 @@
         </div>
     </footer>
     <script>
-        // ============================================================
-        // 1. 车站列表
-        // ============================================================
-        const stations = [
-            "仁和", "金土", "神岛交通大学", "枢纽站", "天河大道",
-            "重庆东", "玉龙湖", "国宁", "凤凰湖风景区", "天河通用机场",
-            "沙坪坝", "拗坎", "冉家坝", "机场T1", "晨风", "机场T2"
-        ];
+const stations = [
+    "仁和", "仁和西", "人民北路", "金土", "神岛交通大学", "枢纽站", "天河大道",
+    "重庆东", "玉龙湖", "新庄", "石伈", "孙山", "凤凰湖风景区", "凤凰湖",
+    "天河通用机场", "沙坪坝", "冉家坝", "拗坎", "晨风", "机场T1", "机场T2", "机场T3",
+    "高新", "空港大道", "会展北", "会展", "天河长隆"
+];
 
-        // ============================================================
-        // 2. 连接关系（相邻站点）
-        // ============================================================
-        const connections = [
-            // 岛2号线有轨电车（原主线）
-            ["仁和", "金土"],
-            ["金土", "天河大道"],
-            ["天河大道", "国宁"], ,
-            ["国宁", "天河通用机场"],
-            ["天河通用机场", "拗坎"],
-            ["拗坎", "晨风"],
+const connections = [
+    ["人民北路", "仁和西"],
+    ["仁和西", "重庆东"],
+    ["重庆东", "石伈"],
+    ["石伈", "孙山"],
+    ["孙山", "机场T1"],
+    ["机场T1", "机场T3"],
 
-            // 3号线
-            ["枢纽站", "重庆东"],
-            ["重庆东", "玉龙湖"],
-            ["玉龙湖", "凤凰湖风景区"],
-            ["凤凰湖风景区", "机场T1"],
-            ["机场T1", "机场T2"],
+    ["枢纽站", "重庆东"],
+    ["重庆东", "玉龙湖"],
+    ["玉龙湖", "凤凰湖"],
+    ["凤凰湖", "机场T1"],
+    ["机场T1", "机场T2"],
 
-            // 环线（黄色）
-            ["枢纽站", "冉家坝"],
-            ["冉家坝", "沙坪坝"],
-            ["机场T1", "机场T2"],
+    ["枢纽站", "冉家坝"],
+    ["冉家坝", "沙坪坝"],
+    ["沙坪坝", "机场T1"],
+    ["机场T1", "机场T2"],
 
-            // 站外换乘联络
-            ["天河大道", "枢纽站"]
-        ];
+    ["枢纽站", "天河大道"],
+    ["天河大道", "新庄"],
+    ["新庄", "玉龙湖"],
+    ["玉龙湖", "石伈"],
+    ["石伈", "高新"],
 
-        // ============================================================
-        // 3. 线路定义（每条边所属线路）
-        // ============================================================
-        function getLineInfo(stationA, stationB) {
-            const key = [stationA, stationB].sort().join('|');
-            // 岛2号线有轨电车（浅蓝）
-            const line2Edges = [
-                "仁和|金土", "金土|神岛交通大学", "神岛交通大学|天河大道",
-                "天河大道|国宁", "国宁|天河通用机场",
-                "天河通用机场|拗坎", "拗坎|晨风"
-            ];
-            // 3号线（深蓝）
-            const line3Edges = [
-                "枢纽站|重庆东", "重庆东|玉龙湖", "玉龙湖|凤凰湖风景区",
-                "凤凰湖风景区|机场T1", "机场T1|机场T2"
-            ];
-            // 环线（黄）
-            const circleEdges = [
-                "枢纽站|冉家坝", "冉家坝|沙坪坝", "沙坪坝|机场T1",
-                "机场T1|机场T2"
-            ];
+    ["空港大道", "孙山"],
+    ["孙山", "凤凰湖"],
+    ["凤凰湖", "冉家坝"],
+    ["冉家坝", "会展北"],
+    ["会展北", "会展"],
+    ["会展", "天河长隆"],
 
-            if (line2Edges.includes(key)) return { name: "岛2号线有轨电车", class: "line2" };
-            if (line3Edges.includes(key)) return { name: "3号线", class: "line3" };
-            if (circleEdges.includes(key)) return { name: "环线", class: "line-circle" };
-            // 天河大道-冉家坝 属于站外换乘通道，不单独算线路，但为了显示，归为换乘提示处理
-            if (key === "天河大道|冉家坝") return { name: "站外换乘通道", class: "line2" }; // 颜色沿用2号线，但实际提示换乘
-            return { name: "", class: "liner_error" };
+    ["仁和", "金土"],
+    ["金土", "天河大道"],
+    ["天河大道", "国宁"],
+    ["国宁", "天河通用机场"],
+    ["天河通用机场", "拗坎"],
+    ["拗坎", "晨风"]
+];
+
+function getLineInfo(stationA, stationB) {
+    const key = [stationA, stationB].sort().join('|');
+    const line2Edges = [
+        "仁和|金土", "金土|天河大道", "天河大道|国宁",
+        "国宁|天河通用机场", "天河通用机场|拗坎", "拗坎|晨风"
+    ];
+    const line1Edges = [
+        "人民北路|仁和西", "仁和西|重庆东", "重庆东|石伈",
+        "石伈|孙山", "孙山|机场T1", "机场T1|机场T3"
+    ];
+    const line3Edges = [
+        "枢纽站|重庆东", "重庆东|玉龙湖", "玉龙湖|凤凰湖",
+        "凤凰湖|机场T1", "机场T1|机场T2"
+    ];
+    const circleEdges = [
+        "枢纽站|冉家坝", "冉家坝|沙坪坝", "沙坪坝|机场T1",
+        "机场T1|机场T2"
+    ];
+    const line13Edges = [
+        "枢纽站|天河大道", "天河大道|新庄", "新庄|玉龙湖",
+        "玉龙湖|石伈", "石伈|高新"
+    ];
+    const line20Edges = [
+        "空港大道|孙山", "孙山|凤凰湖", "凤凰湖|冉家坝",
+        "冉家坝|会展北", "会展北|会展", "会展|天河长隆"
+    ];
+
+    if (line1Edges.includes(key)) return { name: "1号线", class: "line1" };
+    if (line2Edges.includes(key)) return { name: "岛2号线有轨电车", class: "line2" };
+    if (line3Edges.includes(key)) return { name: "3号线", class: "line3" };
+    if (circleEdges.includes(key)) return { name: "环线", class: "line-circle" };
+    if (line13Edges.includes(key)) return { name: "13号线", class: "line13" };
+    if (line20Edges.includes(key)) return { name: "20号线", class: "line20" };
+    return { name: "", class: "liner_error" };
+}
+
+const transferPoints = {
+    "重庆东": "可换乘 1号线 / 3号线",
+    "石伈": "可换乘 1号线 / 13号线",
+    "孙山": "可换乘 1号线 / 20号线",
+    "凤凰湖": "可换乘 3号线 / 20号线",
+    "机场T1": "可换乘 1号线 / 3号线 / 环线",
+    "机场T2": "可换乘 3号线 / 环线",
+    "冉家坝": "可换乘 环线 / 20号线",
+    "玉龙湖": "可换乘 3号线 / 13号线",
+    "天河大道": "可换乘 岛2号线有轨电车 / 13号线",
+    "枢纽站": "可换乘 3号线 / 环线 / 13号线"
+};
+
+const graph = {};
+stations.forEach(s => { graph[s] = []; });
+connections.forEach(conn => {
+    const [a, b] = conn;
+    if (graph[a] && graph[b]) {
+        if (!graph[a].includes(b)) graph[a].push(b);
+        if (!graph[b].includes(a)) graph[b].push(a);
+    }
+});
+
+function findShortestPath(start, end) {
+    if (start === end) return [start];
+    if (!graph[start] || !graph[end]) return null;
+    const queue = [[start]];
+    const visited = new Set([start]);
+    while (queue.length) {
+        const path = queue.shift();
+        const current = path[path.length - 1];
+        for (const neighbor of graph[current]) {
+            if (!visited.has(neighbor)) {
+                visited.add(neighbor);
+                const newPath = [...path, neighbor];
+                if (neighbor === end) return newPath;
+                queue.push(newPath);
+            }
         }
+    }
+    return null;
+}
 
-        // ============================================================
-        // 4. 换乘点定义
-        // ============================================================
-        const transferPoints = {
-            "机场T1": "可换乘 3号线 — 环线",
-            "机场T2": "可换乘 3号线 — 环线",
-            "天河大道": "可站外换乘 岛2号线 — 3号线/环线"
-        };
+const startSelect = document.getElementById('startSelect');
+const endSelect = document.getElementById('endSelect');
+stations.forEach(station => {
+    const opt1 = document.createElement('option');
+    opt1.value = station;
+    opt1.textContent = station;
+    startSelect.appendChild(opt1);
+    const opt2 = document.createElement('option');
+    opt2.value = station;
+    opt2.textContent = station;
+    endSelect.appendChild(opt2);
+});
+startSelect.value = "人民北路";
+endSelect.value = "天河长隆";
 
-        // ============================================================
-        // 5. 构建图 & 最短路径
-        // ============================================================
-        const graph = {};
-        stations.forEach(s => { graph[s] = []; });
-        connections.forEach(conn => {
-            const [a, b] = conn;
-            if (graph[a] && graph[b]) {
-                if (!graph[a].includes(b)) graph[a].push(b);
-                if (!graph[b].includes(a)) graph[b].push(a);
-            }
-        });
+document.getElementById('queryBtn').addEventListener('click', () => {
+    const start = startSelect.value;
+    const end = endSelect.value;
+    const resultDiv = document.getElementById('resultArea');
+    if (!start || !end) {
+        resultDiv.innerHTML = '<div class="error">请选择起点和终点</div>';
+        return;
+    }
+    const path = findShortestPath(start, end);
+    if (!path) {
+        resultDiv.innerHTML = `<div class="error">未找到从“${start}”到“${end}”的路线，请检查线路连接设置。</div>`;
+        return;
+    }
 
-        function findShortestPath(start, end) {
-            if (start === end) return [start];
-            if (!graph[start] || !graph[end]) return null;
-            const queue = [[start]];
-            const visited = new Set([start]);
-            while (queue.length) {
-                const path = queue.shift();
-                const current = path[path.length - 1];
-                for (const neighbor of graph[current]) {
-                    if (!visited.has(neighbor)) {
-                        visited.add(neighbor);
-                        const newPath = [...path, neighbor];
-                        if (neighbor === end) return newPath;
-                        queue.push(newPath);
-                    }
-                }
-            }
-            return null;
+    let stationsHtml = '<div class="path-stations">';
+    for (let i = 0; i < path.length; i++) {
+        const station = path[i];
+        const hasTransfer = transferPoints[station];
+        stationsHtml += `<div class="station-item">
+                        <span class="station-name">${station}</span>
+                        ${hasTransfer ? `<span class="transfer-badge">${hasTransfer}</span>` : ''}
+                    </div>`;
+        if (i < path.length - 1) {
+            stationsHtml += `<span class="arrow" style="background: none; padding: 0;">→</span>`;
         }
+    }
+    stationsHtml += '</div>';
 
-        // 填充下拉框
-        const startSelect = document.getElementById('startSelect');
-        const endSelect = document.getElementById('endSelect');
-        stations.forEach(station => {
-            const opt1 = document.createElement('option');
-            opt1.value = station;
-            opt1.textContent = station;
-            startSelect.appendChild(opt1);
-            const opt2 = document.createElement('option');
-            opt2.value = station;
-            opt2.textContent = station;
-            endSelect.appendChild(opt2);
-        });
-        startSelect.value = "仁和";
-        endSelect.value = "机场T2";
+    const totalStops = path.length - 1;
+    const estimatedTime = totalStops * 2 + (totalStops > 5 ? 3 : 0);
 
-        document.getElementById('queryBtn').addEventListener('click', () => {
-            const start = startSelect.value;
-            const end = endSelect.value;
-            const resultDiv = document.getElementById('resultArea');
-            if (!start || !end) {
-                resultDiv.innerHTML = '<div class="error">请选择起点和终点</div>';
-                return;
-            }
-            const path = findShortestPath(start, end);
-            if (!path) {
-                resultDiv.innerHTML = `<div class="error">未找到从“${start}”到“${end}”的路线，请检查线路连接设置。</div>`;
-                return;
-            }
+    const lineMap = new Map();
+    for (let i = 0; i < path.length - 1; i++) {
+        const lineInfo = getLineInfo(path[i], path[i + 1]);
+        if (lineInfo.name && !lineMap.has(lineInfo.name)) {
+            lineMap.set(lineInfo.name, lineInfo.class);
+        }
+    }
+    const linesHtml = Array.from(lineMap.entries()).map(([lineName, lineClass]) => {
+        return `<span class="line-tag ${lineClass}">${lineName}</span>`;
+    }).join('');
 
-            // 生成站点展示（带换乘标签）
-            let stationsHtml = '<div class="path-stations">';
-            for (let i = 0; i < path.length; i++) {
-                const station = path[i];
-                const hasTransfer = transferPoints[station];
-                stationsHtml += `<div class="station-item">
-                                <span class="station-name">${station}</span>
-                                ${hasTransfer ? `<span class="transfer-badge">${hasTransfer}</span>` : ''}
-                            </div>`;
-                if (i < path.length - 1) {
-                    // 获取线路信息用于箭头提示
-                    const lineInfo = getLineInfo(path[i], path[i + 1]);
-                    stationsHtml += `<span class="arrow" style="background: none; padding: 0;">→</span>`;
-                }
-            }
-            stationsHtml += '</div>';
-
-            const totalStops = path.length - 1;
-            const estimatedTime = totalStops * 2 + (totalStops > 5 ? 3 : 0);
-
-            // 收集经过的线路（去重，按出现顺序）
-            const linesPassed = [];
-            for (let i = 0; i < path.length - 1; i++) {
-                const line = getLineInfo(path[i], path[i + 1]).name;
-                if (!linesPassed.includes(line)) {
-                    linesPassed.push(line);
-                }
-            }
-            const linesHtml = linesPassed.map(line => {
-                let cls = "line2";
-                if (line === "3号线") cls = "line3";
-                else if (line === "环线") cls = "line-circle";
-                return `<span class="line-tag ${cls}">${line}</span>`;
-            }).join('');
-
-            resultDiv.innerHTML = `
-            ${stationsHtml}
-            <div class="info">共 ${totalStops} 站 | 预计约 ${estimatedTime} 分钟</div>
-            <div class="info">途经线路：${linesHtml || '无'}</div>
-            <div class="info">详细路径：${path.join(' → ')}</div>
-            <div class="info" style="background:#fef7e0; padding:0.5rem; border-radius:16px;">提示：机场T1/T2可同站换乘3号线与环线；天河大道为站外换乘枢纽，需出站换乘3号线/环线。</div>
-        `;
-        });
+    resultDiv.innerHTML = `
+    ${stationsHtml}
+    <div class="info">共 ${totalStops} 站 | 预计约 ${estimatedTime} 分钟</div>
+    <div class="info">途经线路：${linesHtml || '无'}</div>
+    <div class="info">详细路径：${path.join(' → ')}</div>
+    <div class="info" style="background:#fef7e0; padding:0.5rem; border-radius:16px;">换乘提示：枢纽站、机场T1、重庆东、石伈、孙山、冉家坝、玉龙湖、凤凰湖、天河大道均为多线换乘枢纽，可站内换乘。</div>
+`;
+});
     </script>
 </body>
 

@@ -13,8 +13,21 @@
             font-family: "Microsoft YaHei", sans-serif;
         }
 
+        :root {
+            --bg-primary: #0f243d;
+            --bg-card: rgba(255, 255, 255, 0.08);
+            --border-blue: #2980b9;
+            --text-blue: #3498db;
+            --text-light: #74b9ff;
+            --text-muted: #b2bec3;
+            --input-bg: #1a3552;
+            --input-border: #5577aa;
+            --orange: #f15a24;
+            /* 更新为参考文件的橙色 */
+        }
+
         body {
-            background-color: #0f243d;
+            background-color: var(--bg-primary);
             color: #fff;
             padding: 20px;
         }
@@ -22,17 +35,18 @@
         .container {
             max-width: 1300px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         header {
             text-align: center;
             padding: 20px 0;
-            border-bottom: 2px solid #2980b9;
+            border-bottom: 2px solid var(--border-blue);
             margin-bottom: 30px;
         }
 
         h1 {
-            color: #3498db;
+            color: var(--text-blue);
             font-size: 32px;
             letter-spacing: 2px;
         }
@@ -42,14 +56,14 @@
         }
 
         .box {
-            background: rgba(255, 255, 255, 0.08);
+            background: var(--bg-card);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 25px;
         }
 
         .box h2 {
-            color: #74b9ff;
+            color: var(--text-light);
             margin-bottom: 15px;
             font-size: 20px;
         }
@@ -65,18 +79,107 @@
 
         .plan-row label {
             width: 130px;
+            flex-shrink: 0;
+            font-size: 14px;
         }
 
         .plan-input {
             flex: 1;
-            min-width: 200px;
-            background: #1a3552;
-            border: 1px solid #3498db;
+            min-width: 140px;
+            background: var(--input-bg);
+            border: 1px solid var(--text-blue);
             color: #fff;
             padding: 6px 10px;
             border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.2s;
         }
 
+        .plan-input:focus {
+            outline: none;
+            border-color: #5dade2;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.25);
+        }
+
+        /* 机场信息标签 */
+        .airport-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            flex: 1;
+            min-width: 180px;
+            position: relative;
+        }
+
+        .airport-wrapper .plan-input {
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .airport-info {
+            font-size: 12px;
+            color: #aed6f1;
+            background: rgba(52, 152, 219, 0.12);
+            border: 1px solid rgba(52, 152, 219, 0.25);
+            border-radius: 4px;
+            padding: 2px 10px;
+            white-space: nowrap;
+            transition: all 0.25s ease;
+            min-height: 26px;
+            display: none;
+            align-items: center;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
+        }
+
+        .airport-info.show {
+            display: inline-flex;
+        }
+
+        .airport-info .iata-badge {
+            display: inline-block;
+            background: rgba(52, 152, 219, 0.25);
+            border-radius: 3px;
+            padding: 0 6px;
+            margin-left: 4px;
+            font-weight: 600;
+            color: #85c1e9;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        .airport-info .city-name {
+            color: #d5e8f7;
+        }
+
+        .airport-info .airport-name {
+            color: #aed6f1;
+        }
+
+        .airport-info .sep {
+            color: rgba(174, 214, 241, 0.3);
+            margin: 0 3px;
+        }
+
+        .airport-info.match-success {
+            border-color: #2ecc71;
+            background: rgba(46, 204, 113, 0.12);
+            color: #82e0aa;
+        }
+
+        .airport-info.match-success .iata-badge {
+            background: rgba(46, 204, 113, 0.25);
+            color: #82e0aa;
+        }
+
+        .airport-info.match-fail {
+            border-color: rgba(231, 76, 60, 0.3);
+            background: rgba(231, 76, 60, 0.08);
+            color: #f1948a;
+        }
+
+        /* 按钮 */
         .btn-group {
             margin-top: 15px;
             display: flex;
@@ -95,7 +198,7 @@
         }
 
         .btn-blue {
-            background: #3498db;
+            background: var(--text-blue);
             color: white;
         }
 
@@ -111,9 +214,10 @@
 
         button:hover {
             opacity: 0.85;
+            transform: translateY(-1px);
         }
 
-        /* 检查单左右双栏布局，还原波音原版 */
+        /* 检查单左右双栏布局 */
         .check-wrap {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -121,9 +225,11 @@
         }
 
         .check-block {
-            border: 1px solid #74b9ff;
+            border: 1px solid var(--text-light);
             padding: 12px;
             margin-bottom: 18px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .check-block h3 {
@@ -138,27 +244,37 @@
         .check-line {
             display: flex;
             align-items: center;
-            padding: 6px 0;
+            padding: 5px 0;
             gap: 8px;
             font-size: 15px;
+            flex-wrap: wrap;
         }
 
         .check-line input[type="checkbox"] {
             width: 16px;
             height: 16px;
+            flex-shrink: 0;
+            accent-color: var(--text-blue);
+            cursor: pointer;
         }
 
         .blank-input {
-            background: #1a3552;
-            border: 1px solid #5577aa;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
             color: #fff;
             width: 70px;
             padding: 2px 4px;
-            margin: 0 4px;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+
+        .blank-input:focus {
+            outline: none;
+            border-color: var(--text-blue);
         }
 
         .tip {
-            color: #b2bec3;
+            color: var(--text-muted);
             font-size: 13px;
             margin-top: 8px;
         }
@@ -186,23 +302,96 @@
             text-align: center;
             margin-top: 30px;
             opacity: 0.7;
+            font-size: 14px;
+            letter-spacing: 1px;
         }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: var(--text-blue);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #5dade2;
+            text-decoration: underline;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .check-wrap {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .plan-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .plan-row label {
+                width: 100%;
+            }
+
+            .airport-wrapper {
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .airport-info {
+                white-space: normal;
+                font-size: 11px;
+                padding: 2px 8px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .plan-input {
+                min-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--text-blue);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5dade2;
+        }
+
+        /* ========== 全新底部样式（参照天河集团） ========== */
         .site-footer {
             background-color: #1e2a36;
             color: #cddcec;
             padding: 56px 0 40px;
             border-top: 4px solid var(--orange);
+            margin-top: 40px;
         }
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
+
         .footer-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
         }
+
         .footer-left {
             display: flex;
             flex-direction: column;
@@ -213,6 +402,7 @@
             font-size: 0.9rem;
             color: #9aafc5;
         }
+
         .legal-links {
             display: flex;
             flex-wrap: wrap;
@@ -255,296 +445,439 @@
             color: #8aa1b9;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+        /* 页脚响应式 */
+        @media (max-width: 768px) {
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        /* ========== 底部样式结束 ========== */
     </style>
 </head>
 
 <body>
     <div class="container">
+        <!-- 头部 -->
         <header>
             <h1>
                 <span class="zh">波音737-800 标准程序检查单</span>
                 <span class="en">BOEING 737-800 NORMAL CHECKLIST</span>
             </h1>
             <p class="tip">
-                <span class="zh">注：填写数据可本地保存</span>
+                <span class="zh">注：填写数据可本地保存，该版块处于测试阶段</span>
+                <span class="en">Note: Data is saved locally, this module is in testing</span>
             </p>
-            <div style="margin-left: 10px; text-align: left;"><a href="index" style="text-decoration: none; color: #3498db;">返回官网</a></div>
+            <div style="margin-top:6px;">
+                <a href="index" class="back-link">← <span class="zh">返回官网</span><span class="en">Back to Home</span></a>
+            </div>
         </header>
+
+        <!-- 飞行计划 -->
         <div class="box flight-plan">
             <h2>
                 <span class="zh">飞行计划</span>
                 <span class="en">FLIGHT PLAN</span>
             </h2>
+
+            <!-- 航班号 + 机型 -->
             <div class="plan-row">
                 <label><span class="zh">航班号：</span><span class="en">Flight No.:</span></label>
-                <input class="plan-input plan-field" placeholder="请输入航班号，如：CSN3501">
-                <label><span class="zh">机型识别：</span><span class="en">Flight No.:</span></label>
-                <input class="plan-input plan-field" placeholder="请输入航班号，如：CSN3501">
+                <input class="plan-input plan-field" placeholder="如：CSN3501" id="flightNo">
+                <label><span class="zh">机型识别：</span><span class="en">Aircraft Type:</span></label>
+                <input class="plan-input plan-field" placeholder="如：B738" id="aircraftType">
             </div>
+
+            <!-- 起飞机场 + 目的地机场 -->
             <div class="plan-row">
-                <label><span class="zh">起飞机场：</span><span class="en">Departure ICAO:</span></label>
-                <input class="plan-input plan-field" placeholder="请输入起飞机场ICAO，如：ZGSZ">
-                <label><span class="zh">目的地机场：</span><span class="en">Destination ICAO:</span></label>
-                <input class="plan-input plan-field" placeholder="请输入到达机场ICAO，如：ZSLC">
+                <label><span class="zh">起飞机场：</span><span class="en">Departure:</span></label>
+                <span class="airport-wrapper">
+                    <input class="plan-input plan-field airport-input" placeholder="ICAO 如 ZGSZ" id="depICAO">
+                    <span class="airport-info" id="depInfo"></span>
+                </span>
+                <label><span class="zh">目的地机场：</span><span class="en">Destination:</span></label>
+                <span class="airport-wrapper">
+                    <input class="plan-input plan-field airport-input" placeholder="ICAO 如 ZSLC" id="arrICAO">
+                    <span class="airport-info" id="arrInfo"></span>
+                </span>
+                <label><span class="zh">备降机场：</span><span class="en">Alternate:</span></label>
+                <span class="airport-wrapper">
+                    <input class="plan-input plan-field airport-input" placeholder="ICAO 如 ZUCK" id="altICAO">
+                    <span class="airport-info" id="altInfo"></span>
+                </span>
             </div>
+
+            <!-- 备降机场 + 巡航高度 -->
             <div class="plan-row">
-                <label><span class="zh">备降机场：</span><span class="en">Alternate ICAO:</span></label>
-                <input class="plan-input plan-field" placeholder="请输入备降机场ICAO，如：ZUCK">
+
                 <label><span class="zh">计划巡航高度：</span><span class="en">Cruise FL:</span></label>
-                <input class="plan-input plan-field" placeholder="请输入，如：FL350">
+                <input class="plan-input plan-field" placeholder="如 FL350" id="cruiseFL">
             </div>
+
+            <!-- 油量 + 重量 -->
             <div class="plan-row">
                 <label><span class="zh">起飞总油量(kg)：</span><span class="en">Fuel Load(kg):</span></label>
-                <input class="plan-input plan-field" placeholder="请输入，如：12500">
+                <input class="plan-input plan-field" placeholder="如 12500" id="fuelLoad">
                 <label><span class="zh">起飞总重量(kg)：</span><span class="en">Takeoff Weight(kg):</span></label>
-                <input class="plan-input plan-field" placeholder="请输入，如：62000">
+                <input class="plan-input plan-field" placeholder="如 62000" id="takeoffWeight">
             </div>
+
+            <!-- 航路天气 + 机组 -->
             <div class="plan-row">
                 <label><span class="zh">航路天气：</span><span class="en">Route Weather:</span></label>
-                <input class="plan-input plan-field" placeholder="Clear / TS">
+                <input class="plan-input plan-field" placeholder="Clear / TS" id="routeWeather">
                 <label><span class="zh">机组人数：</span><span class="en">Crew:</span></label>
-                <input class="plan-input plan-field" placeholder="2P+4FA">
+                <input class="plan-input plan-field" placeholder="2P+4FA" id="crewCount">
             </div>
+
             <div class="btn-group">
-                <button class="btn-blue" onclick="savePlan()"><span class="zh">保存计划</span><span class="en">Save
-                        Plan</span></button>
-                <button class="btn-red" onclick="clearPlan()"><span class="zh">清空计划</span><span class="en">Clear
-                        Plan</span></button>
+                <button class="btn-blue" onclick="savePlan()"><span class="zh">保存计划</span><span class="en">Save Plan</span></button>
+                <button class="btn-red" onclick="clearPlan()"><span class="zh">清空计划</span><span class="en">Clear Plan</span></button>
             </div>
         </div>
 
-        <!-- 检查单主体，左右双栏完全复刻原图 -->
+        <!-- 检查单主体 -->
         <div class="box">
             <div class="btn-group" style="margin-bottom:20px">
-                <button class="btn-red" onclick="resetAllCheck()"><span class="zh">重置全部检查项</span><span class="en">Reset
-                        All Checklist</span></button>
+                <button class="btn-red" onclick="resetAllCheck()"><span class="zh">重置全部检查项</span><span class="en">Reset All Checklist</span></button>
             </div>
+
             <div class="check-wrap">
                 <!-- 左栏 -->
                 <div class="col-left">
-                    <!-- PREFLIGHT 起飞前外部检查 -->
+                    <!-- PREFLIGHT -->
                     <div class="check-block">
                         <h3><span class="zh">起飞前检查 PREFLIGHT</span><span class="en">PREFLIGHT</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val">IRS <span
-                                class="zh">关闭，后切换导航</span><span class="en">OFF, then NAV</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Emergency light <span
-                                class="zh">自动</span><span class="en">AUTO</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Hydraulic panel <span
-                                class="zh">检查，接通</span><span class="en">CHECKED, ON</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Oxygen <span
-                                class="zh">测试100%</span><span class="en">TESTED, 100%</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Parking brake <span
-                                class="zh">设置</span><span class="en">SET</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> IRS <span class="zh">关闭，后切换导航</span><span class="en">OFF, then NAV</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Emergency light <span class="zh">自动</span><span class="en">AUTO</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Hydraulic panel <span class="zh">检查，接通</span><span class="en">CHECKED, ON</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Oxygen <span class="zh">测试100%</span><span class="en">TESTED, 100%</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Parking brake <span class="zh">设置</span><span class="en">SET</span></div>
                     </div>
 
-                    <!-- BEFORE START 启动前 -->
+                    <!-- BEFORE START -->
                     <div class="check-block">
                         <h3><span class="zh">启动前 BEFORE START</span><span class="en">BEFORE START</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Seat belt sign <span
-                                class="zh">接通</span><span class="en">ON</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Window heat <span
-                                class="zh">接通</span><span class="en">ON</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Pressurization <span
-                                class="zh">设置</span><span class="en">SET</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">MCP V2 <input
-                                class="blank-input data-val"> HDG <input class="blank-input data-val"> ALT <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Takeoff speeds V1 <input
-                                class="blank-input data-val"> VR <input class="blank-input data-val"> V2 <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">CDU preflight <span
-                                class="zh">完成</span><span class="en">COMPLETED</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Trim <span
-                                class="zh">单位0,0</span><span class="en">UNITS, 0, 0</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Taxi and takeoff briefing
-                            <span class="zh">完成</span><span class="en">COMPLETED</span>
-                        </div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Anti collision light <span
-                                class="zh">接通</span><span class="en">ON</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Seat belt sign <span class="zh">接通</span><span class="en">ON</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Window heat <span class="zh">接通</span><span class="en">ON</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Pressurization <span class="zh">设置</span><span class="en">SET</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> MCP V2 <input class="blank-input data-val"> HDG <input class="blank-input data-val"> ALT <input class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Takeoff speeds V1 <input class="blank-input data-val"> VR <input class="blank-input data-val"> V2 <input class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> CDU preflight <span class="zh">完成</span><span class="en">COMPLETED</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Trim <span class="zh">单位0,0</span><span class="en">UNITS, 0, 0</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Taxi and takeoff briefing <span class="zh">完成</span><span class="en">COMPLETED</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Anti collision light <span class="zh">接通</span><span class="en">ON</span></div>
                     </div>
 
-                    <!-- AFTER START 启动后 -->
+                    <!-- AFTER START -->
                     <div class="check-block">
                         <h3><span class="zh">启动后 AFTER START</span><span class="en">AFTER START</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Generators <span
-                                class="zh">接通</span><span class="en">ON</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Probe heat <span
-                                class="zh">接通</span><span class="en">ON</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Anti-ice <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Isolation valve <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">APU <input
-                                class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Generators <span class="zh">接通</span><span class="en">ON</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Probe heat <span class="zh">接通</span><span class="en">ON</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Anti-ice <input class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Isolation valve <input class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> APU <input class="blank-input data-val"></div>
                     </div>
 
-                    <!-- BEFORE TAXI 滑行前 -->
+                    <!-- BEFORE TAXI -->
                     <div class="check-block">
                         <h3><span class="zh">滑行前 BEFORE TAXI</span><span class="en">BEFORE TAXI</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Recall <span
-                                class="zh">检查无故障</span><span class="en">CHECKED</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Flight controls <span
-                                class="zh">检查</span><span class="en">CHECKED</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Flaps <input
-                                class="blank-input data-val"> <span class="zh">绿灯</span><span class="en">GREEN
-                                LIGHT</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Autobrake <span
-                                class="zh">预位中断起飞</span><span class="en">RTO</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Recall <span class="zh">检查无故障</span><span class="en">CHECKED</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Flight controls <span class="zh">检查</span><span class="en">CHECKED</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Flaps <input class="blank-input data-val"> <span class="zh">绿灯</span><span class="en">GREEN LIGHT</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Autobrake <span class="zh">预位中断起飞</span><span class="en">RTO</span></div>
                     </div>
 
-                    <!-- BEFORE TAKEOFF 起飞前 -->
+                    <!-- BEFORE TAKEOFF -->
                     <div class="check-block">
                         <h3><span class="zh">起飞前 BEFORE TAKEOFF</span><span class="en">BEFORE TAKEOFF</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Engine bleeds <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Engine start switches
-                            <span class="zh">连续位</span><span class="en">CONT</span>
-                        </div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Radar <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Transponder <span
-                                class="zh">TA/RA</span><span class="en">TA/RA</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Engine bleeds <input class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Engine start switches <span class="zh">连续位</span><span class="en">CONT</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Radar <input class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Transponder <span class="zh">TA/RA</span><span class="en">TA/RA</span></div>
                     </div>
 
-                    <!-- AFTER TAKEOFF 起飞后 -->
+                    <!-- AFTER TAKEOFF -->
                     <div class="check-block">
                         <h3><span class="zh">起飞后 AFTER TAKEOFF</span><span class="en">AFTER TAKEOFF</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Engine bleeds <span
-                                class="zh">接通</span><span class="en">ON</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Packs <span
-                                class="zh">自动</span><span class="en">AUTO</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Engine start switches
-                            <span class="zh">断开</span><span class="en">OFF</span>
-                        </div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Landing gear <span
-                                class="zh">收起无灯</span><span class="en">UP and OFF, NO LIGHT</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Flaps <span
-                                class="zh">收起无灯</span><span class="en">UP, NO LIGHT</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Autobrake <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Engine bleeds <span class="zh">接通</span><span class="en">ON</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Packs <span class="zh">自动</span><span class="en">AUTO</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Engine start switches <span class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Landing gear <span class="zh">收起无灯</span><span class="en">UP and OFF, NO LIGHT</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Flaps <span class="zh">收起无灯</span><span class="en">UP, NO LIGHT</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Autobrake <span class="zh">断开</span><span class="en">OFF</span></div>
                     </div>
                 </div>
 
                 <!-- 右栏 -->
                 <div class="col-right">
-                    <!-- DESCENT 下降 -->
+                    <!-- DESCENT -->
                     <div class="check-block">
                         <h3><span class="zh">下降 DESCENT</span><span class="en">DESCENT</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Pressurization LDG ALT
-                            <input class="blank-input data-val">
-                        </div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Recall <span
-                                class="zh">检查无故障</span><span class="en">CHECKED</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Autobrake <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Landing data VREF <input
-                                class="blank-input data-val"> Minimums <input class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Approach briefing <span
-                                class="zh">完成</span><span class="en">COMPLETED</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Pressurization LDG ALT <input class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Recall <span class="zh">检查无故障</span><span class="en">CHECKED</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Autobrake <input class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Landing data VREF <input class="blank-input data-val"> Minimums <input class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Approach briefing <span class="zh">完成</span><span class="en">COMPLETED</span></div>
                     </div>
 
-                    <!-- APPROACH 进近 -->
+                    <!-- APPROACH -->
                     <div class="check-block">
                         <h3><span class="zh">进近 APPROACH</span><span class="en">APPROACH</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Altimeters <span
-                                class="zh">调定</span><span class="en">SET</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">NAV aids <span
-                                class="zh">调定</span><span class="en">SET</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Altimeters <span class="zh">调定</span><span class="en">SET</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> NAV aids <span class="zh">调定</span><span class="en">SET</span></div>
                     </div>
 
-                    <!-- LANDING 着陆 -->
+                    <!-- LANDING -->
                     <div class="check-block">
                         <h3><span class="zh">着陆 LANDING</span><span class="en">LANDING</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Engine start switches
-                            <span class="zh">连续位</span><span class="en">CONT</span>
-                        </div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Speedbrake <span
-                                class="zh">预位</span><span class="en">ARMED</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Landing gear <span
-                                class="zh">放下三绿灯</span><span class="en">DOWN, 3 GREEN</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Flaps <input
-                                class="blank-input data-val"> <span class="zh">绿灯</span><span class="en">GREEN
-                                LIGHT</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Engine start switches <span class="zh">连续位</span><span class="en">CONT</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Speedbrake <span class="zh">预位</span><span class="en">ARMED</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Landing gear <span class="zh">放下三绿灯</span><span class="en">DOWN, 3 GREEN</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Flaps <input class="blank-input data-val"> <span class="zh">绿灯</span><span class="en">GREEN LIGHT</span></div>
                     </div>
 
-                    <!-- AFTER LANDING 着陆后 -->
+                    <!-- AFTER LANDING -->
                     <div class="check-block">
                         <h3><span class="zh">着陆后 AFTER LANDING</span><span class="en">AFTER LANDING</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Anti-ice <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">APU <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Engine start switches
-                            <span class="zh">断开</span><span class="en">OFF</span>
-                        </div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Radar <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Speedbrake <span
-                                class="zh">放下卡位</span><span class="en">DOWN, DETENT</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Flaps <span
-                                class="zh">收起无灯</span><span class="en">UP, NO LIGHT</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Autobrake <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Transponder <span
-                                class="zh">设置</span><span class="en">SET</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Anti-ice <input class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> APU <input class="blank-input data-val"></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Engine start switches <span class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Radar <span class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Speedbrake <span class="zh">放下卡位</span><span class="en">DOWN, DETENT</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Flaps <span class="zh">收起无灯</span><span class="en">UP, NO LIGHT</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Autobrake <span class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Transponder <span class="zh">设置</span><span class="en">SET</span></div>
                     </div>
 
-                    <!-- SHUTDOWN 关车 -->
+                    <!-- SHUTDOWN -->
                     <div class="check-block">
                         <h3><span class="zh">关车 SHUTDOWN</span><span class="en">SHUTDOWN</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Fuel pumps <span
-                                class="zh">设置</span><span class="en">SET</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Probe heat / anti-ice
-                            <span class="zh">断开</span><span class="en">OFF</span>
-                        </div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Hydraulic panel <span
-                                class="zh">设置</span><span class="en">SET</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Parking brake <span
-                                class="zh">设置</span><span class="en">SET</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Fuel pumps <span class="zh">设置</span><span class="en">SET</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Probe heat / anti-ice <span class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Hydraulic panel <span class="zh">设置</span><span class="en">SET</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Parking brake <span class="zh">设置</span><span class="en">SET</span></div>
                     </div>
 
-                    <!-- SECURE 离机封存 -->
+                    <!-- SECURE -->
                     <div class="check-block">
                         <h3><span class="zh">离机封存 SECURE</span><span class="en">SECURE</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val">IRS <span
-                                class="zh">关闭</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Emergency light <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Window heat <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">Packs <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val">APU <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> IRS <span class="zh">关闭</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Emergency light <span class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Window heat <span class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> Packs <span class="zh">断开</span><span class="en">OFF</span></div>
+                        <div class="check-line"><input type="checkbox" class="check data-val"> APU <span class="zh">断开</span><span class="en">OFF</span></div>
                     </div>
                 </div>
             </div>
+
             <div class="boeing-footer">
                 <span class="zh">波音737-800 标准程序检查单</span>
                 <span class="en">BOEING 737-800 NORMAL CHECKLIST</span>
             </div>
         </div>
     </div>
+
+    <!-- ========== 全新底部（完全参照天河集团） ========== -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <div class="copyright">
+                    正在开发内测：自动化古诗文翻译工具 | 化学反应原理演示 | 图形化编程
+                    <br>
+                    © 2025 天河集团 | 版权所有
+                    <br>
+                    建议使用PC端访问此网站
+                    <br>
+                    <br>
+                    <a href="https://dao3.fun" class="copyright" style="color:#cddcec;">
+                        岛ICP备20260418号
+                    </a>
+                </div>
+                <div class="legal-links">
+                    <!-- 预留法律链接位置 -->
+                </div>
+                <div class="footer-note">
+                    本网站内容受知识产权保护，未经许可不得转载。
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="contact-item"><span class="contact-label">联系我们</span></div>
+                <div class="contact-item"><span class="contact-label">渝渝QQ：</span> 3809150396</div>
+                <a href="https://space.bilibili.com/1785851106" class="contact-item" style="color:#eef3fc;"><span
+                        class="contact-label">渝渝B站：</span>https://space.bilibili.com/1785851106</a>
+                <a href="https://qm.qq.com/q/jpK9iH0VMI" class="contact-item" style="color:#eef3fc;"><span
+                        class="contact-label">QQ群：</span>553195523</a>
+            </div>
+        </div>
+    </footer>
+    <!-- ========== 底部结束 ========== -->
+
     <script>
-        // 本地存储键值
+        // ============================================================
+        //  1. 机场数据库 (ICAO → { name, iata, city })
+        // ============================================================
+        const AIRPORT_DB = {
+            // ---- 华北 ----
+            ZBAA: { name: '北京首都', iata: 'PEK', city: '北京' },
+            ZBAD: { name: '北京大兴', iata: 'PKX', city: '北京' },
+            ZBTJ: { name: '天津滨海', iata: 'TSN', city: '天津' },
+            ZBHH: { name: '呼和浩特白塔', iata: 'HET', city: '呼和浩特' },
+            ZBSJ: { name: '石家庄正定', iata: 'SJW', city: '石家庄' },
+            ZBDS: { name: '鄂尔多斯伊金霍洛', iata: 'DSN', city: '鄂尔多斯' },
+            // ---- 东北 ----
+            ZYHB: { name: '哈尔滨太平', iata: 'HRB', city: '哈尔滨' },
+            ZYCC: { name: '长春龙嘉', iata: 'CGQ', city: '长春' },
+            ZYTL: { name: '大连周水子', iata: 'DLC', city: '大连' },
+            ZYTX: { name: '沈阳桃仙', iata: 'SHE', city: '沈阳' },
+            // ---- 华东 ----
+            ZSSS: { name: '上海虹桥', iata: 'SHA', city: '上海' },
+            ZSPD: { name: '上海浦东', iata: 'PVG', city: '上海' },
+            ZSNJ: { name: '南京禄口', iata: 'NKG', city: '南京' },
+            ZSHC: { name: '杭州萧山', iata: 'HGH', city: '杭州' },
+            ZSNB: { name: '宁波栎社', iata: 'NGB', city: '宁波' },
+            ZSWZ: { name: '温州龙湾', iata: 'WNZ', city: '温州' },
+            ZSFZ: { name: '福州长乐', iata: 'FOC', city: '福州' },
+            ZSAM: { name: '厦门高崎', iata: 'XMN', city: '厦门' },
+            ZSQD: { name: '青岛胶东', iata: 'TAO', city: '青岛' },
+            ZSYT: { name: '烟台蓬莱', iata: 'YNT', city: '烟台' },
+            ZSJN: { name: '济南遥墙', iata: 'TNA', city: '济南' },
+            ZSQZ: { name: '泉州晋江', iata: 'JJN', city: '泉州' },
+            ZSXZ: { name: '徐州观音', iata: 'XUZ', city: '徐州' },
+            ZSLG: { name: '连云港花果山', iata: 'LYG', city: '连云港' },
+            ZSCG: { name: '常州奔牛', iata: 'CZX', city: '常州' },
+            ZSYA: { name: '盐城南洋', iata: 'YNZ', city: '盐城' },
+            ZSWY: { name: '武夷山', iata: 'WUS', city: '武夷山' },
+            // ---- 中南 ----
+            ZGGG: { name: '广州白云', iata: 'CAN', city: '广州' },
+            ZGSZ: { name: '深圳宝安', iata: 'SZX', city: '深圳' },
+            ZGSD: { name: '珠海金湾', iata: 'ZUH', city: '珠海' },
+            ZGHA: { name: '长沙黄花', iata: 'CSX', city: '长沙' },
+            ZHHH: { name: '武汉天河', iata: 'WUH', city: '武汉' },
+            ZHCC: { name: '郑州新郑', iata: 'CGO', city: '郑州' },
+            ZGNN: { name: '南宁吴圩', iata: 'NNG', city: '南宁' },
+            ZJHK: { name: '海口美兰', iata: 'HAK', city: '海口' },
+            ZJSY: { name: '三亚凤凰', iata: 'SYX', city: '三亚' },
+            ZGZJ: { name: '湛江吴川', iata: 'ZHA', city: '湛江' },
+            ZGOW: { name: '揭阳潮汕', iata: 'SWA', city: '揭阳' },
+            ZGLG: { name: '柳州白莲', iata: 'LZH', city: '柳州' },
+            ZGKL: { name: '桂林两江', iata: 'KWL', city: '桂林' },
+            // ---- 西南 ----
+            ZUUU: { name: '成都双流', iata: 'CTU', city: '成都' },
+            ZUTF: { name: '成都天府', iata: 'TFU', city: '成都' },
+            ZUCK: { name: '重庆江北', iata: 'CKG', city: '重庆' },
+            ZPPP: { name: '昆明长水', iata: 'KMG', city: '昆明' },
+            ZUGY: { name: '贵阳龙洞堡', iata: 'KWE', city: '贵阳' },
+            ZPLJ: { name: '丽江三义', iata: 'LJG', city: '丽江' },
+            ZPDL: { name: '大理荒草坝', iata: 'DLU', city: '大理' },
+            ZPJH: { name: '西双版纳嘎洒', iata: 'JHG', city: '西双版纳' },
+            ZULS: { name: '拉萨贡嘎', iata: 'LXA', city: '拉萨' },
+            ZUMY: { name: '绵阳南郊', iata: 'MIG', city: '绵阳' },
+            ZUNZ: { name: '林芝米林', iata: 'LZY', city: '林芝' },
+            // ---- 西北 ----
+            ZLXY: { name: '西安咸阳', iata: 'XIY', city: '西安' },
+            ZLLL: { name: '兰州中川', iata: 'LHW', city: '兰州' },
+            ZLXN: { name: '西宁曹家堡', iata: 'XNN', city: '西宁' },
+            ZWWW: { name: '乌鲁木齐地窝堡', iata: 'URC', city: '乌鲁木齐' },
+            ZWSH: { name: '喀什徕宁', iata: 'KHG', city: '喀什' },
+            ZWKL: { name: '库尔勒梨城', iata: 'KRL', city: '库尔勒' },
+            ZLDH: { name: '敦煌莫高', iata: 'DNH', city: '敦煌' },
+            ZLJC: { name: '金昌金川', iata: 'JIC', city: '金昌' },
+            // ---- 港澳台 ----
+            VHHH: { name: '香港', iata: 'HKG', city: '香港' },
+            VMMC: { name: '澳门', iata: 'MFM', city: '澳门' },
+            RCTP: { name: '台北桃园', iata: 'TPE', city: '台北' },
+            RCSS: { name: '台北松山', iata: 'TSA', city: '台北' },
+            // ---- 亚洲其他 ----
+            WSSS: { name: '新加坡樟宜', iata: 'SIN', city: '新加坡' },
+            WMKK: { name: '吉隆坡', iata: 'KUL', city: '吉隆坡' },
+            VTBS: { name: '曼谷素万那普', iata: 'BKK', city: '曼谷' },
+            RJBB: { name: '大阪关西', iata: 'KIX', city: '大阪' },
+            RJTT: { name: '东京羽田', iata: 'HND', city: '东京' },
+            RJAA: { name: '东京成田', iata: 'NRT', city: '东京' },
+            RKSI: { name: '仁川', iata: 'ICN', city: '首尔' },
+            VVNB: { name: '河内内排', iata: 'HAN', city: '河内' },
+            VVTS: { name: '胡志明新山一', iata: 'SGN', city: '胡志明' },
+            OMDB: { name: '迪拜', iata: 'DXB', city: '迪拜' },
+            OTBD: { name: '多哈哈马德', iata: 'DOH', city: '多哈' },
+            // ---- 欧洲 ----
+            EGLL: { name: '伦敦希思罗', iata: 'LHR', city: '伦敦' },
+            LFPG: { name: '巴黎戴高乐', iata: 'CDG', city: '巴黎' },
+            EDDF: { name: '法兰克福', iata: 'FRA', city: '法兰克福' },
+            EHAM: { name: '阿姆斯特丹史基浦', iata: 'AMS', city: '阿姆斯特丹' },
+            UUEE: { name: '莫斯科谢列梅捷沃', iata: 'SVO', city: '莫斯科' },
+            EKCH: { name: '哥本哈根凯斯楚普', iata: 'CPH', city: '哥本哈根' },
+            ENGM: { name: '奥斯陆加勒穆恩', iata: 'OSL', city: '奥斯陆' },
+            ESSA: { name: '斯德哥尔摩阿兰达', iata: 'ARN', city: '斯德哥尔摩' },
+            LOWW: { name: '维也纳', iata: 'VIE', city: '维也纳' },
+            LKPR: { name: '布拉格瓦茨拉夫·哈维尔', iata: 'PRG', city: '布拉格' },
+            LEBL: { name: '巴塞罗那埃尔普拉特', iata: 'BCN', city: '巴塞罗那' },
+            LEMD: { name: '马德里巴拉哈斯', iata: 'MAD', city: '马德里' },
+            LIRF: { name: '罗马菲乌米奇诺', iata: 'FCO', city: '罗马' },
+            LSZH: { name: '苏黎世', iata: 'ZRH', city: '苏黎世' },
+            EDDB: { name: '柏林勃兰登堡', iata: 'BER', city: '柏林' },
+            // ---- 北美 ----
+            KJFK: { name: '纽约肯尼迪', iata: 'JFK', city: '纽约' },
+            KLAX: { name: '洛杉矶', iata: 'LAX', city: '洛杉矶' },
+            // ---- 大洋洲 ----
+            YSSY: { name: '悉尼金斯福德·史密斯', iata: 'SYD', city: '悉尼' },
+            NZAA: { name: '奥克兰', iata: 'AKL', city: '奥克兰' },
+            // ---- 新增：泸州、宜宾 ----
+            ZULZ: { name: '泸州云龙', iata: 'LZO', city: '泸州' },
+            ZUYB: { name: '宜宾五粮液', iata: 'YBP', city: '宜宾' },
+        };
+
+        // ============================================================
+        //  2. 机场信息显示逻辑
+        // ============================================================
+        const airportInputs = [
+            { input: document.getElementById('depICAO'), info: document.getElementById('depInfo') },
+            { input: document.getElementById('arrICAO'), info: document.getElementById('arrInfo') },
+            { input: document.getElementById('altICAO'), info: document.getElementById('altInfo') },
+        ];
+
+        function updateAirportInfo(inputEl, infoEl) {
+            const code = inputEl.value.trim().toUpperCase();
+            const match = AIRPORT_DB[code];
+
+            infoEl.classList.remove('show', 'match-success', 'match-fail');
+            infoEl.textContent = '';
+
+            if (!code) return;
+
+            if (match) {
+                infoEl.innerHTML =
+                    `<span class="city-name">${match.city}</span><span class="sep">·</span><span class="airport-name">${match.name}</span> <span class="iata-badge">${match.iata}</span>`;
+                infoEl.classList.add('show', 'match-success');
+            } else {
+                infoEl.textContent = '❓ 未找到';
+                infoEl.classList.add('show', 'match-fail');
+                clearTimeout(infoEl._hideTimer);
+                infoEl._hideTimer = setTimeout(() => {
+                    if (inputEl.value.trim().toUpperCase() === code) {
+                        infoEl.classList.remove('show', 'match-fail');
+                        infoEl.textContent = '';
+                    }
+                }, 2000);
+            }
+        }
+
+        airportInputs.forEach(({ input, info }) => {
+            if (!input) return;
+            const handler = function() {
+                updateAirportInfo(this, info);
+                saveAllData();
+            };
+            input.addEventListener('input', handler);
+            input.addEventListener('change', handler);
+            setTimeout(() => {
+                updateAirportInfo(input, info);
+            }, 50);
+        });
+
+        // ============================================================
+        //  3. 本地存储 / 语言切换 / 重置
+        // ============================================================
         const CHECK_KEY = "b737_check_tick";
         const INPUT_KEY = "b737_fill_data";
         const PLAN_KEY = "b737_flight_plan";
@@ -552,85 +885,111 @@
 
         const allCheck = document.querySelectorAll(".check");
         const allFillInput = document.querySelectorAll(".blank-input");
-        const planInputs = document.querySelectorAll(".plan-field");
 
-        // 语言切换函数
+        const planFieldIds = [
+            'flightNo', 'aircraftType',
+            'depICAO', 'arrICAO', 'altICAO',
+            'cruiseFL', 'fuelLoad', 'takeoffWeight',
+            'routeWeather', 'crewCount'
+        ];
+        const planFields = planFieldIds.map(id => document.getElementById(id));
+
         function switchLang(lang) {
             if (lang === "en") document.body.classList.add("en-mode");
             else document.body.classList.remove("en-mode");
             localStorage.setItem(LANG_KEY, lang);
         }
 
-        // 页面加载初始化
-        window.onload = function () {
-            // 读取语言
-            let saveLang = localStorage.getItem(LANG_KEY) || "zh";
-            switchLang(saveLang);
-
-            // 读取飞行计划
-            let planArr = JSON.parse(localStorage.getItem(PLAN_KEY) || "[]");
-            planInputs.forEach((inp, i) => {
-                inp.value = planArr[i] || "";
-                inp.oninput = saveAllData;
-            });
-
-            // 读取勾选框
-            let tickArr = JSON.parse(localStorage.getItem(CHECK_KEY) || "[]");
-            allCheck.forEach((ck, i) => {
-                ck.checked = tickArr[i] || false;
-                ck.onchange = saveAllData;
-            });
-
-            // 读取填写空白框
-            let fillArr = JSON.parse(localStorage.getItem(INPUT_KEY) || "[]");
-            allFillInput.forEach((inp, i) => {
-                inp.value = fillArr[i] || "";
-                inp.oninput = saveAllData;
-            });
-        }
-
-        // 统一保存全部数据
         function saveAllData() {
-            // 保存勾选
             let tickList = [];
             allCheck.forEach(item => tickList.push(item.checked));
             localStorage.setItem(CHECK_KEY, JSON.stringify(tickList));
-            // 保存填写框
+
             let fillList = [];
             allFillInput.forEach(item => fillList.push(item.value));
             localStorage.setItem(INPUT_KEY, JSON.stringify(fillList));
-            // 保存飞行计划
-            let planList = [];
-            planInputs.forEach(item => planList.push(item.value));
+
+            let planList = planFields.map(inp => inp ? inp.value : '');
             localStorage.setItem(PLAN_KEY, JSON.stringify(planList));
         }
 
-        // 重置全部检查单（勾选+填写框，不清除飞行计划）
+        function loadAllData() {
+            let saveLang = localStorage.getItem(LANG_KEY) || "zh";
+            switchLang(saveLang);
+
+            let planArr = JSON.parse(localStorage.getItem(PLAN_KEY) || "[]");
+            planFields.forEach((inp, i) => {
+                if (inp) inp.value = planArr[i] || '';
+            });
+
+            let tickArr = JSON.parse(localStorage.getItem(CHECK_KEY) || "[]");
+            allCheck.forEach((ck, i) => {
+                ck.checked = tickArr[i] || false;
+            });
+
+            let fillArr = JSON.parse(localStorage.getItem(INPUT_KEY) || "[]");
+            allFillInput.forEach((inp, i) => {
+                inp.value = fillArr[i] || '';
+            });
+
+            setTimeout(() => {
+                airportInputs.forEach(({ input, info }) => {
+                    if (input) updateAirportInfo(input, info);
+                });
+            }, 80);
+        }
+
         function resetAllCheck() {
             allCheck.forEach(ck => ck.checked = false);
             allFillInput.forEach(inp => inp.value = "");
             saveAllData();
+            airportInputs.forEach(({ input, info }) => {
+                if (input) updateAirportInfo(input, info);
+            });
             let lang = localStorage.getItem(LANG_KEY) || "zh";
-            if (lang === "zh") alert("所有检查勾选与填写数值已清空，飞行计划保留");
-            else alert("All checklist ticks & values cleared, flight plan kept");
+            alert(lang === "zh" ? "所有检查勾选与填写数值已清空，飞行计划保留" : "All checklist ticks & values cleared, flight plan kept");
         }
 
-        // 保存飞行计划
         function savePlan() {
             saveAllData();
             let lang = localStorage.getItem(LANG_KEY) || "zh";
-            if (lang === "zh") alert("飞行计划已保存");
-            else alert("Flight plan saved");
+            alert(lang === "zh" ? "飞行计划已保存" : "Flight plan saved");
         }
 
-        // 清空飞行计划
         function clearPlan() {
-            planInputs.forEach(inp => inp.value = "");
+            planFields.forEach(inp => { if (inp) inp.value = ''; });
+            airportInputs.forEach(({ input, info }) => {
+                if (input) {
+                    input.value = '';
+                    info.classList.remove('show', 'match-success', 'match-fail');
+                    info.textContent = '';
+                }
+            });
             saveAllData();
             let lang = localStorage.getItem(LANG_KEY) || "zh";
-            if (lang === "zh") alert("全部飞行计划字段已清空");
-            else alert("All flight plan fields cleared");
+            alert(lang === "zh" ? "全部飞行计划字段已清空" : "All flight plan fields cleared");
         }
+
+        document.querySelectorAll('.plan-input:not(.airport-input), .blank-input, .check').forEach(el => {
+            el.addEventListener('change', saveAllData);
+        });
+        document.querySelectorAll('.plan-input:not(.airport-input), .blank-input').forEach(el => {
+            el.addEventListener('input', saveAllData);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllData();
+            setTimeout(() => {
+                airportInputs.forEach(({ input, info }) => {
+                    if (input) updateAirportInfo(input, info);
+                });
+            }, 200);
+        });
+
+        window.savePlan = savePlan;
+        window.clearPlan = clearPlan;
+        window.resetAllCheck = resetAllCheck;
+        window.switchLang = switchLang;
     </script>
 </body>
 
