@@ -528,6 +528,7 @@
 </head>
 
 <body>
+
     <header class="site-header">
         <div class="container header-inner">
             <a href="#" class="logo">
@@ -536,12 +537,7 @@
             <ul class="nav-menu">
                 <li><a href="index.html">首页</a></li>
                 <li class="dropdown">
-                    <a href="#">驾驶员学习与考试</a>
-                    <ul class="submenu">
-                        <li><a href="https://docs.qq.com/doc/DTXZVQmpTSnZVaE9K">技术操作手册</a></li>
-                        <li><a href="https://ks.wjx.com/vm/YOEg4H6.aspx">前往考试</a></li>
-                        <li><a href="exam_tip">考试说明</a></li>
-                    </ul>
+                    <a href="skyriverccho">化学竞赛</a>
                 </li>
                 <li class="dropdown">
                     <a href="#">服务与新闻</a>
@@ -566,6 +562,20 @@
             </ul>
         </div>
     </header>
+    <div style="width:100%;overflow:hidden;background:#61ac95;color:#fff;padding:8px 0;">
+        <div id="txt" style="display:inline-block;white-space:nowrap;font-size:18px;">注意！天河共创神岛部分即将在8月31日停止可受支持的服务！见新闻！
+        </div>
+    </div>
+    <script>
+        let el = document.getElementById('txt');
+        let x = window.innerWidth;
+        setInterval(() => {
+            x -= 4;
+            el.style.transform = `translateX(${x}px)`;
+            if (x < -el.offsetWidth) x = window.innerWidth;
+        }, 20);
+    </script>
+    </div>
     <main>
         <section class="hero">
             <div class="container hero-grid">
@@ -574,7 +584,7 @@
                     <h1 class="hero-title">智行天下，<strong>幸福天河</strong></h1>
                     <p class="hero-desc">你许我在起点，我陪你到终点<br>以代码铺轨，用热爱驱动<br><br>天河岛铁，友谊常青</p>
                     <div class="button-group">
-                        <a href="https://dao3.fun/exp/experience/detail/100341636" class="btn-primary">有轨电车内测</a>
+                        <a href="skyriverccho" class="btn-primary">天河化竞</a>
                         <a href="cklst_b738" class="btn-secondary">飞行检查单</a>
                     </div>
                 </div>
@@ -675,7 +685,8 @@
         <div class="container footer-inner">
             <div class="footer-left">
                 <div class="copyright">
-                    正在开发内测：自动化古诗文翻译工具 | 图形化编程 | <a href="edtor_coin" style="color: inherit; text-decoration: none;">领航员天河币查询</a>
+                    正在开发内测：自动化古诗文翻译工具 | 图形化编程 | <a href="edtor_coin"
+                        style="color: inherit; text-decoration: none;">领航员天河币查询</a>
                     <br>
                     © 2025-2026 天河集团 | 版权所有
                     <br>

@@ -75,6 +75,7 @@
             color: var(--orange);
         }
 
+        /* 导航菜单：所有设备完全一致的样式，无特殊移动端覆盖 */
         .nav-menu {
             display: flex;
             align-items: center;
@@ -106,6 +107,7 @@
             color: var(--orange);
         }
 
+        /* 二级菜单：统一使用 hover 显示，绝对定位，无移动端特殊处理 */
         .submenu {
             position: absolute;
             top: 100%;
@@ -148,6 +150,7 @@
             color: var(--orange);
         }
 
+        /* Hero 区域 */
         .hero {
             padding: 80px 0 70px;
             background: linear-gradient(135deg, #ffffff 0%, #fffaf5 100%);
@@ -199,6 +202,49 @@
             margin-bottom: 2rem;
         }
 
+        /* ===== 新增：化学竞赛团队双侧介绍版块样式 ===== */
+        .intro-section {
+            padding: 80px 0;
+        }
+        .intro-wrap {
+            display: flex;
+            gap: 56px;
+            align-items: flex-start;
+        }
+        .intro-left {
+            flex: 0 0 300px;
+        }
+        .intro-right {
+            flex: 1;
+        }
+        .intro-left h2 {
+            font-size: 32px;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        .intro-left .en-title {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+        .intro-left p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-muted);
+        }
+        .intro-right p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 18px;
+        }
+        .intro-member {
+            margin-top: 24px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        /* 底部样式 */
         .site-footer {
             background-color: #1e2a36;
             color: #cddcec;
@@ -269,57 +315,162 @@
             text-decoration: none;
         }
 
-        .news-box {
-            max-width: 1000px;
-            margin: 0 auto;
+        /* 纯响应式布局微调（仅影响容器边距和文字大小，绝不改变菜单交互或结构） */
+        @media (max-width: 880px) {
+            .container {
+                padding: 0 24px;
+            }
+            .intro-wrap {
+                flex-direction: column;
+                gap:32px;
+            }
+            .intro-left {
+                flex:none;
+            }
+            .hero-title {
+                font-size: 2.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            /* 保持导航菜单原有 flex 布局，不改为垂直或隐藏，完全与桌面一致 */
+            .nav-menu {
+                gap: 1.2rem;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 50px 0;
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .nav-menu {
+                gap: 0.9rem;
+            }
+
+            .nav-menu>li>a {
+                font-size: 0.9rem;
+                white-space: normal;
+            }
+
+            .submenu {
+                min-width: 180px;
+            }
+
+            .submenu a {
+                white-space: normal;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        .card-box {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 0 10px;
+            gap: 15px;
+            margin: 20px;
+        }
+        .card {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            background: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .news-item {
-            background: #fff;
-            border-radius: 14px;
-            padding: 18px 22px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+        .card h3 {
+            margin-top: 0;
+            color: #333;
         }
 
-        .news-time {
-            color: #999;
-            font-size: 13px;
-            margin-bottom: 6px;
+        .card p {
+            color: #666;
+            line-height: 1.5;
         }
-
-        .news-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #222;
-            margin-bottom: 8px;
-        }
-
-        .news-text {
-            font-size: 14px;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .section-title {
-            font-size: 24px;
-            color: #222;
-            font-weight: 600;
-        }
+.team-section {
+    padding: 90px 0;
+}
+.team-container {
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+}
+.team-sidebar {
+    flex: 0 0 320px;
+}
+.team-main {
+    flex: 1;
+}
+.team-sidebar h2 {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+}
+.team-subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+}
+.team-tagline {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+.team-main p {
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+.team-member-label {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 14px;
+    background: var(--orange-light);
+    color: var(--orange-dark);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+}
+@media (max-width: 880px) {
+    .team-container {
+        flex-direction: column;
+        gap: 36px;
+    }
+    .team-sidebar {
+        flex: none;
+    }
+}
     </style>
 </head>
 
 <body>
-    <header class="site-header">
+   <header class="site-header">
         <div class="container header-inner">
             <a href="#" class="logo">
                 <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
             </a>
             <ul class="nav-menu">
-                <li><a href="index">首页</a></li>
+                <li><a href="index.html">首页</a></li>
                 <li class="dropdown">
                     <a href="skyriverccho">化学竞赛</a>
                 </li>
@@ -328,6 +479,7 @@
                     <ul class="submenu">
                         <li><a href="net_map">线路图查询</a></li>
                         <li><a href="news">新闻</a></li>
+                        <li><a href="chang_pt">更新日志</a></li>
                         <li><a href="table">有轨电车成员表</a></li>
                         <li><a href="links">友情链接</a></li>
                     </ul>
@@ -336,7 +488,7 @@
                     <a href="#">项目与产品</a>
                     <ul class="submenu">
                         <li><a href="strtable">特殊符号粘贴表</a></li>
-                        <li><a href="xpmoddownload">神岛地图传送</a></li>
+                        <li><a href="xpmoddownload">Xplane12插件下载</a></li>
                         <li><a href="games">神岛地图传送</a></li>
                         <li><a href="https://space.bilibili.com/1785851106">视频</a></li>
                     </ul>
@@ -345,53 +497,32 @@
             </ul>
         </div>
     </header>
-    <main>
-        <div style="height: 30px;"></div>
-        <h2 class="section-title" style="text-align: center;">新闻</h2>
-        <div style="height: 20px;"></div>
 
-        <div class="news-box">
-
-            <div class="news-item">
-                <div class="news-time">2026 July.31</div>
-                <div class="news-title">神岛关服公告</div>
-                <div class="news-text">天河共创神岛部分将于8月31日结束在神岛的服务项目 <a href="notice1">>>>由此去</a></div>
-            </div>
-            <div class="news-item">
-                <div class="news-time">2026 June.22</div>
-                <div class="news-title">恭喜集团领航员重庆的渝渝中考金榜题名！成功考入泸州老窖天府中学</div>
-                <div class="news-text">真实成绩次日公布</div>
-            </div>
-            <div class="news-item">
-                <div class="news-time">2026 May.22</div>
-                <div class="news-title">关于我集团与中心岛作品名称重合的处理</div>
-                <div class="news-text">事件详情由此去>>></div>
-            </div>
-            <div>
-            </div>
-            <div class="news-item">
-                <div class="news-time">2026 Apr.22</div>
-                <div class="news-title">神岛有轨电车还有7天试运营！</div>
-                <div class="news-text">现已经开通</div>
-            </div>
-            <div class="news-item">
-                <div class="news-time">2026 Apr.22</div>
-                <div class="news-title">中考体考时辰已到</div>
-                <div class="news-text">2026 Apr.23 是渝渝地区的体育中考，祝取得理想成绩！同时祝各位广大中高考岛民金榜题名如愿上岸！</div>
-            </div>
-            <div class="news-item">
-                <div class="news-time">2026 Apr.19</div>
-                <div class="news-title">官方网站正式发布</div>
-                <div class="news-text">天河轨道交通集团官网正式发布！<a href="https://cqrailyy.github.io/skyrivergp/">>>>由此去</a></div>
-            </div>
-            <div class="news-item">
-                <div class="news-time">2026 Apr.18</div>
-                <div class="news-title">工程进度</div>
-                <div class="news-text">神岛有轨电车已修建除晨风、拗坎外的所有车站！距离试运营还剩15天</div>
-            </div>
+<section class="team-section">
+    <div class="container team-container">
+        <div class="team-sidebar">
+            <img width="600" src="images/cchologo.png" style="width:100%; height:auto; max-width:450px;" alt="">
+            <p class="team-tagline">
+                汇聚热爱化学的学习者，以竞赛为目标，深耕理论、钻研机理，拒绝死记硬背，在持续交流与刷题中共同突破知识边界。
+            </p>
+            <a href="https://qm.qq.com/q/wvYUQAw5Ne" style="text-decoration:none;">加入我们，就在现在！</a>
         </div>
-    </main>
-    <div style="height: 40px;"></div>
+        <div class="team-main">
+            <p>
+                天河化学竞赛由天河共创衍生而来，具备编程逻辑算法基础，可以让竞赛的学习添砖加瓦，我们将会以编程共创的形式讨论问题，攻破难关，从学习线路上降维打击，以最大效率学习竞赛知识。
+            </p>
+            <p>
+                我们学习注重理解底层逻辑，不局限于记忆方程式与结论。针对高频难点，=互相交流思路、辨析易错误区，共同攻克复杂计算与陌生反应推断题型。无论是理论推导还是实验探究，都坚持严谨求实的理科思维。
+            </p>
+            <p>
+                我们相互督促进度、分享备考经验，针对个人薄弱板块定向补强。我们不止追求竞赛成绩，更希望建立起系统化的化学思维，学会独立分析物质结构、能量变化与反应规律，长久保持对化学学科的探索热情与类似曾经天河神岛共创那样的团队合作。
+            </p>
+            <span class="team-member-label">核心成员：招录中</span>
+        </div>
+    </div>
+</section>
+
+    <div style="height: 50px;"></div>
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-left">
@@ -407,7 +538,9 @@
                         岛ICP备20260418号
                     </a>
                 </div>
-                <div class="legal-links"></div>
+                <div class="legal-links">
+                    <!-- 预留法律链接位置 -->
+                </div>
                 <div class="footer-note">
                     本网站内容受知识产权保护，未经许可不得转载。
                 </div>
@@ -422,6 +555,8 @@
             </div>
         </div>
     </footer>
+
+    <!-- 无任何 JavaScript 代码：完全移除移动端特殊交互逻辑（菜单按钮、二级菜单点击展开、open 类等），PC 与移动端行为统一，子菜单均通过 hover 显示。 -->
 </body>
 
 </html>
