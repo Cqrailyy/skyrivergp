@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh‑CN">
+<head>
+    <meta charset="UTF‑8">
+    <meta name="viewport" content="width=device‑width, initial‑scale=1.0">
+    <title>新闻详情</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #fdfdfd;
+            font-family: "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #2c2c2c;
+            line-height: 1.82;
+        }
+
+        /* 顶部导航，极简悬浮感 */
+        .navbar {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 44px 28px 16px;
+        }
+        .navbar-brand {
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #111;
+        }
+
+        /* 文章容器 */
+        .article {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 0 28px 80px;
+        }
+
+        /* 大标题，层次高级，不笨重 */
+        .article-title {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.32;
+            color: #0f0f0f;
+            margin: 12px 0 20px;
+        }
+
+        /* 元信息，柔和灰色，排版精致 */
+        .article‑meta {
+            font-size: 14.5px;
+            color: #717171;
+            margin-bottom: 42px;
+            letter-spacing: 0.3px;
+        }
+
+        /* 正文，舒适阅读，字重克制 */
+        .article‑content {
+            font-size: 18px;
+            color: #2f2f2f;
+        }
+        .article‑content p {
+            margin-bottom: 24px;
+        }
+
+        /* 页脚 极淡，不抢视线 */
+        .footer {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 0 28px 48px;
+            font-size: 13px;
+            color: #949494;
+        }
+
+        /* 响应式，手机端优雅收缩 */
+        @media (max-width: 640px) {
+            .navbar {
+                padding-top: 30px;
+            }
+            .article-title {
+                font-size: 26px;
+            }
+            .article‑content {
+                font-size: 16.5px;
+            }
+            .article {
+                padding-bottom: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">新闻资讯</div>
+    </nav>
+
+    <article class="article">
+        <h1 class="article-title">新闻主标题放置于此</h1>
+        <div class="article‑meta">发布时间：____ &nbsp;&nbsp;来源：____ &nbsp;&nbsp;作者：____</div>
+        <div class="article‑content">
+            <p>新闻正文第一段，整体现代简约，无任何边框、卡片、阴影。参考现代媒体文章审美，控制字重、行高、间距，视觉干净高级。</p>
+            <p>第二段直接填写内容，段落间距已经调好，复制粘贴文字直接使用。</p>
+            <p></p>
+        </div>
+    </article>
+
+    <div class="footer">© 2026 版权所有</div>
+</body>
+</html>
