@@ -653,7 +653,10 @@
             <ul class="nav-menu">
                 <li><a href="index.html">首页</a></li>
                 <li class="dropdown">
-                    <a href="skyriverccho">化学竞赛</a>
+                    <a href="skyriverccho">天河化学</a>
+                    <ul class="submenu">
+                        <li><a href="chtable">元素周期表</a></li>
+                    </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#">服务与新闻</a>
@@ -748,9 +751,6 @@
                 if (i === 0 || i === 1) {
                     el.style.backgroundImage = `url(${bg})`;
                     loaded.add(bg);
-                }else{
-                    const tmpImg = new Image();
-                    tmpImg.src = bg;
                 }
                 const dot = document.createElement('span');
                 dot.className = 'custom-slider-dot' + (i === 0 ? ' active' : '');
