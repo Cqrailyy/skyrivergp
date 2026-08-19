@@ -748,6 +748,9 @@
                 if (i === 0 || i === 1) {
                     el.style.backgroundImage = `url(${bg})`;
                     loaded.add(bg);
+                }else{
+                    const tmpImg = new Image();
+                    tmpImg.src = bg;
                 }
                 const dot = document.createElement('span');
                 dot.className = 'custom-slider-dot' + (i === 0 ? ' active' : '');
