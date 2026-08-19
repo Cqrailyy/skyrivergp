@@ -29,7 +29,7 @@
             --border-light: #eaecef;
             --text-dark: #1e2a3a;
             --text-muted: #5b6e8c;
-            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0.05);
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.05);
             --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.06);
         }
 
@@ -57,22 +57,13 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--text-dark);
-            text-decoration: none;
-            transition: color 0.2s;
             flex-shrink: 0;
         }
 
-        .logo span {
-            color: var(--orange);
-            font-weight: 800;
-        }
-
-        .logo:hover {
-            color: var(--orange);
+        .logo img {
+            width: 250px;
+            max-width: 100%;
+            height: auto;
         }
 
         .nav-menu {
@@ -272,7 +263,6 @@
             font-size: 1.2rem;
         }
 
-        /* 招聘板块样式 */
         .recruit-section {
             padding: 80px 0;
             background-color: var(--gray-bg);
@@ -532,14 +522,12 @@
             overflow: hidden;
         }
 
-        /* 滑动轨道 */
         .custom-slider-track {
             display: flex;
             height: 100%;
             transition: transform 0.6s ease-in-out;
         }
 
-        /* 单张幻灯片：作为文字定位父容器 */
         .custom-slider-item {
             position: relative;
             flex: 0 0 100%;
@@ -548,7 +536,6 @@
             background-position: center;
         }
 
-        /* 文字遮罩内容：在slide内部定位，不会叠加 */
         .custom-slider-content {
             position: absolute;
             left: 8%;
@@ -571,7 +558,6 @@
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         }
 
-        /* 美化后的按钮 */
         .custom-slider-btn {
             display: inline-block;
             padding: 14px 32px;
@@ -591,7 +577,6 @@
             box-shadow: 0 6px 20px #683412;
         }
 
-        /* 左右箭头按钮美化 */
         .custom-slider-prev,
         .custom-slider-next {
             position: absolute;
@@ -623,7 +608,6 @@
             right: 24px;
         }
 
-        /* 底部圆点 */
         .custom-slider-dots {
             position: absolute;
             bottom: 22px;
@@ -648,15 +632,23 @@
             border-radius: 6px;
             background: #fff;
         }
+
+        @keyframes textScroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
     </style>
 </head>
 
 <body>
-
     <header class="site-header">
         <div class="container header-inner">
             <a href="#" class="logo">
-                <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
+                <img src="images/天河集团LOGO.png" loading="lazy" alt="天河轨道交通集团">
             </a>
             <ul class="nav-menu">
                 <li><a href="index.html">首页</a></li>
@@ -699,14 +691,10 @@
             if (x < -el.offsetWidth) x = window.innerWidth;
         }, 20);
     </script>
-    </div>
-
-
 
     <div class="custom-slider-wrap">
         <div class="custom-slider-track">
-            <!-- 幻灯片1 -->
-            <div class="custom-slider-item" style="background-image:url('images/img3.png')">
+            <div class="custom-slider-item" data-bg="images/img3.png">
                 <div class="custom-slider-content">
                     <h2>智行天下，幸福天河</h2>
                     <p>你许我在起点，我陪你到终点
@@ -715,24 +703,21 @@
                     <a href="news" class="custom-slider-btn">查看详情</a>
                 </div>
             </div>
-            <!-- 幻灯片2 -->
-            <div class="custom-slider-item" style="background-image:url('images/img1.jpg')">
+            <div class="custom-slider-item" data-bg="images/img1.jpg">
                 <div class="custom-slider-content">
                     <h2>天河化竞，创新未来</h2>
                     <p>让化学成为一种乐趣<br>激发成员对共创的热情</p>
                     <a href="skyriverccho" class="custom-slider-btn">查看详情</a>
                 </div>
             </div>
-            <!-- 幻灯片3 -->
-            <div class="custom-slider-item" style="background-image:url('images/img4.png')">
+            <div class="custom-slider-item" data-bg="images/img4.png">
                 <div class="custom-slider-content">
                     <h2>畅通四面 服务八方</h2>
                     <p>天河共创致力于开发更利于公众的服务<br>从飞行检查单到有机结构式编辑器</p>
                     <a href="cklst_b738" class="custom-slider-btn">飞行检查单</a>
                 </div>
             </div>
-            <!-- 幻灯片3 -->
-            <div class="custom-slider-item" style="background-image:url('images/img2.png')">
+            <div class="custom-slider-item" data-bg="images/img2.png">
                 <div class="custom-slider-content">
                     <h2>天河岛铁 友谊常青</h2>
                     <p>我们不是孤军奋战<br>还有更多支持我们的团体</p>
@@ -740,12 +725,8 @@
                 </div>
             </div>
         </div>
-
-        <!-- 左右切换 -->
         <button class="custom-slider-prev">←</button>
         <button class="custom-slider-next">→</button>
-
-        <!-- 圆点指示器 -->
         <div class="custom-slider-dots"></div>
     </div>
 
@@ -757,13 +738,17 @@
             const prev = wrap.querySelector('.custom-slider-prev');
             const next = wrap.querySelector('.custom-slider-next');
             const dotsWrap = wrap.querySelector('.custom-slider-dots');
-
             let currentIndex = 0;
             let timer;
             const slideCount = items.length;
+            const loaded = new Set();
 
-            // 生成圆点
-            items.forEach((_, i) => {
+            items.forEach((el, i) => {
+                const bg = el.dataset.bg;
+                if (i === 0 || i === 1) {
+                    el.style.backgroundImage = `url(${bg})`;
+                    loaded.add(bg);
+                }
                 const dot = document.createElement('span');
                 dot.className = 'custom-slider-dot' + (i === 0 ? ' active' : '');
                 dot.onclick = () => goSlide(i);
@@ -771,13 +756,26 @@
             })
             const dots = dotsWrap.querySelectorAll('.custom-slider-dot');
 
+            function preload(idx) {
+                const target = items[idx];
+                const bg = target.dataset.bg;
+                if (!loaded.has(bg)) {
+                    const img = new Image();
+                    img.onload = () => {
+                        target.style.backgroundImage = `url(${bg})`;
+                        loaded.add(bg);
+                    }
+                    img.src = bg;
+                }
+            }
+
             function goSlide(index) {
                 currentIndex = index;
                 track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                // 更新圆点
                 dots.forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentIndex);
                 })
+                preload((currentIndex + 1) % slideCount);
             }
             function nextSlide() {
                 goSlide((currentIndex + 1) % slideCount)
@@ -788,22 +786,15 @@
             function autoPlay() {
                 timer = setInterval(nextSlide, 4000);
             }
-            // 悬停暂停
             wrap.addEventListener('mouseenter', () => clearInterval(timer));
             wrap.addEventListener('mouseleave', autoPlay);
-
             prev.onclick = prevSlide;
             next.onclick = nextSlide;
             autoPlay();
         })()
     </script>
 
-
-
-
-
     <main>
-
         <section class="about-section" id="about">
             <div class="container">
                 <div class="section-header">
@@ -837,149 +828,76 @@
             </div>
         </section>
 
-        <div
-            style="box-sizing: border-box; font-family: system-ui, sans-serif; margin: 20px auto; padding: 0; width: 100%;">
+        <div style="box-sizing: border-box; font-family: system-ui, sans-serif; margin: 20px auto; padding: 0; width: 100%;">
             <div style="height: 10px;"></div>
             <div style="text-align: center;">
                 <h1>未来一周航班信息 CZ3576</h1>
             </div>
             <div style="height: 10px"></div>
-            <table
-                style="border-collapse: collapse; width: 65%; table-layout: fixed; margin: 0 auto; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-radius: 6px; overflow: hidden;">
+            <table style="border-collapse: collapse; width: 65%; table-layout: fixed; margin: 0 auto; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-radius: 6px; overflow: hidden;">
                 <thead>
                     <tr>
-                        <th
-                            style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">
-                            日期</th>
-                        <th
-                            style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">
-                            起飞机场</th>
-                        <th
-                            style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">
-                            降落机场</th>
-                        <th
-                            style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">
-                            起飞时间</th>
-                        <th
-                            style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">
-                            飞行状态</th>
-                        <th
-                            style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">
-                            状态标识</th>
+                        <th style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">日期</th>
+                        <th style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">起飞机场</th>
+                        <th style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">降落机场</th>
+                        <th style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">起飞时间</th>
+                        <th style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">飞行状态</th>
+                        <th style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">状态标识</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr style="border-bottom:1px solid #eee;">
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: visible; white-space: normal;">
-                            2026 08 12</td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div
-                                style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">
-                                大同云冈 ZBDT</div>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: visible; white-space: normal;">2026 08 12</td>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
+                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">大同云冈 ZBDT</div>
                         </td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div
-                                style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">
-                                呼和浩特白塔 ZBHH</div>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
+                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">呼和浩特白塔 ZBHH</div>
                         </td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div
-                                style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">
-                                2025</div>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
+                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">2025</div>
                         </td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div
-                                style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">
-                                2105</div>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
+                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">2105</div>
                         </td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; background-color: #474747; color:#fff; text-align:center;">
-                            结束</td>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; background-color: #474747; color:#fff; text-align:center;">结束</td>
                     </tr>
                     <tr style="border-bottom:1px solid #eee;">
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: visible; white-space: normal;">
-                            2026 08 13</td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div
-                                style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">
-                                广州白云 ZGGG</div>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: visible; white-space: normal;">2026 08 13</td>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
+                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">广州白云 ZGGG</div>
                         </td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div
-                                style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">
-                                深圳宝安 ZGSZ</div>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
+                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">深圳宝安 ZGSZ</div>
                         </td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div
-                                style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">
-                                2025</div>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
+                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">2025</div>
                         </td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div
-                                style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">
-                                2105</div>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
+                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">2105</div>
                         </td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; background-color: #f59e0b; color:#fff; text-align:center;">
-                            计划中</td>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; background-color: #f59e0b; color:#fff; text-align:center;">计划中</td>
                     </tr>
                     <tr style="border-bottom:1px solid #eee;">
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: visible; white-space: normal;">
-                            2026 08 14</td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div
-                                style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">
-                                深圳宝安 ZGSZ</div>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: visible; white-space: normal;">2026 08 14</td>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
+                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">深圳宝安 ZGSZ</div>
                         </td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div
-                                style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">
-                                香港 VHHH</div>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
+                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">香港 VHHH</div>
                         </td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div
-                                style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">
-                                2025</div>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
+                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">2025</div>
                         </td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div
-                                style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">
-                                2105</div>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
+                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">2105</div>
                         </td>
-                        <td
-                            style="border: none; padding: 12px 8px; vertical-align: middle; background-color: #f59e0b; color:#fff; text-align:center;">
-                            计划中</td>
+                        <td style="border: none; padding: 12px 8px; vertical-align: middle; background-color: #f59e0b; color:#fff; text-align:center;">计划中</td>
                     </tr>
                 </tbody>
             </table>
-            <style>
-                @keyframes textScroll {
-                    0% {
-                        transform: translateX(0);
-                    }
-
-                    100% {
-                        transform: translateX(-100%);
-                    }
-                }
-            </style>
         </div>
-        <!-- 招聘板块 -->
+
         <section class="recruit-section">
             <div class="container">
                 <div class="section-header">
@@ -1023,10 +941,8 @@
                     <div class="recruit-card">
                         <div class="recruit-job">
                             <h3 class="job-title" style="text-align: center; ">加入我们，就在现在</h3>
-                            <div class="button-group"
-                                style="text-align: center; display: flex; justify-content: center;">
-                                <a href="https://qm.qq.com/q/HxjYIG4NSA" class="btn-primary"
-                                    style="text-align: center;">招聘入口</a>
+                            <div class="button-group" style="text-align: center; display: flex; justify-content: center;">
+                                <a href="https://qm.qq.com/q/HxjYIG4NSA" class="btn-primary" style="text-align: center;">招聘入口</a>
                             </div>
                         </div>
                     </div>
@@ -1039,17 +955,14 @@
         <div class="container footer-inner">
             <div class="footer-left">
                 <div class="copyright">
-                    正在开发内测：自动化古诗文翻译工具 | 图形化编程 | <a href="edtor_coin"
-                        style="color: inherit; text-decoration: none;">领航员天河币查询</a>
+                    正在开发内测：自动化古诗文翻译工具 | 图形化编程 | <a href="edtor_coin" style="color: inherit; text-decoration: none;">领航员天河币查询</a>
                     <br>
                     © 2025-2026 天河集团 | 版权所有
                     <br>
                     建议使用PC端访问此网站
                     <br>
                     <br>
-                    <a href="https://dao3.fun" class="copyright" style="color:#cddcec;">
-                        岛ICP备20260418号
-                    </a>
+                    <a href="https://dao3.fun" class="copyright" style="color:#cddcec;">岛ICP备20260418号</a>
                 </div>
                 <div class="legal-links"></div>
                 <div class="footer-note">
@@ -1059,13 +972,10 @@
             <div class="footer-right">
                 <div class="contact-item"><span class="contact-label">联系我们</span></div>
                 <div class="contact-item"><span class="contact-label">渝渝QQ：</span> 3809150396</div>
-                <a href="https://space.bilibili.com/1785851106" class="contact-item" style="color:#eef3fc;"><span
-                        class="contact-label">渝渝B站：</span>https://space.bilibili.com/1785851106</a>
-                <a href="https://qm.qq.com/q/jpK9iH0VMI" class="contact-item" style="color:#eef3fc;"><span
-                        class="contact-label">QQ群：</span>553195523 岛铁共享</a>
+                <a href="https://space.bilibili.com/1785851106" class="contact-item" style="color:#eef3fc;"><span class="contact-label">渝渝B站：</span>https://space.bilibili.com/1785851106</a>
+                <a href="https://qm.qq.com/q/jpK9iH0VMI" class="contact-item" style="color:#eef3fc;"><span class="contact-label">QQ群：</span>553195523 岛铁共享</a>
             </div>
         </div>
     </footer>
 </body>
-
 </html>
