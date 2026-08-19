@@ -524,6 +524,130 @@
             font-weight: 800;
             font-size: 1.4rem;
         }
+
+        .custom-slider-wrap {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            overflow: hidden;
+        }
+
+        /* 滑动轨道 */
+        .custom-slider-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        /* 单张幻灯片：作为文字定位父容器 */
+        .custom-slider-item {
+            position: relative;
+            flex: 0 0 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 文字遮罩内容：在slide内部定位，不会叠加 */
+        .custom-slider-content {
+            position: absolute;
+            left: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            z-index: 2;
+        }
+
+        .custom-slider-content h2 {
+            font-size: 36px;
+            margin: 0 0 12px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+        }
+
+        .custom-slider-content p {
+            font-size: 18px;
+            margin: 0 0 28px;
+            max-width: 540px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 美化后的按钮 */
+        .custom-slider-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #e06c1e;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 999px;
+            box-shadow: 0 4px 14px #8d4a1d;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 16px;
+        }
+
+        .custom-slider-btn:hover {
+            background: #4e2408;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px #683412;
+        }
+
+        /* 左右箭头按钮美化 */
+        .custom-slider-prev,
+        .custom-slider-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.28);
+            backdrop-filter: blur(4px);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 3;
+            transition: all 0.3s;
+        }
+
+        .custom-slider-prev:hover,
+        .custom-slider-next:hover {
+            background: rgba(255, 255, 255, 0.45);
+        }
+
+        .custom-slider-prev {
+            left: 24px;
+        }
+
+        .custom-slider-next {
+            right: 24px;
+        }
+
+        /* 底部圆点 */
+        .custom-slider-dots {
+            position: absolute;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .custom-slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .custom-slider-dot.active {
+            width: 32px;
+            border-radius: 6px;
+            background: #fff;
+        }
     </style>
 </head>
 
@@ -576,21 +700,109 @@
         }, 20);
     </script>
     </div>
-    <main>
-        <section class="hero">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <div class="hero-badge">天河集团·为热爱掌舵</div>
-                    <h1 class="hero-title">智行天下，<strong>幸福天河</strong></h1>
-                    <p class="hero-desc">你许我在起点，我陪你到终点<br>以代码铺轨，用热爱驱动<br><br>天河岛铁，友谊常青</p>
-                    <div class="button-group">
-                        <a href="skyriverccho" class="btn-primary">天河化竞</a>
-                        <a href="cklst_b738" class="btn-secondary">飞行检查单</a>
-                    </div>
+
+
+
+    <div class="custom-slider-wrap">
+        <div class="custom-slider-track">
+            <!-- 幻灯片1 -->
+            <div class="custom-slider-item" style="background-image:url('images/img3.png')">
+                <div class="custom-slider-content">
+                    <h2>智行天下，幸福天河</h2>
+                    <p>你许我在起点，我陪你到终点
+                        <br>以代码铺轨，用热爱驱动
+                    </p>
+                    <a href="news" class="custom-slider-btn">查看详情</a>
                 </div>
-                <div style="flex:0.8; min-width: 200px;"></div>
             </div>
-        </section>
+            <!-- 幻灯片2 -->
+            <div class="custom-slider-item" style="background-image:url('images/img1.jpg')">
+                <div class="custom-slider-content">
+                    <h2>天河化竞，创新未来</h2>
+                    <p>让化学成为一种乐趣<br>激发成员对共创的热情</p>
+                    <a href="skyriverccho" class="custom-slider-btn">查看详情</a>
+                </div>
+            </div>
+            <!-- 幻灯片3 -->
+            <div class="custom-slider-item" style="background-image:url('images/img4.png')">
+                <div class="custom-slider-content">
+                    <h2>畅通四面 服务八方</h2>
+                    <p>天河共创致力于开发更利于公众的服务<br>从飞行检查单到有机结构式编辑器</p>
+                    <a href="cklst_b738" class="custom-slider-btn">飞行检查单</a>
+                </div>
+            </div>
+            <!-- 幻灯片3 -->
+            <div class="custom-slider-item" style="background-image:url('images/img2.png')">
+                <div class="custom-slider-content">
+                    <h2>天河岛铁 友谊常青</h2>
+                    <p>我们不是孤军奋战<br>还有更多支持我们的团体</p>
+                    <a href="links" class="custom-slider-btn">友情链接</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 左右切换 -->
+        <button class="custom-slider-prev">←</button>
+        <button class="custom-slider-next">→</button>
+
+        <!-- 圆点指示器 -->
+        <div class="custom-slider-dots"></div>
+    </div>
+
+    <script>
+        (function () {
+            const wrap = document.querySelector('.custom-slider-wrap');
+            const track = wrap.querySelector('.custom-slider-track');
+            const items = wrap.querySelectorAll('.custom-slider-item');
+            const prev = wrap.querySelector('.custom-slider-prev');
+            const next = wrap.querySelector('.custom-slider-next');
+            const dotsWrap = wrap.querySelector('.custom-slider-dots');
+
+            let currentIndex = 0;
+            let timer;
+            const slideCount = items.length;
+
+            // 生成圆点
+            items.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.className = 'custom-slider-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goSlide(i);
+                dotsWrap.appendChild(dot);
+            })
+            const dots = dotsWrap.querySelectorAll('.custom-slider-dot');
+
+            function goSlide(index) {
+                currentIndex = index;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                // 更新圆点
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                })
+            }
+            function nextSlide() {
+                goSlide((currentIndex + 1) % slideCount)
+            }
+            function prevSlide() {
+                goSlide((currentIndex - 1 + slideCount) % slideCount)
+            }
+            function autoPlay() {
+                timer = setInterval(nextSlide, 4000);
+            }
+            // 悬停暂停
+            wrap.addEventListener('mouseenter', () => clearInterval(timer));
+            wrap.addEventListener('mouseleave', autoPlay);
+
+            prev.onclick = prevSlide;
+            next.onclick = nextSlide;
+            autoPlay();
+        })()
+    </script>
+
+
+
+
+
+    <main>
 
         <section class="about-section" id="about">
             <div class="container">
