@@ -224,7 +224,6 @@
             text-decoration: none;
         }
 
-        /* 插件卡片样式 */
         .plugin-section {
             margin-bottom: 45px;
         }
@@ -285,15 +284,12 @@
             text-decoration: none;
         }
 
-        /* 搜索框样式（调整后） */
         .page-search-container {
             display: flex;
             align-items: center;
             position: relative;
             width: 400px;
-            /* 加宽搜索框，适配页面标题区域 */
             margin: 0 auto 20px;
-            /* 居中并增加底部间距 */
         }
 
         .page-search-input {
@@ -321,7 +317,6 @@
             font-size: 1.2rem;
         }
 
-        /* 返回顶部按钮样式 */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -398,15 +393,29 @@
             margin-bottom: 20px;
         }
 
-        .team-member-label {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 6px 14px;
-            background: var(--orange-light);
-            color: var(--orange-dark);
-            border-radius: 999px;
-            font-size: 14px;
-            font-weight: 500;
+        .member-card-wrap{
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:16px;
+            margin-top:24px;
+        }
+        .member-card{
+            background:#ffffff;
+            border-radius:12px;
+            padding:20px 16px;
+            box-shadow:var(--shadow-sm);
+            border:1px solid var(--border-light);
+        }
+        .member-card .role{
+            font-size:13px;
+            color:var(--orange-dark);
+            font-weight:500;
+            margin-bottom:6px;
+        }
+        .member-card .name{
+            font-size:17px;
+            font-weight:700;
+            color:var(--text-dark);
         }
 
         @media (max-width: 880px) {
@@ -414,13 +423,14 @@
                 flex-direction: column;
                 gap: 36px;
             }
-
             .team-sidebar {
                 flex: none;
             }
+            .member-card-wrap{
+                grid-template-columns:1fr;
+            }
         }
     </style>
-    <!-- 引入字体图标（用于搜索和返回顶部图标） -->
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -433,8 +443,9 @@
             <ul class="nav-menu">
                 <li><a href="index">首页</a></li>
                 <li class="dropdown">
-                    <a href="skyriverccho">天河化学</a>
+                    <a href="#">天河化学</a>
                     <ul class="submenu">
+                        <li><a href="skyriverccho">关于我们</a></li>
                         <li><a href="chtable">元素周期表</a></li>
                     </ul>
                 </li>
@@ -457,12 +468,9 @@
                     </ul>
                 </li>
                 <li><a href="about_us">关于我们</a></li>
-                <!-- 移除导航栏中的搜索框 -->
             </ul>
         </div>
     </header>
-    <!-- 新增：页面标题下方的搜索框 -->
-
 
     <div style="height: 30px;"></div>
 
@@ -485,8 +493,23 @@
                 <p>
                     我们相互督促进度、分享备考经验，针对个人薄弱板块定向补强。我们不止追求竞赛成绩，更希望建立起系统化的化学思维，学会独立分析物质结构、能量变化与反应规律，长久保持对化学学科的探索热情与类似曾经天河神岛共创那样的团队合作。
                 </p>
-                <span class="team-member-label">核心成员：渝渝 指导：爱闻氨气的张某人
-                </span>
+                <div class="member-card-wrap">
+                    <div class="member-card">
+                        <div class="role" style="color:#4b8b81">指导</div>
+                        <div class="name">圣黛星</div>
+                        <div style="color:#666; font-size: 13px">哎呀，往哪走都是往前走<br>这人自己取了个唐名无语了...</div>
+                    </div>
+                    <div class="member-card">
+                        <div class="role">核心成员</div>
+                        <div class="name">渝渝</div>
+                        <div style="color:#666; font-size: 13px">还不知道我嘛！<br>天河化学总指挥</div>
+                    </div>
+                    <div class="member-card">
+                        <div class="role">核心成员</div>
+                        <div class="name">FeCl₃</div>
+                        <div style="color:#666; font-size: 13px">五年级学完高化<br>参加全国青少年科学实验能力大赛</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -529,7 +552,6 @@
             <a href="https://www.bilibili.com/video/BV1Kob26QEca" class="plugin-btn1">查看</a>
         </div>
     </div>
-    </div>
 
     <div style="height: 30px;"></div>
     <footer class="site-footer">
@@ -563,13 +585,11 @@
         </div>
     </footer>
 
-    <!-- 返回顶部按钮 -->
     <button class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script>
-        // 搜索框功能：实时筛选插件卡片（适配新的搜索框类名）
         const searchInput = document.querySelector('.page-search-input');
         const pluginCards = document.querySelectorAll('.plugin-card');
 
@@ -578,7 +598,6 @@
             pluginCards.forEach(card => {
                 const pluginName = card.querySelector('.plugin-name').textContent.toLowerCase();
                 const pluginDesc = card.querySelector('.plugin-desc').textContent.toLowerCase();
-                // 匹配插件名称或描述
                 if (pluginName.includes(searchTerm) || pluginDesc.includes(searchTerm)) {
                     card.style.display = 'flex';
                 } else {
@@ -587,23 +606,20 @@
             });
         });
 
-        // 返回顶部按钮功能
         const backToTopBtn = document.getElementById('backToTop');
 
-        // 滚动监听：控制按钮显示/隐藏
         window.addEventListener('scroll', function () {
-            if (window.scrollY > 300) { // 滚动超过300px时显示
+            if (window.scrollY > 300) {
                 backToTopBtn.classList.add('visible');
             } else {
                 backToTopBtn.classList.remove('visible');
             }
         });
 
-        // 点击返回顶部
         backToTopBtn.addEventListener('click', function () {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth' // 平滑滚动
+                behavior: 'smooth'
             });
         });
     </script>

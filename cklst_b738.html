@@ -3,387 +3,207 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>天河检查单</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>天河集团</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
-        }
-
-        :root {
-            --bg-primary: #0f243d;
-            --bg-card: rgba(255, 255, 255, 0.08);
-            --border-blue: #2980b9;
-            --text-blue: #3498db;
-            --text-light: #74b9ff;
-            --text-muted: #b2bec3;
-            --input-bg: #1a3552;
-            --input-border: #5577aa;
-            --orange: #f15a24;
-            /* 更新为参考文件的橙色 */
         }
 
         body {
-            background-color: var(--bg-primary);
-            color: #fff;
-            padding: 20px;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fefcf8;
+            color: #1a1f2c;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --orange: #f15a24;
+            --orange-dark: #d84315;
+            --orange-light: #fff2eb;
+            --gray-bg: #f9f9f7;
+            --border-light: #eaecef;
+            --text-dark: #1e2a3a;
+            --text-muted: #5b6e8c;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.06);
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 32px;
         }
 
-        header {
-            text-align: center;
-            padding: 20px 0;
-            border-bottom: 2px solid var(--border-blue);
-            margin-bottom: 30px;
+        .site-header {
+            background-color: #ffffff;
+            box-shadow: 0 1px 0 var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        h1 {
-            color: var(--text-blue);
-            font-size: 32px;
-            letter-spacing: 2px;
-        }
-
-        .lang-switch-wrap {
-            margin-top: 12px;
-        }
-
-        .box {
-            background: var(--bg-card);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-
-        .box h2 {
-            color: var(--text-light);
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        /* 飞行计划区域 */
-        .plan-row {
+        .header-inner {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
+            justify-content: space-between;
             flex-wrap: wrap;
+            min-height: 80px;
+            gap: 1rem;
         }
 
-        .plan-row label {
-            width: 130px;
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.2s;
             flex-shrink: 0;
-            font-size: 14px;
         }
 
-        .plan-input {
-            flex: 1;
-            min-width: 140px;
-            background: var(--input-bg);
-            border: 1px solid var(--text-blue);
-            color: #fff;
-            padding: 6px 10px;
-            border-radius: 4px;
-            font-size: 14px;
-            transition: border-color 0.2s;
+        .logo span {
+            color: var(--orange);
+            font-weight: 800;
         }
 
-        .plan-input:focus {
-            outline: none;
-            border-color: #5dade2;
-            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.25);
+        .logo:hover {
+            color: var(--orange);
         }
 
-        /* 机场信息标签 */
-        .airport-wrapper {
-            display: inline-flex;
+        .nav-menu {
+            display: flex;
             align-items: center;
-            gap: 6px;
-            flex: 1;
-            min-width: 180px;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
             position: relative;
         }
 
-        .airport-wrapper .plan-input {
-            flex: 1;
-            min-width: 100px;
-        }
-
-        .airport-info {
-            font-size: 12px;
-            color: #aed6f1;
-            background: rgba(52, 152, 219, 0.12);
-            border: 1px solid rgba(52, 152, 219, 0.25);
-            border-radius: 4px;
-            padding: 2px 10px;
-            white-space: nowrap;
-            transition: all 0.25s ease;
-            min-height: 26px;
-            display: none;
-            align-items: center;
-            font-weight: 400;
-            letter-spacing: 0.3px;
-            flex-shrink: 0;
-        }
-
-        .airport-info.show {
-            display: inline-flex;
-        }
-
-        .airport-info .iata-badge {
-            display: inline-block;
-            background: rgba(52, 152, 219, 0.25);
-            border-radius: 3px;
-            padding: 0 6px;
-            margin-left: 4px;
-            font-weight: 600;
-            color: #85c1e9;
-            font-size: 11px;
-            letter-spacing: 0.5px;
-        }
-
-        .airport-info .city-name {
-            color: #d5e8f7;
-        }
-
-        .airport-info .airport-name {
-            color: #aed6f1;
-        }
-
-        .airport-info .sep {
-            color: rgba(174, 214, 241, 0.3);
-            margin: 0 3px;
-        }
-
-        .airport-info.match-success {
-            border-color: #2ecc71;
-            background: rgba(46, 204, 113, 0.12);
-            color: #82e0aa;
-        }
-
-        .airport-info.match-success .iata-badge {
-            background: rgba(46, 204, 113, 0.25);
-            color: #82e0aa;
-        }
-
-        .airport-info.match-fail {
-            border-color: rgba(231, 76, 60, 0.3);
-            background: rgba(231, 76, 60, 0.08);
-            color: #f1948a;
-        }
-
-        /* 按钮 */
-        .btn-group {
-            margin-top: 15px;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        button {
-            padding: 9px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 15px;
-            transition: 0.2s;
-        }
-
-        .btn-blue {
-            background: var(--text-blue);
-            color: white;
-        }
-
-        .btn-red {
-            background: #e74c3c;
-            color: white;
-        }
-
-        .btn-gray {
-            background: #636e72;
-            color: #fff;
-        }
-
-        button:hover {
-            opacity: 0.85;
-            transform: translateY(-1px);
-        }
-
-        /* 检查单左右双栏布局 */
-        .check-wrap {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .check-block {
-            border: 1px solid var(--text-light);
-            padding: 12px;
-            margin-bottom: 18px;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .check-block h3 {
-            text-align: center;
-            font-size: 20px;
-            margin-bottom: 12px;
-            color: #aed6f1;
-            border-bottom: 1px solid #4477aa;
-            padding-bottom: 6px;
-        }
-
-        .check-line {
-            display: flex;
-            align-items: center;
-            padding: 5px 0;
-            gap: 8px;
-            font-size: 15px;
-            flex-wrap: wrap;
-        }
-
-        .check-line input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            flex-shrink: 0;
-            accent-color: var(--text-blue);
-            cursor: pointer;
-        }
-
-        .blank-input {
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            color: #fff;
-            width: 70px;
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-size: 13px;
-        }
-
-        .blank-input:focus {
-            outline: none;
-            border-color: var(--text-blue);
-        }
-
-        .tip {
-            color: var(--text-muted);
-            font-size: 13px;
-            margin-top: 8px;
-        }
-
-        /* 双语切换控制 */
-        .en {
-            display: none;
-        }
-
-        body.en-mode .zh {
-            display: none;
-        }
-
-        body.en-mode .en {
-            display: inline;
-        }
-
-        body.en-mode h1,
-        body.en-mode h3,
-        body.en-mode .check-line {
-            font-family: Arial, sans-serif;
-        }
-
-        .boeing-footer {
-            text-align: center;
-            margin-top: 30px;
-            opacity: 0.7;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 8px;
-            color: var(--text-blue);
+        .nav-menu a {
             text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
+            font-weight: 500;
+            color: #2c3e4e;
+            padding: 0.5rem 0;
+            transition: color 0.2s ease;
+            font-size: 1rem;
+            white-space: nowrap;
         }
 
-        .back-link:hover {
-            color: #5dade2;
-            text-decoration: underline;
+        .nav-menu>li>a {
+            display: inline-block;
         }
 
-        /* 响应式 */
-        @media (max-width: 768px) {
-            .check-wrap {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-
-            .plan-row {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .plan-row label {
-                width: 100%;
-            }
-
-            .airport-wrapper {
-                width: 100%;
-                flex-wrap: wrap;
-            }
-
-            .airport-info {
-                white-space: normal;
-                font-size: 11px;
-                padding: 2px 8px;
-                width: 100%;
-                justify-content: center;
-            }
-
-            .plan-input {
-                min-width: 100%;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
+        .nav-menu a:hover {
+            color: var(--orange);
         }
 
-        /* 滚动条美化 */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #ffffff;
+            min-width: 200px;
+            box-shadow: var(--shadow-md);
+            border-radius: 16px;
+            padding: 0.75rem 0;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.25s ease;
+            border: 1px solid var(--border-light);
+            z-index: 99;
         }
 
-        ::-webkit-scrollbar-track {
-            background: var(--bg-primary);
+        .dropdown:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--text-blue);
-            border-radius: 3px;
+        .submenu li {
+            width: 100%;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #5dade2;
+        .submenu a {
+            display: block;
+            padding: 0.6rem 1.5rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
         }
 
-        /* ========== 全新底部样式（参照天河集团） ========== */
+        .submenu a:hover {
+            background-color: var(--orange-light);
+            color: var(--orange);
+        }
+
+        .hero {
+            padding: 80px 0 70px;
+            background: linear-gradient(135deg, #ffffff 0%, #fffaf5 100%);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--orange-light);
+            color: var(--orange);
+            padding: 0.25rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 3.3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #1f2b38;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-title strong {
+            color: var(--orange);
+            font-weight: 800;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 540px;
+            margin-bottom: 2rem;
+        }
+
         .site-footer {
             background-color: #1e2a36;
             color: #cddcec;
             padding: 56px 0 40px;
             border-top: 4px solid var(--orange);
-            margin-top: 40px;
         }
 
         .footer-inner {
@@ -445,316 +265,1020 @@
             color: #8aa1b9;
         }
 
-        /* 页脚响应式 */
-        @media (max-width: 768px) {
-            .footer-inner {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+        a {
+            text-decoration: none;
         }
 
-        /* ========== 底部样式结束 ========== */
+        .news-box {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0 10px;
+        }
+
+        .news-item {
+            background: #fff;
+            border-radius: 14px;
+            padding: 18px 22px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .news-time {
+            color: #999;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .news-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 8px;
+        }
+
+        .news-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #222;
+            font-weight: 600;
+        }
+
+        .period-table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            padding: 24px 12px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .period-table {
+            border-collapse: separate;
+            border-spacing: 4px;
+            font-size: 12px;
+            margin: 0 auto 20px auto;
+        }
+
+        .period-table td {
+            border-radius: 8px;
+            width: 58px;
+            height: 68px;
+            text-align: center;
+            vertical-align: middle;
+            padding: 4px 2px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            transition: transform 0.2s;
+        }
+        .period-table td:hover{
+            transform: translateY(-3px);
+        }
+
+        .period-table td.empty {
+            border: none;
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .elem-num {
+            font-size: 10px;
+            color: #333;
+            text-align: left;
+            line-height:1;
+        }
+
+        .elem-name {
+            font-weight: bold;
+            font-size: 15px;
+            line-height:1.2;
+        }
+
+        .elem-cn {
+            font-size: 11px;
+            color: #333;
+            line-height:1.2;
+        }
+        .elem-pinyin{
+            font-size: 9px;
+            color:#666;
+            line-height:1;
+        }
+
+        /* 元素大类配色（和原图配色保持一致） */
+        .alkali {
+            background: #ffcccc;
+        }
+
+        .alkaline {
+            background: #ffe6cc;
+        }
+
+        .trans {
+            background: #ffffcc;
+        }
+
+        .metalloid {
+            background: #e6ffcc;
+        }
+
+        .nonmetal {
+            background: #ccffcc;
+        }
+
+        .halogen {
+            background: #ccffe6;
+        }
+
+        .noble {
+            background: #cce6ff;
+        }
+
+        .lanthanide {
+            background: #e6ccff;
+        }
+
+        .actinide {
+            background: #ffccf2;
+        }
+
+        /* 图例样式 */
+        .legend-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 18px;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 13px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .legend-color {
+            width: 18px;
+            height: 18px;
+            border-radius:4px;
+            border: 1px solid #aaa;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <!-- 头部 -->
-        <header>
-            <h1>
-                <span class="zh">波音737-800 标准程序检查单</span>
-                <span class="en">BOEING 737-800 NORMAL CHECKLIST</span>
-            </h1>
-            <p class="tip">
-                <span class="zh">注：填写数据可本地保存，该版块处于测试阶段</span>
-                <span class="en">Note: Data is saved locally, this module is in testing</span>
-            </p>
-            <div style="margin-top:6px;">
-                <a href="index" class="back-link">← <span class="zh">返回官网</span><span class="en">Back to Home</span></a>
-            </div>
-        </header>
-
-        <!-- 飞行计划 -->
-        <div class="box flight-plan">
-            <h2>
-                <span class="zh">飞行计划</span>
-                <span class="en">FLIGHT PLAN</span>
-            </h2>
-
-            <!-- 航班号 + 机型 -->
-            <div class="plan-row">
-                <label><span class="zh">航班号：</span><span class="en">Flight No.:</span></label>
-                <input class="plan-input plan-field" placeholder="如：CSN3501" id="flightNo">
-                <label><span class="zh">机型识别：</span><span class="en">Aircraft Type:</span></label>
-                <input class="plan-input plan-field" placeholder="如：B738" id="aircraftType">
-            </div>
-
-            <!-- 起飞机场 + 目的地机场 -->
-            <div class="plan-row">
-                <label><span class="zh">起飞机场：</span><span class="en">Departure:</span></label>
-                <span class="airport-wrapper">
-                    <input class="plan-input plan-field airport-input" placeholder="ICAO 如 ZGSZ" id="depICAO">
-                    <span class="airport-info" id="depInfo"></span>
-                </span>
-                <label><span class="zh">目的地机场：</span><span class="en">Destination:</span></label>
-                <span class="airport-wrapper">
-                    <input class="plan-input plan-field airport-input" placeholder="ICAO 如 ZSLC" id="arrICAO">
-                    <span class="airport-info" id="arrInfo"></span>
-                </span>
-                <label><span class="zh">备降机场：</span><span class="en">Alternate:</span></label>
-                <span class="airport-wrapper">
-                    <input class="plan-input plan-field airport-input" placeholder="ICAO 如 ZUCK" id="altICAO">
-                    <span class="airport-info" id="altInfo"></span>
-                </span>
-            </div>
-
-            <!-- 备降机场 + 巡航高度 -->
-            <div class="plan-row">
-
-                <label><span class="zh">计划巡航高度：</span><span class="en">Cruise FL:</span></label>
-                <input class="plan-input plan-field" placeholder="如 FL350" id="cruiseFL">
-            </div>
-
-            <!-- 油量 + 重量 -->
-            <div class="plan-row">
-                <label><span class="zh">起飞总油量(kg)：</span><span class="en">Fuel Load(kg):</span></label>
-                <input class="plan-input plan-field" placeholder="如 12500" id="fuelLoad">
-                <label><span class="zh">起飞总重量(kg)：</span><span class="en">Takeoff Weight(kg):</span></label>
-                <input class="plan-input plan-field" placeholder="如 62000" id="takeoffWeight">
-            </div>
-
-            <!-- 航路天气 + 机组 -->
-            <div class="plan-row">
-                <label><span class="zh">航路天气：</span><span class="en">Route Weather:</span></label>
-                <input class="plan-input plan-field" placeholder="Clear / TS" id="routeWeather">
-                <label><span class="zh">机组人数：</span><span class="en">Crew:</span></label>
-                <input class="plan-input plan-field" placeholder="2P+4FA" id="crewCount">
-            </div>
-
-            <div class="btn-group">
-                <button class="btn-blue" onclick="savePlan()"><span class="zh">保存计划</span><span class="en">Save
-                        Plan</span></button>
-                <button class="btn-red" onclick="clearPlan()"><span class="zh">清空计划</span><span class="en">Clear
-                        Plan</span></button>
-            </div>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <img src="images/天河集团LOGO.png" width="250" style="max-width:100%; height:auto;" alt="天河轨道交通集团">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index">首页</a></li>
+                <li class="dropdown">
+                    <a href="skyriverccho">天河化学</a>
+                    <ul class="submenu">
+                        <li><a href="chtable">元素周期表</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">服务与新闻</a>
+                    <ul class="submenu">
+                        <li><a href="net_map">线路图查询</a></li>
+                        <li><a href="news">新闻</a></li>
+                        <li><a href="table">有轨电车成员表</a></li>
+                        <li><a href="links">友情链接</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">项目与产品</a>
+                    <ul class="submenu">
+                        <li><a href="strtable">特殊符号粘贴表</a></li>
+                        <li><a href="xpmoddownload">神岛地图传送</a></li>
+                        <li><a href="games">神岛地图传送</a></li>
+                        <li><a href="https://space.bilibili.com/1785851106">视频</a></li>
+                    </ul>
+                </li>
+                <li><a href="about_us">关于我们</a></li>
+            </ul>
         </div>
-
-        <!-- 检查单主体 -->
-        <div class="box">
-            <div class="btn-group" style="margin-bottom:20px">
-                <button class="btn-red" onclick="resetAllCheck()"><span class="zh">重置全部检查项</span><span class="en">Reset
-                        All Checklist</span></button>
+    </header>
+    <main>
+        <div style="height: 10px"></div>
+        <h1 style="text-align: center;">元素周期表</h1>
+        <div style="height: 10px"></div>
+        <div class="period-table-wrap">
+            <div class="legend-box">
+                <div class="legend-item"><span class="legend-color alkali"></span>碱金属</div>
+                <div class="legend-item"><span class="legend-color alkaline"></span>碱土金属</div>
+                <div class="legend-item"><span class="legend-color trans"></span>过渡金属</div>
+                <div class="legend-item"><span class="legend-color metalloid"></span>类金属</div>
+                <div class="legend-item"><span class="legend-color nonmetal"></span>非金属</div>
+                <div class="legend-item"><span class="legend-color halogen"></span>卤素</div>
+                <div class="legend-item"><span class="legend-color noble"></span>稀有气体</div>
+                <div class="legend-item"><span class="legend-color lanthanide"></span>镧系元素</div>
+                <div class="legend-item"><span class="legend-color actinide"></span>锕系元素</div>
             </div>
 
-            <div class="check-wrap">
-                <!-- 左栏 -->
-                <div class="col-left">
-                    <!-- PREFLIGHT -->
-                    <div class="check-block">
-                        <h3><span class="zh">起飞前检查 PREFLIGHT</span><span class="en">PREFLIGHT</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> IRS <span
-                                class="zh">关闭，后切换导航</span><span class="en">OFF, then NAV</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Emergency light <span
-                                class="zh">自动</span><span class="en">AUTO</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Hydraulic panel <span
-                                class="zh">检查，接通</span><span class="en">CHECKED, ON</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Oxygen <span
-                                class="zh">测试100%</span><span class="en">TESTED, 100%</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Parking brake <span
-                                class="zh">设置</span><span class="en">SET</span></div>
-                    </div>
-
-                    <!-- BEFORE START -->
-                    <div class="check-block">
-                        <h3><span class="zh">启动前 BEFORE START</span><span class="en">BEFORE START</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Seat belt sign <span
-                                class="zh">接通</span><span class="en">ON</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Window heat <span
-                                class="zh">接通</span><span class="en">ON</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Pressurization <span
-                                class="zh">设置</span><span class="en">SET</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> MCP V2 <input
-                                class="blank-input data-val"> HDG <input class="blank-input data-val"> ALT <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Takeoff speeds V1 <input
-                                class="blank-input data-val"> VR <input class="blank-input data-val"> V2 <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> CDU preflight <span
-                                class="zh">完成</span><span class="en">COMPLETED</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Trim <span
-                                class="zh">单位0,0</span><span class="en">UNITS, 0, 0</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Taxi and takeoff briefing
-                            <span class="zh">完成</span><span class="en">COMPLETED</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Anti collision light
-                            <span class="zh">接通</span><span class="en">ON</span></div>
-                    </div>
-
-                    <!-- AFTER START -->
-                    <div class="check-block">
-                        <h3><span class="zh">启动后 AFTER START</span><span class="en">AFTER START</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Generators <span
-                                class="zh">接通</span><span class="en">ON</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Probe heat <span
-                                class="zh">接通</span><span class="en">ON</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Anti-ice <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Isolation valve <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> APU <input
-                                class="blank-input data-val"></div>
-                    </div>
-
-                    <!-- BEFORE TAXI -->
-                    <div class="check-block">
-                        <h3><span class="zh">滑行前 BEFORE TAXI</span><span class="en">BEFORE TAXI</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Recall <span
-                                class="zh">检查无故障</span><span class="en">CHECKED</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Flight controls <span
-                                class="zh">检查</span><span class="en">CHECKED</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Flaps <input
-                                class="blank-input data-val"> <span class="zh">绿灯</span><span class="en">GREEN
-                                LIGHT</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Autobrake <span
-                                class="zh">预位中断起飞</span><span class="en">RTO</span></div>
-                    </div>
-
-                    <!-- BEFORE TAKEOFF -->
-                    <div class="check-block">
-                        <h3><span class="zh">起飞前 BEFORE TAKEOFF</span><span class="en">BEFORE TAKEOFF</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Engine bleeds <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Engine start switches
-                            <span class="zh">连续位</span><span class="en">CONT</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Radar <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Transponder <span
-                                class="zh">TA/RA</span><span class="en">TA/RA</span></div>
-                    </div>
-
-                    <!-- AFTER TAKEOFF -->
-                    <div class="check-block">
-                        <h3><span class="zh">起飞后 AFTER TAKEOFF</span><span class="en">AFTER TAKEOFF</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Engine bleeds <span
-                                class="zh">接通</span><span class="en">ON</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Packs <span
-                                class="zh">自动</span><span class="en">AUTO</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Engine start switches
-                            <span class="zh">断开</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Landing gear <span
-                                class="zh">收起无灯</span><span class="en">UP and OFF, NO LIGHT</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Flaps <span
-                                class="zh">收起无灯</span><span class="en">UP, NO LIGHT</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Autobrake <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
-                    </div>
-                </div>
-
-                <!-- 右栏 -->
-                <div class="col-right">
-                    <!-- DESCENT -->
-                    <div class="check-block">
-                        <h3><span class="zh">下降 DESCENT</span><span class="en">DESCENT</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Pressurization LDG ALT
-                            <input class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Recall <span
-                                class="zh">检查无故障</span><span class="en">CHECKED</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Autobrake <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Landing data VREF <input
-                                class="blank-input data-val"> Minimums <input class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Approach briefing <span
-                                class="zh">完成</span><span class="en">COMPLETED</span></div>
-                    </div>
-
-                    <!-- APPROACH -->
-                    <div class="check-block">
-                        <h3><span class="zh">进近 APPROACH</span><span class="en">APPROACH</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Altimeters <span
-                                class="zh">调定</span><span class="en">SET</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> NAV aids <span
-                                class="zh">调定</span><span class="en">SET</span></div>
-                    </div>
-
-                    <!-- LANDING -->
-                    <div class="check-block">
-                        <h3><span class="zh">着陆 LANDING</span><span class="en">LANDING</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Engine start switches
-                            <span class="zh">连续位</span><span class="en">CONT</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Speedbrake <span
-                                class="zh">预位</span><span class="en">ARMED</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Landing gear <span
-                                class="zh">放下三绿灯</span><span class="en">DOWN, 3 GREEN</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Flaps <input
-                                class="blank-input data-val"> <span class="zh">绿灯</span><span class="en">GREEN
-                                LIGHT</span></div>
-                    </div>
-
-                    <!-- AFTER LANDING -->
-                    <div class="check-block">
-                        <h3><span class="zh">着陆后 AFTER LANDING</span><span class="en">AFTER LANDING</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Anti-ice <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> APU <input
-                                class="blank-input data-val"></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Engine start switches
-                            <span class="zh">断开</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Radar <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Speedbrake <span
-                                class="zh">放下卡位</span><span class="en">DOWN, DETENT</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Flaps <span
-                                class="zh">收起无灯</span><span class="en">UP, NO LIGHT</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Autobrake <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Transponder <span
-                                class="zh">设置</span><span class="en">SET</span></div>
-                    </div>
-
-                    <!-- SHUTDOWN -->
-                    <div class="check-block">
-                        <h3><span class="zh">关车 SHUTDOWN</span><span class="en">SHUTDOWN</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Fuel pumps <span
-                                class="zh">设置</span><span class="en">SET</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Probe heat / anti-ice
-                            <span class="zh">断开</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Hydraulic panel <span
-                                class="zh">设置</span><span class="en">SET</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Parking brake <span
-                                class="zh">设置</span><span class="en">SET</span></div>
-                    </div>
-
-                    <!-- SECURE -->
-                    <div class="check-block">
-                        <h3><span class="zh">离机封存 SECURE</span><span class="en">SECURE</span></h3>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> IRS <span
-                                class="zh">关闭</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Emergency light <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Window heat <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> Packs <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
-                        <div class="check-line"><input type="checkbox" class="check data-val"> APU <span
-                                class="zh">断开</span><span class="en">OFF</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="boeing-footer">
-                <span class="zh">波音737-800 标准程序检查单</span>
-                <span class="en">BOEING 737-800 NORMAL CHECKLIST</span>
-            </div>
+            <table class="period-table">
+                <tbody>
+                    <tr>
+                        <td class="nonmetal">
+                            <div class="elem-num">1</div>
+                            <div class="elem-name">H</div>
+                            <div class="elem-cn">氢</div>
+                            <div class="elem-pinyin">qīng</div>
+                        </td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="noble">
+                            <div class="elem-num">2</div>
+                            <div class="elem-name">He</div>
+                            <div class="elem-cn">氦</div>
+                            <div class="elem-pinyin">hài</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="alkali">
+                            <div class="elem-num">3</div>
+                            <div class="elem-name">Li</div>
+                            <div class="elem-cn">锂</div>
+                            <div class="elem-pinyin">lǐ</div>
+                        </td>
+                        <td class="alkaline">
+                            <div class="elem-num">4</div>
+                            <div class="elem-name">Be</div>
+                            <div class="elem-cn">铍</div>
+                            <div class="elem-pinyin">pí</div>
+                        </td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="metalloid">
+                            <div class="elem-num">5</div>
+                            <div class="elem-name">B</div>
+                            <div class="elem-cn">硼</div>
+                            <div class="elem-pinyin">péng</div>
+                        </td>
+                        <td class="nonmetal">
+                            <div class="elem-num">6</div>
+                            <div class="elem-name">C</div>
+                            <div class="elem-cn">碳</div>
+                            <div class="elem-pinyin">tàn</div>
+                        </td>
+                        <td class="nonmetal">
+                            <div class="elem-num">7</div>
+                            <div class="elem-name">N</div>
+                            <div class="elem-cn">氮</div>
+                            <div class="elem-pinyin">dàn</div>
+                        </td>
+                        <td class="nonmetal">
+                            <div class="elem-num">8</div>
+                            <div class="elem-name">O</div>
+                            <div class="elem-cn">氧</div>
+                            <div class="elem-pinyin">yǎng</div>
+                        </td>
+                        <td class="halogen">
+                            <div class="elem-num">9</div>
+                            <div class="elem-name">F</div>
+                            <div class="elem-cn">氟</div>
+                            <div class="elem-pinyin">fú</div>
+                        </td>
+                        <td class="noble">
+                            <div class="elem-num">10</div>
+                            <div class="elem-name">Ne</div>
+                            <div class="elem-cn">氖</div>
+                            <div class="elem-pinyin">nǎi</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="alkali">
+                            <div class="elem-num">11</div>
+                            <div class="elem-name">Na</div>
+                            <div class="elem-cn">钠</div>
+                            <div class="elem-pinyin">nà</div>
+                        </td>
+                        <td class="alkaline">
+                            <div class="elem-num">12</div>
+                            <div class="elem-name">Mg</div>
+                            <div class="elem-cn">镁</div>
+                            <div class="elem-pinyin">měi</div>
+                        </td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="trans">
+                            <div class="elem-num">13</div>
+                            <div class="elem-name">Al</div>
+                            <div class="elem-cn">铝</div>
+                            <div class="elem-pinyin">lǚ</div>
+                        </td>
+                        <td class="metalloid">
+                            <div class="elem-num">14</div>
+                            <div class="elem-name">Si</div>
+                            <div class="elem-cn">硅</div>
+                            <div class="elem-pinyin">guī</div>
+                        </td>
+                        <td class="nonmetal">
+                            <div class="elem-num">15</div>
+                            <div class="elem-name">P</div>
+                            <div class="elem-cn">磷</div>
+                            <div class="elem-pinyin">lín</div>
+                        </td>
+                        <td class="nonmetal">
+                            <div class="elem-num">16</div>
+                            <div class="elem-name">S</div>
+                            <div class="elem-cn">硫</div>
+                            <div class="elem-pinyin">liú</div>
+                        </td>
+                        <td class="halogen">
+                            <div class="elem-num">17</div>
+                            <div class="elem-name">Cl</div>
+                            <div class="elem-cn">氯</div>
+                            <div class="elem-pinyin">lǜ</div>
+                        </td>
+                        <td class="noble">
+                            <div class="elem-num">18</div>
+                            <div class="elem-name">Ar</div>
+                            <div class="elem-cn">氩</div>
+                            <div class="elem-pinyin">yà</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="alkali">
+                            <div class="elem-num">19</div>
+                            <div class="elem-name">K</div>
+                            <div class="elem-cn">钾</div>
+                            <div class="elem-pinyin">jiǎ</div>
+                        </td>
+                        <td class="alkaline">
+                            <div class="elem-num">20</div>
+                            <div class="elem-name">Ca</div>
+                            <div class="elem-cn">钙</div>
+                            <div class="elem-pinyin">gài</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">21</div>
+                            <div class="elem-name">Sc</div>
+                            <div class="elem-cn">钪</div>
+                            <div class="elem-pinyin">kàng</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">22</div>
+                            <div class="elem-name">Ti</div>
+                            <div class="elem-cn">钛</div>
+                            <div class="elem-pinyin">tài</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">23</div>
+                            <div class="elem-name">V</div>
+                            <div class="elem-cn">钒</div>
+                            <div class="elem-pinyin">fán</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">24</div>
+                            <div class="elem-name">Cr</div>
+                            <div class="elem-cn">铬</div>
+                            <div class="elem-pinyin">gè</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">25</div>
+                            <div class="elem-name">Mn</div>
+                            <div class="elem-cn">锰</div>
+                            <div class="elem-pinyin">měng</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">26</div>
+                            <div class="elem-name">Fe</div>
+                            <div class="elem-cn">铁</div>
+                            <div class="elem-pinyin">tiě</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">27</div>
+                            <div class="elem-name">Co</div>
+                            <div class="elem-cn">钴</div>
+                            <div class="elem-pinyin">gǔ</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">28</div>
+                            <div class="elem-name">Ni</div>
+                            <div class="elem-cn">镍</div>
+                            <div class="elem-pinyin">niè</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">29</div>
+                            <div class="elem-name">Cu</div>
+                            <div class="elem-cn">铜</div>
+                            <div class="elem-pinyin">tóng</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">30</div>
+                            <div class="elem-name">Zn</div>
+                            <div class="elem-cn">锌</div>
+                            <div class="elem-pinyin">xīn</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">31</div>
+                            <div class="elem-name">Ga</div>
+                            <div class="elem-cn">镓</div>
+                            <div class="elem-pinyin">jiā</div>
+                        </td>
+                        <td class="metalloid">
+                            <div class="elem-num">32</div>
+                            <div class="elem-name">Ge</div>
+                            <div class="elem-cn">锗</div>
+                            <div class="elem-pinyin">zhě</div>
+                        </td>
+                        <td class="metalloid">
+                            <div class="elem-num">33</div>
+                            <div class="elem-name">As</div>
+                            <div class="elem-cn">砷</div>
+                            <div class="elem-pinyin">shēn</div>
+                        </td>
+                        <td class="nonmetal">
+                            <div class="elem-num">34</div>
+                            <div class="elem-name">Se</div>
+                            <div class="elem-cn">硒</div>
+                            <div class="elem-pinyin">xī</div>
+                        </td>
+                        <td class="halogen">
+                            <div class="elem-num">35</div>
+                            <div class="elem-name">Br</div>
+                            <div class="elem-cn">溴</div>
+                            <div class="elem-pinyin">xiù</div>
+                        </td>
+                        <td class="noble">
+                            <div class="elem-num">36</div>
+                            <div class="elem-name">Kr</div>
+                            <div class="elem-cn">氪</div>
+                            <div class="elem-pinyin">kè</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="alkali">
+                            <div class="elem-num">37</div>
+                            <div class="elem-name">Rb</div>
+                            <div class="elem-cn">铷</div>
+                            <div class="elem-pinyin">rú</div>
+                        </td>
+                        <td class="alkaline">
+                            <div class="elem-num">38</div>
+                            <div class="elem-name">Sr</div>
+                            <div class="elem-cn">锶</div>
+                            <div class="elem-pinyin">sī</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">39</div>
+                            <div class="elem-name">Y</div>
+                            <div class="elem-cn">钇</div>
+                            <div class="elem-pinyin">yǐ</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">40</div>
+                            <div class="elem-name">Zr</div>
+                            <div class="elem-cn">锆</div>
+                            <div class="elem-pinyin">gào</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">41</div>
+                            <div class="elem-name">Nb</div>
+                            <div class="elem-cn">铌</div>
+                            <div class="elem-pinyin">ní</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">42</div>
+                            <div class="elem-name">Mo</div>
+                            <div class="elem-cn">钼</div>
+                            <div class="elem-pinyin">mù</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">43</div>
+                            <div class="elem-name">Tc</div>
+                            <div class="elem-cn">锝</div>
+                            <div class="elem-pinyin">dé</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">44</div>
+                            <div class="elem-name">Ru</div>
+                            <div class="elem-cn">钌</div>
+                            <div class="elem-pinyin">liǎo</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">45</div>
+                            <div class="elem-name">Rh</div>
+                            <div class="elem-cn">铑</div>
+                            <div class="elem-pinyin">lǎo</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">46</div>
+                            <div class="elem-name">Pd</div>
+                            <div class="elem-cn">钯</div>
+                            <div class="elem-pinyin">bǎ</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">47</div>
+                            <div class="elem-name">Ag</div>
+                            <div class="elem-cn">银</div>
+                            <div class="elem-pinyin">yín</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">48</div>
+                            <div class="elem-name">Cd</div>
+                            <div class="elem-cn">镉</div>
+                            <div class="elem-pinyin">gé</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">49</div>
+                            <div class="elem-name">In</div>
+                            <div class="elem-cn">铟</div>
+                            <div class="elem-pinyin">yīn</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">50</div>
+                            <div class="elem-name">Sn</div>
+                            <div class="elem-cn">锡</div>
+                            <div class="elem-pinyin">xī</div>
+                        </td>
+                        <td class="metalloid">
+                            <div class="elem-num">51</div>
+                            <div class="elem-name">Sb</div>
+                            <div class="elem-cn">锑</div>
+                            <div class="elem-pinyin">tī</div>
+                        </td>
+                        <td class="metalloid">
+                            <div class="elem-num">52</div>
+                            <div class="elem-name">Te</div>
+                            <div class="elem-cn">碲</div>
+                            <div class="elem-pinyin">dì</div>
+                        </td>
+                        <td class="halogen">
+                            <div class="elem-num">53</div>
+                            <div class="elem-name">I</div>
+                            <div class="elem-cn">碘</div>
+                            <div class="elem-pinyin">diǎn</div>
+                        </td>
+                        <td class="noble">
+                            <div class="elem-num">54</div>
+                            <div class="elem-name">Xe</div>
+                            <div class="elem-cn">氙</div>
+                            <div class="elem-pinyin">xiān</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="alkali">
+                            <div class="elem-num">55</div>
+                            <div class="elem-name">Cs</div>
+                            <div class="elem-cn">铯</div>
+                            <div class="elem-pinyin">sè</div>
+                        </td>
+                        <td class="alkaline">
+                            <div class="elem-num">56</div>
+                            <div class="elem-name">Ba</div>
+                            <div class="elem-cn">钡</div>
+                            <div class="elem-pinyin">bèi</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">57-71</div>
+                            <div class="elem-name">La-Lu</div>
+                            <div class="elem-cn">镧系</div>
+                            <div class="elem-pinyin">lán xì</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">72</div>
+                            <div class="elem-name">Hf</div>
+                            <div class="elem-cn">铪</div>
+                            <div class="elem-pinyin">hā</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">73</div>
+                            <div class="elem-name">Ta</div>
+                            <div class="elem-cn">钽</div>
+                            <div class="elem-pinyin">tǎn</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">74</div>
+                            <div class="elem-name">W</div>
+                            <div class="elem-cn">钨</div>
+                            <div class="elem-pinyin">wū</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">75</div>
+                            <div class="elem-name">Re</div>
+                            <div class="elem-cn">铼</div>
+                            <div class="elem-pinyin">lái</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">76</div>
+                            <div class="elem-name">Os</div>
+                            <div class="elem-cn">锇</div>
+                            <div class="elem-pinyin">é</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">77</div>
+                            <div class="elem-name">Ir</div>
+                            <div class="elem-cn">铱</div>
+                            <div class="elem-pinyin">yī</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">78</div>
+                            <div class="elem-name">Pt</div>
+                            <div class="elem-cn">铂</div>
+                            <div class="elem-pinyin">bó</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">79</div>
+                            <div class="elem-name">Au</div>
+                            <div class="elem-cn">金</div>
+                            <div class="elem-pinyin">jīn</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">80</div>
+                            <div class="elem-name">Hg</div>
+                            <div class="elem-cn">汞</div>
+                            <div class="elem-pinyin">gǒng</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">81</div>
+                            <div class="elem-name">Tl</div>
+                            <div class="elem-cn">铊</div>
+                            <div class="elem-pinyin">tā</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">82</div>
+                            <div class="elem-name">Pb</div>
+                            <div class="elem-cn">铅</div>
+                            <div class="elem-pinyin">qiān</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">83</div>
+                            <div class="elem-name">Bi</div>
+                            <div class="elem-cn">铋</div>
+                            <div class="elem-pinyin">bì</div>
+                        </td>
+                        <td class="metalloid">
+                            <div class="elem-num">84</div>
+                            <div class="elem-name">Po</div>
+                            <div class="elem-cn">钋</div>
+                            <div class="elem-pinyin">pō</div>
+                        </td>
+                        <td class="halogen">
+                            <div class="elem-num">85</div>
+                            <div class="elem-name">At</div>
+                            <div class="elem-cn">砹</div>
+                            <div class="elem-pinyin">ài</div>
+                        </td>
+                        <td class="noble">
+                            <div class="elem-num">86</div>
+                            <div class="elem-name">Rn</div>
+                            <div class="elem-cn">氡</div>
+                            <div class="elem-pinyin">dōng</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="alkali">
+                            <div class="elem-num">87</div>
+                            <div class="elem-name">Fr</div>
+                            <div class="elem-cn">钫</div>
+                            <div class="elem-pinyin">fāng</div>
+                        </td>
+                        <td class="alkaline">
+                            <div class="elem-num">88</div>
+                            <div class="elem-name">Ra</div>
+                            <div class="elem-cn">镭</div>
+                            <div class="elem-pinyin">léi</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">89-103</div>
+                            <div class="elem-name">Ac-Lr</div>
+                            <div class="elem-cn">锕系</div>
+                            <div class="elem-pinyin">ā xì</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">104</div>
+                            <div class="elem-name">Rf</div>
+                            <div class="elem-cn">𬬻</div>
+                            <div class="elem-pinyin">lú</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">105</div>
+                            <div class="elem-name">Db</div>
+                            <div class="elem-cn">𬭊</div>
+                            <div class="elem-pinyin">dù</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">106</div>
+                            <div class="elem-name">Sg</div>
+                            <div class="elem-cn">𬭳</div>
+                            <div class="elem-pinyin">xǐ</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">107</div>
+                            <div class="elem-name">Bh</div>
+                            <div class="elem-cn">𬭛</div>
+                            <div class="elem-pinyin">bō</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">108</div>
+                            <div class="elem-name">Hs</div>
+                            <div class="elem-cn">𬭶</div>
+                            <div class="elem-pinyin">hēi</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">109</div>
+                            <div class="elem-name">Mt</div>
+                            <div class="elem-cn">鿏</div>
+                            <div class="elem-pinyin">mài</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">110</div>
+                            <div class="elem-name">Ds</div>
+                            <div class="elem-cn">𫟼</div>
+                            <div class="elem-pinyin">dá</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">111</div>
+                            <div class="elem-name">Rg</div>
+                            <div class="elem-cn">錀</div>
+                            <div class="elem-pinyin">lún</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">112</div>
+                            <div class="elem-name">Cn</div>
+                            <div class="elem-cn">鎶</div>
+                            <div class="elem-pinyin">gē</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">113</div>
+                            <div class="elem-name">Nh</div>
+                            <div class="elem-cn">鉨</div>
+                            <div class="elem-pinyin">nǐ</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">114</div>
+                            <div class="elem-name">Fl</div>
+                            <div class="elem-cn">𫓧</div>
+                            <div class="elem-pinyin">fū</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">115</div>
+                            <div class="elem-name">Mc</div>
+                            <div class="elem-cn">镆</div>
+                            <div class="elem-pinyin">mò</div>
+                        </td>
+                        <td class="trans">
+                            <div class="elem-num">116</div>
+                            <div class="elem-name">Lv</div>
+                            <div class="elem-cn">𫟷</div>
+                            <div class="elem-pinyin">lì</div>
+                        </td>
+                        <td class="halogen">
+                            <div class="elem-num">117</div>
+                            <div class="elem-name">Ts</div>
+                            <div class="elem-cn">鿬</div>
+                            <div class="elem-pinyin">tián</div>
+                        </td>
+                        <td class="noble">
+                            <div class="elem-num">118</div>
+                            <div class="elem-name">Og</div>
+                            <div class="elem-cn">鿫</div>
+                            <div class="elem-pinyin">ào</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table class="period-table">
+                <tbody>
+                    <tr>
+                        <td class="empty"></td>
+                        <td class="lanthanide">
+                            <div class="elem-num">57</div>
+                            <div class="elem-name">La</div>
+                            <div class="elem-cn">镧</div>
+                            <div class="elem-pinyin">lán</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">58</div>
+                            <div class="elem-name">Ce</div>
+                            <div class="elem-cn">铈</div>
+                            <div class="elem-pinyin">shì</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">59</div>
+                            <div class="elem-name">Pr</div>
+                            <div class="elem-cn">镨</div>
+                            <div class="elem-pinyin">pǔ</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">60</div>
+                            <div class="elem-name">Nd</div>
+                            <div class="elem-cn">钕</div>
+                            <div class="elem-pinyin">nǚ</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">61</div>
+                            <div class="elem-name">Pm</div>
+                            <div class="elem-cn">钷</div>
+                            <div class="elem-pinyin">pǒ</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">62</div>
+                            <div class="elem-name">Sm</div>
+                            <div class="elem-cn">钐</div>
+                            <div class="elem-pinyin">shān</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">63</div>
+                            <div class="elem-name">Eu</div>
+                            <div class="elem-cn">铕</div>
+                            <div class="elem-pinyin">yǒu</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">64</div>
+                            <div class="elem-name">Gd</div>
+                            <div class="elem-cn">钆</div>
+                            <div class="elem-pinyin">gá</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">65</div>
+                            <div class="elem-name">Tb</div>
+                            <div class="elem-cn">铽</div>
+                            <div class="elem-pinyin">tè</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">66</div>
+                            <div class="elem-name">Dy</div>
+                            <div class="elem-cn">镝</div>
+                            <div class="elem-pinyin">dī</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">67</div>
+                            <div class="elem-name">Ho</div>
+                            <div class="elem-cn">钬</div>
+                            <div class="elem-pinyin">huǒ</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">68</div>
+                            <div class="elem-name">Er</div>
+                            <div class="elem-cn">铒</div>
+                            <div class="elem-pinyin">ěr</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">69</div>
+                            <div class="elem-name">Tm</div>
+                            <div class="elem-cn">铥</div>
+                            <div class="elem-pinyin">diū</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">70</div>
+                            <div class="elem-name">Yb</div>
+                            <div class="elem-cn">镱</div>
+                            <div class="elem-pinyin">yì</div>
+                        </td>
+                        <td class="lanthanide">
+                            <div class="elem-num">71</div>
+                            <div class="elem-name">Lu</div>
+                            <div class="elem-cn">镥</div>
+                            <div class="elem-pinyin">lǔ</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="empty"></td>
+                        <td class="actinide">
+                            <div class="elem-num">89</div>
+                            <div class="elem-name">Ac</div>
+                            <div class="elem-cn">锕</div>
+                            <div class="elem-pinyin">ā</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">90</div>
+                            <div class="elem-name">Th</div>
+                            <div class="elem-cn">钍</div>
+                            <div class="elem-pinyin">tǔ</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">91</div>
+                            <div class="elem-name">Pa</div>
+                            <div class="elem-cn">镤</div>
+                            <div class="elem-pinyin">pú</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">92</div>
+                            <div class="elem-name">U</div>
+                            <div class="elem-cn">铀</div>
+                            <div class="elem-pinyin">yóu</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">93</div>
+                            <div class="elem-name">Np</div>
+                            <div class="elem-cn">镎</div>
+                            <div class="elem-pinyin">ná</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">94</div>
+                            <div class="elem-name">Pu</div>
+                            <div class="elem-cn">钚</div>
+                            <div class="elem-pinyin">bù</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">95</div>
+                            <div class="elem-name">Am</div>
+                            <div class="elem-cn">镅</div>
+                            <div class="elem-pinyin">méi</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">96</div>
+                            <div class="elem-name">Cm</div>
+                            <div class="elem-cn">锔</div>
+                            <div class="elem-pinyin">jú</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">97</div>
+                            <div class="elem-name">Bk</div>
+                            <div class="elem-cn">锫</div>
+                            <div class="elem-pinyin">péi</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">98</div>
+                            <div class="elem-name">Cf</div>
+                            <div class="elem-cn">锎</div>
+                            <div class="elem-pinyin">kāi</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">99</div>
+                            <div class="elem-name">Es</div>
+                            <div class="elem-cn">锿</div>
+                            <div class="elem-pinyin">āi</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">100</div>
+                            <div class="elem-name">Fm</div>
+                            <div class="elem-cn">镄</div>
+                            <div class="elem-pinyin">fèi</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">101</div>
+                            <div class="elem-name">Md</div>
+                            <div class="elem-cn">钔</div>
+                            <div class="elem-pinyin">mén</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">102</div>
+                            <div class="elem-name">No</div>
+                            <div class="elem-cn">锘</div>
+                            <div class="elem-pinyin">nuò</div>
+                        </td>
+                        <td class="actinide">
+                            <div class="elem-num">103</div>
+                            <div class="elem-name">Lr</div>
+                            <div class="elem-cn">铹</div>
+                            <div class="elem-pinyin">láo</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </div>
-
-    <!-- ========== 全新底部（完全参照天河集团） ========== -->
+    </main>
+    <div style="height: 40px;"></div>
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-left">
                 <div class="copyright">
                     正在开发内测：自动化古诗文翻译工具 | 化学反应原理演示 | 图形化编程
                     <br>
-                    © 2025 天河集团 | 版权所有
+                    © 2025 - 2026 天河集团 | 版权所有
                     <br>
                     建议使用PC端访问此网站
                     <br>
@@ -763,9 +1287,7 @@
                         岛ICP备20260418号
                     </a>
                 </div>
-                <div class="legal-links">
-                    <!-- 预留法律链接位置 -->
-                </div>
+                <div class="legal-links"></div>
                 <div class="footer-note">
                     本网站内容受知识产权保护，未经许可不得转载。
                 </div>
@@ -780,329 +1302,6 @@
             </div>
         </div>
     </footer>
-    <!-- ========== 底部结束 ========== -->
-
-    <script>
-        // ============================================================
-        //  1. 机场数据库 (ICAO → { name, iata, city })
-        // ============================================================
-        const AIRPORT_DB = {
-            // ========== 一、中国华北地区 ==========
-            ZBAA: { name: '北京首都国际机场', iata: 'PEK', city: '北京' },
-            ZBAD: { name: '北京大兴国际机场', iata: 'PKX', city: '北京' },
-            ZBTJ: { name: '天津滨海国际机场', iata: 'TSN', city: '天津' },
-            ZBSJ: { name: '石家庄正定国际机场', iata: 'SJW', city: '石家庄' },
-            ZBHD: { name: '邯郸马头机场', iata: 'HDG', city: '邯郸' },
-            ZBDT: { name: '大同云冈机场', iata: 'DAT', city: '大同' },
-            ZBTS: { name: '朔州怀仁机场', iata: 'SZH', city: '朔州' },
-            ZBHZ: { name: '长治王村机场', iata: 'CIH', city: '长治' },
-            ZBHH: { name: '呼和浩特白塔国际机场', iata: 'HET', city: '呼和浩特' },
-            ZBDS: { name: '鄂尔多斯伊金霍洛国际机场', iata: 'DSN', city: '鄂尔多斯' },
-            ZBAL: { name: '阿拉善左旗巴彦浩特机场', iata: 'AXF', city: '阿拉善左旗' },
-            ZBYN: { name: '太原武宿国际机场', iata: 'TYN', city: '太原' },
-
-            // ========== 二、中国东北地区 ==========
-            ZYHB: { name: '哈尔滨太平国际机场', iata: 'HRB', city: '哈尔滨' },
-            ZYCC: { name: '长春龙嘉国际机场', iata: 'CGQ', city: '长春' },
-            ZYTX: { name: '沈阳桃仙国际机场', iata: 'SHE', city: '沈阳' },
-            ZYTL: { name: '大连周水子国际机场', iata: 'DLC', city: '大连' },
-            ZYJD: { name: '丹东浪头机场', iata: 'DDG', city: '丹东' },
-            ZYHE: { name: '黑河瑷珲机场', iata: 'HEK', city: '黑河' },
-            ZYLJ: { name: '牡丹江海浪机场', iata: 'MDG', city: '牡丹江' },
-            ZYSY: { name: '齐齐哈尔三家子机场', iata: 'NDG', city: '齐齐哈尔' },
-            ZYAS: { name: '延吉朝阳川国际机场', iata: 'YNJ', city: '延吉' },
-
-            // ========== 三、中国华东地区 ==========
-            ZSSS: { name: '上海虹桥国际机场', iata: 'SHA', city: '上海' },
-            ZSPD: { name: '上海浦东国际机场', iata: 'PVG', city: '上海' },
-            ZSNJ: { name: '南京禄口国际机场', iata: 'NKG', city: '南京' },
-            ZSHC: { name: '杭州萧山国际机场', iata: 'HGH', city: '杭州' },
-            ZSNB: { name: '宁波栎社国际机场', iata: 'NGB', city: '宁波' },
-            ZSWZ: { name: '温州龙湾国际机场', iata: 'WNZ', city: '温州' },
-            ZSFZ: { name: '福州长乐国际机场', iata: 'FOC', city: '福州' },
-            ZSAM: { name: '厦门高崎国际机场', iata: 'XMN', city: '厦门' },
-            ZSQD: { name: '青岛胶东国际机场', iata: 'TAO', city: '青岛' },
-            ZSYT: { name: '烟台蓬莱国际机场', iata: 'YNT', city: '烟台' },
-            ZSJN: { name: '济南遥墙国际机场', iata: 'TNA', city: '济南' },
-            ZSQZ: { name: '泉州晋江国际机场', iata: 'JJN', city: '泉州' },
-            ZSXZ: { name: '徐州观音国际机场', iata: 'XUZ', city: '徐州' },
-            ZSLG: { name: '连云港花果山国际机场', iata: 'LYG', city: '连云港' },
-            ZSCG: { name: '常州奔牛国际机场', iata: 'CZX', city: '常州' },
-            ZSYA: { name: '盐城南洋国际机场', iata: 'YNZ', city: '盐城' },
-            ZSWY: { name: '武夷山机场', iata: 'WUS', city: '武夷山' },
-            ZSZS: { name: '舟山普陀山机场', iata: 'HSN', city: '舟山' },
-            ZSJH: { name: '义乌机场', iata: 'YIW', city: '义乌' },
-            ZSLC: { name: '庐山九江机场', iata: 'JIU', city: '九江' },
-
-            // ========== 四、中国中南地区 ==========
-            ZGGG: { name: '广州白云国际机场', iata: 'CAN', city: '广州' },
-            ZGSZ: { name: '深圳宝安国际机场', iata: 'SZX', city: '深圳' },
-            ZGSD: { name: '珠海金湾国际机场', iata: 'ZUH', city: '珠海' },
-            ZGHA: { name: '长沙黄花国际机场', iata: 'CSX', city: '长沙' },
-            ZHHH: { name: '武汉天河国际机场', iata: 'WUH', city: '武汉' },
-            ZHCC: { name: '郑州新郑国际机场', iata: 'CGO', city: '郑州' },
-            ZGNN: { name: '南宁吴圩国际机场', iata: 'NNG', city: '南宁' },
-            ZJHK: { name: '海口美兰国际机场', iata: 'HAK', city: '海口' },
-            ZJSY: { name: '三亚凤凰国际机场', iata: 'SYX', city: '三亚' },
-            ZGZJ: { name: '湛江吴川国际机场', iata: 'ZHA', city: '湛江' },
-            ZGOW: { name: '揭阳潮汕国际机场', iata: 'SWA', city: '揭阳' },
-            ZGLG: { name: '柳州白莲机场', iata: 'LZH', city: '柳州' },
-            ZGKL: { name: '桂林两江国际机场', iata: 'KWL', city: '桂林' },
-            ZHNY: { name: '南阳姜营机场', iata: 'NNY', city: '南阳' },
-            ZHGD: { name: '张家界荷花国际机场', iata: 'DYG', city: '张家界' },
-            ZGZU: { name: '梧州西江机场', iata: 'WUZ', city: '梧州' },
-
-            // ========== 五、中国西南地区（重点补齐泸州、宜宾） ==========
-            ZUUU: { name: '成都双流国际机场', iata: 'CTU', city: '成都' },
-            ZUTF: { name: '成都天府国际机场', iata: 'TFU', city: '成都' },
-            ZUCK: { name: '重庆江北国际机场', iata: 'CKG', city: '重庆' },
-            ZPPP: { name: '昆明长水国际机场', iata: 'KMG', city: '昆明' },
-            ZUGY: { name: '贵阳龙洞堡国际机场', iata: 'KWE', city: '贵阳' },
-            ZPLJ: { name: '丽江三义国际机场', iata: 'LJG', city: '丽江' },
-            ZPDL: { name: '大理荒草坝机场', iata: 'DLU', city: '大理' },
-            ZPJH: { name: '西双版纳嘎洒国际机场', iata: 'JHG', city: '西双版纳' },
-            ZULS: { name: '拉萨贡嘎国际机场', iata: 'LXA', city: '拉萨' },
-            ZUMY: { name: '绵阳南郊机场', iata: 'MIG', city: '绵阳' },
-            ZUNZ: { name: '林芝米林机场', iata: 'LZY', city: '林芝' },
-            ZUZY: { name: '九寨黄龙机场', iata: 'JZH', city: '九寨沟' },
-            ZUJA: { name: '西昌青山机场', iata: 'XIC', city: '西昌' },
-            ZULZ: { name: '泸州云龙机场', iata: 'LZO', city: '泸州' },
-            ZUYB: { name: '宜宾五粮液机场', iata: 'YBP', city: '宜宾' },
-            ZUBC: { name: '巴中恩阳机场', iata: 'BZX', city: '巴中' },
-
-            // ========== 六、中国西北地区 ==========
-            ZLXY: { name: '西安咸阳国际机场', iata: 'XIY', city: '西安' },
-            ZLLL: { name: '兰州中川国际机场', iata: 'LHW', city: '兰州' },
-            ZLXN: { name: '西宁曹家堡国际机场', iata: 'XNN', city: '西宁' },
-            ZWWW: { name: '乌鲁木齐地窝堡国际机场', iata: 'URC', city: '乌鲁木齐' },
-            ZWSH: { name: '喀什徕宁国际机场', iata: 'KHG', city: '喀什' },
-            ZWKL: { name: '库尔勒梨城机场', iata: 'KRL', city: '库尔勒' },
-            ZLDH: { name: '敦煌莫高国际机场', iata: 'DNH', city: '敦煌' },
-            ZLJC: { name: '金昌金川机场', iata: 'JIC', city: '金昌' },
-            ZLHZ: { name: '固原六盘山机场', iata: 'GYU', city: '固原' },
-            ZWTC: { name: '吐鲁番交河机场', iata: 'TLQ', city: '吐鲁番' },
-
-            // ========== 七、中国港澳台地区 ==========
-            VHHH: { name: '香港国际机场', iata: 'HKG', city: '香港' },
-            VMMC: { name: '澳门国际机场', iata: 'MFM', city: '澳门' },
-            RCTP: { name: '台北桃园国际机场', iata: 'TPE', city: '台北' },
-            RCSS: { name: '台北松山机场', iata: 'TSA', city: '台北' },
-            RCKH: { name: '高雄小港机场', iata: 'KHH', city: '高雄' },
-
-            // ========== 八、亚洲其他城市 ==========
-            WSSS: { name: '新加坡樟宜国际机场', iata: 'SIN', city: '新加坡' },
-            WMKK: { name: '吉隆坡国际机场', iata: 'KUL', city: '吉隆坡' },
-            VTBS: { name: '曼谷素万那普国际机场', iata: 'BKK', city: '曼谷' },
-            VTSP: { name: '曼谷廊曼机场', iata: 'DMK', city: '曼谷' },
-            RJBB: { name: '大阪关西国际机场', iata: 'KIX', city: '大阪' },
-            RJTT: { name: '东京羽田国际机场', iata: 'HND', city: '东京' },
-            RJAA: { name: '东京成田国际机场', iata: 'NRT', city: '东京' },
-            RKSI: { name: '首尔仁川国际机场', iata: 'ICN', city: '首尔' },
-            RKSS: { name: '首尔金浦机场', iata: 'GMP', city: '首尔' },
-            VVNB: { name: '河内内排国际机场', iata: 'HAN', city: '河内' },
-            VVTS: { name: '胡志明新山一国际机场', iata: 'SGN', city: '胡志明' },
-            OMDB: { name: '迪拜国际机场', iata: 'DXB', city: '迪拜' },
-            OTBD: { name: '多哈哈马德国际机场', iata: 'DOH', city: '多哈' },
-            OTHH: { name: '科威特国际机场', iata: 'KWI', city: '科威特' },
-
-            // ========== 九、欧洲主要枢纽机场 ==========
-            EGLL: { name: '伦敦希思罗机场', iata: 'LHR', city: '伦敦' },
-            EGKK: { name: '伦敦盖特威克机场', iata: 'LGW', city: '伦敦' },
-            LFPG: { name: '巴黎戴高乐机场', iata: 'CDG', city: '巴黎' },
-            LFPB: { name: '巴黎奥利机场', iata: 'ORY', city: '巴黎' },
-            EDDF: { name: '法兰克福机场', iata: 'FRA', city: '法兰克福' },
-            EHAM: { name: '阿姆斯特丹史基浦机场', iata: 'AMS', city: '阿姆斯特丹' },
-            UUEE: { name: '莫斯科谢列梅捷沃机场', iata: 'SVO', city: '莫斯科' },
-            EKCH: { name: '哥本哈根凯斯楚普机场', iata: 'CPH', city: '哥本哈根' },
-            ENGM: { name: '奥斯陆加勒穆恩机场', iata: 'OSL', city: '奥斯陆' },
-            ESSA: { name: '斯德哥尔摩阿兰达机场', iata: 'ARN', city: '斯德哥尔摩' },
-            LOWW: { name: '维也纳国际机场', iata: 'VIE', city: '维也纳' },
-            LKPR: { name: '布拉格瓦茨拉夫·哈维尔机场', iata: 'PRG', city: '布拉格' },
-            LEBL: { name: '巴塞罗那埃尔普拉特机场', iata: 'BCN', city: '巴塞罗那' },
-            LEMD: { name: '马德里巴拉哈斯机场', iata: 'MAD', city: '马德里' },
-            LIRF: { name: '罗马菲乌米奇诺机场', iata: 'FCO', city: '罗马' },
-            LSZH: { name: '苏黎世机场', iata: 'ZRH', city: '苏黎世' },
-            EDDB: { name: '柏林勃兰登堡机场', iata: 'BER', city: '柏林' },
-            LIME: { name: '米兰马尔彭萨机场', iata: 'MXP', city: '米兰' },
-
-            // ========== 十、北美洲 ==========
-            KJFK: { name: '纽约肯尼迪国际机场', iata: 'JFK', city: '纽约' },
-            KLAX: { name: '洛杉矶国际机场', iata: 'LAX', city: '洛杉矶' },
-            KORD: { name: '芝加哥奥黑尔国际机场', iata: 'ORD', city: '芝加哥' },
-            KDFW: { name: '达拉斯沃思堡机场', iata: 'DFW', city: '达拉斯' },
-            CYVR: { name: '温哥华国际机场', iata: 'YVR', city: '温哥华' },
-            CYYZ: { name: '多伦多皮尔逊机场', iata: 'YYZ', city: '多伦多' },
-
-            // ========== 十一、大洋洲 ==========
-            YSSY: { name: '悉尼金斯福德·史密斯机场', iata: 'SYD', city: '悉尼' },
-            YMML: { name: '墨尔本国际机场', iata: 'MEL', city: '墨尔本' },
-            NZAA: { name: '奥克兰国际机场', iata: 'AKL', city: '奥克兰' },
-        }
-
-        // ============================================================
-        //  2. 机场信息显示逻辑
-        // ============================================================
-        const airportInputs = [
-            { input: document.getElementById('depICAO'), info: document.getElementById('depInfo') },
-            { input: document.getElementById('arrICAO'), info: document.getElementById('arrInfo') },
-            { input: document.getElementById('altICAO'), info: document.getElementById('altInfo') },
-        ];
-
-        function updateAirportInfo(inputEl, infoEl) {
-            const code = inputEl.value.trim().toUpperCase();
-            const match = AIRPORT_DB[code];
-
-            infoEl.classList.remove('show', 'match-success', 'match-fail');
-            infoEl.textContent = '';
-
-            if (!code) return;
-
-            if (match) {
-                infoEl.innerHTML =
-                    `<span class="city-name">${match.city}</span><span class="sep">·</span><span class="airport-name">${match.name}</span> <span class="iata-badge">${match.iata}</span>`;
-                infoEl.classList.add('show', 'match-success');
-            } else {
-                infoEl.textContent = '❓ 未找到';
-                infoEl.classList.add('show', 'match-fail');
-                clearTimeout(infoEl._hideTimer);
-                infoEl._hideTimer = setTimeout(() => {
-                    if (inputEl.value.trim().toUpperCase() === code) {
-                        infoEl.classList.remove('show', 'match-fail');
-                        infoEl.textContent = '';
-                    }
-                }, 2000);
-            }
-        }
-
-        airportInputs.forEach(({ input, info }) => {
-            if (!input) return;
-            const handler = function () {
-                updateAirportInfo(this, info);
-                saveAllData();
-            };
-            input.addEventListener('input', handler);
-            input.addEventListener('change', handler);
-            setTimeout(() => {
-                updateAirportInfo(input, info);
-            }, 50);
-        });
-
-        // ============================================================
-        //  3. 本地存储 / 语言切换 / 重置
-        // ============================================================
-        const CHECK_KEY = "b737_check_tick";
-        const INPUT_KEY = "b737_fill_data";
-        const PLAN_KEY = "b737_flight_plan";
-        const LANG_KEY = "checklist_language";
-
-        const allCheck = document.querySelectorAll(".check");
-        const allFillInput = document.querySelectorAll(".blank-input");
-
-        const planFieldIds = [
-            'flightNo', 'aircraftType',
-            'depICAO', 'arrICAO', 'altICAO',
-            'cruiseFL', 'fuelLoad', 'takeoffWeight',
-            'routeWeather', 'crewCount'
-        ];
-        const planFields = planFieldIds.map(id => document.getElementById(id));
-
-        function switchLang(lang) {
-            if (lang === "en") document.body.classList.add("en-mode");
-            else document.body.classList.remove("en-mode");
-            localStorage.setItem(LANG_KEY, lang);
-        }
-
-        function saveAllData() {
-            let tickList = [];
-            allCheck.forEach(item => tickList.push(item.checked));
-            localStorage.setItem(CHECK_KEY, JSON.stringify(tickList));
-
-            let fillList = [];
-            allFillInput.forEach(item => fillList.push(item.value));
-            localStorage.setItem(INPUT_KEY, JSON.stringify(fillList));
-
-            let planList = planFields.map(inp => inp ? inp.value : '');
-            localStorage.setItem(PLAN_KEY, JSON.stringify(planList));
-        }
-
-        function loadAllData() {
-            let saveLang = localStorage.getItem(LANG_KEY) || "zh";
-            switchLang(saveLang);
-
-            let planArr = JSON.parse(localStorage.getItem(PLAN_KEY) || "[]");
-            planFields.forEach((inp, i) => {
-                if (inp) inp.value = planArr[i] || '';
-            });
-
-            let tickArr = JSON.parse(localStorage.getItem(CHECK_KEY) || "[]");
-            allCheck.forEach((ck, i) => {
-                ck.checked = tickArr[i] || false;
-            });
-
-            let fillArr = JSON.parse(localStorage.getItem(INPUT_KEY) || "[]");
-            allFillInput.forEach((inp, i) => {
-                inp.value = fillArr[i] || '';
-            });
-
-            setTimeout(() => {
-                airportInputs.forEach(({ input, info }) => {
-                    if (input) updateAirportInfo(input, info);
-                });
-            }, 80);
-        }
-
-        function resetAllCheck() {
-            allCheck.forEach(ck => ck.checked = false);
-            allFillInput.forEach(inp => inp.value = "");
-            saveAllData();
-            airportInputs.forEach(({ input, info }) => {
-                if (input) updateAirportInfo(input, info);
-            });
-            let lang = localStorage.getItem(LANG_KEY) || "zh";
-            alert(lang === "zh" ? "所有检查勾选与填写数值已清空，飞行计划保留" : "All checklist ticks & values cleared, flight plan kept");
-        }
-
-        function savePlan() {
-            saveAllData();
-            let lang = localStorage.getItem(LANG_KEY) || "zh";
-            alert(lang === "zh" ? "飞行计划已保存" : "Flight plan saved");
-        }
-
-        function clearPlan() {
-            planFields.forEach(inp => { if (inp) inp.value = ''; });
-            airportInputs.forEach(({ input, info }) => {
-                if (input) {
-                    input.value = '';
-                    info.classList.remove('show', 'match-success', 'match-fail');
-                    info.textContent = '';
-                }
-            });
-            saveAllData();
-            let lang = localStorage.getItem(LANG_KEY) || "zh";
-            alert(lang === "zh" ? "全部飞行计划字段已清空" : "All flight plan fields cleared");
-        }
-
-        document.querySelectorAll('.plan-input:not(.airport-input), .blank-input, .check').forEach(el => {
-            el.addEventListener('change', saveAllData);
-        });
-        document.querySelectorAll('.plan-input:not(.airport-input), .blank-input').forEach(el => {
-            el.addEventListener('input', saveAllData);
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            loadAllData();
-            setTimeout(() => {
-                airportInputs.forEach(({ input, info }) => {
-                    if (input) updateAirportInfo(input, info);
-                });
-            }, 200);
-        });
-
-        window.savePlan = savePlan;
-        window.clearPlan = clearPlan;
-        window.resetAllCheck = resetAllCheck;
-        window.switchLang = switchLang;
-    </script>
 </body>
 
 </html>
