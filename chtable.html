@@ -312,48 +312,64 @@
 
         .period-table-wrap {
             width: 100%;
-            overflow: auto;
+            overflow-x: auto;
             padding: 24px 12px;
             box-sizing: border-box;
             text-align: center;
         }
 
         .period-table {
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 4px;
             font-size: 12px;
             margin: 0 auto 20px auto;
         }
 
         .period-table td {
-            border: 1px solid #ccc;
-            width: 52px;
-            height: 58px;
+            border-radius: 8px;
+            width: 58px;
+            height: 68px;
             text-align: center;
             vertical-align: middle;
-            padding: 2px;
+            padding: 4px 2px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            transition: transform 0.2s;
+        }
+        .period-table td:hover{
+            transform: translateY(-3px);
         }
 
         .period-table td.empty {
             border: none;
+            box-shadow: none;
+            background: transparent;
         }
 
         .elem-num {
             font-size: 10px;
             color: #333;
             text-align: left;
+            line-height:1;
         }
 
         .elem-name {
             font-weight: bold;
-            font-size: 14px;
+            font-size: 15px;
+            line-height:1.2;
         }
 
         .elem-cn {
-            font-size: 10px;
-            color: #555;
+            font-size: 11px;
+            color: #333;
+            line-height:1.2;
+        }
+        .elem-pinyin{
+            font-size: 9px;
+            color:#666;
+            line-height:1;
         }
 
-        /* 元素大类配色 */
+        /* 元素大类配色（和原图配色保持一致） */
         .alkali {
             background: #ffcccc;
         }
@@ -394,7 +410,7 @@
         .legend-box {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px 16px;
+            gap: 12px 18px;
             justify-content: center;
             margin-bottom: 24px;
             font-size: 13px;
@@ -409,6 +425,7 @@
         .legend-color {
             width: 18px;
             height: 18px;
+            border-radius:4px;
             border: 1px solid #aaa;
         }
     </style>
@@ -474,7 +491,10 @@
                             <div class="elem-num">1</div>
                             <div class="elem-name">H</div>
                             <div class="elem-cn">氢</div>
+                            <div class="elem-pinyin">qīng</div>
                         </td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
                         <td class="empty"></td>
                         <td class="empty"></td>
                         <td class="empty"></td>
@@ -493,6 +513,7 @@
                             <div class="elem-num">2</div>
                             <div class="elem-name">He</div>
                             <div class="elem-cn">氦</div>
+                            <div class="elem-pinyin">hài</div>
                         </td>
                     </tr>
                     <tr>
@@ -500,11 +521,13 @@
                             <div class="elem-num">3</div>
                             <div class="elem-name">Li</div>
                             <div class="elem-cn">锂</div>
+                            <div class="elem-pinyin">lǐ</div>
                         </td>
                         <td class="alkaline">
                             <div class="elem-num">4</div>
                             <div class="elem-name">Be</div>
                             <div class="elem-cn">铍</div>
+                            <div class="elem-pinyin">pí</div>
                         </td>
                         <td class="empty"></td>
                         <td class="empty"></td>
@@ -520,31 +543,37 @@
                             <div class="elem-num">5</div>
                             <div class="elem-name">B</div>
                             <div class="elem-cn">硼</div>
+                            <div class="elem-pinyin">péng</div>
                         </td>
                         <td class="nonmetal">
                             <div class="elem-num">6</div>
                             <div class="elem-name">C</div>
                             <div class="elem-cn">碳</div>
+                            <div class="elem-pinyin">tàn</div>
                         </td>
                         <td class="nonmetal">
                             <div class="elem-num">7</div>
                             <div class="elem-name">N</div>
                             <div class="elem-cn">氮</div>
+                            <div class="elem-pinyin">dàn</div>
                         </td>
                         <td class="nonmetal">
                             <div class="elem-num">8</div>
                             <div class="elem-name">O</div>
                             <div class="elem-cn">氧</div>
+                            <div class="elem-pinyin">yǎng</div>
                         </td>
                         <td class="halogen">
                             <div class="elem-num">9</div>
                             <div class="elem-name">F</div>
                             <div class="elem-cn">氟</div>
+                            <div class="elem-pinyin">fú</div>
                         </td>
                         <td class="noble">
                             <div class="elem-num">10</div>
                             <div class="elem-name">Ne</div>
                             <div class="elem-cn">氖</div>
+                            <div class="elem-pinyin">nǎi</div>
                         </td>
                     </tr>
                     <tr>
@@ -552,11 +581,13 @@
                             <div class="elem-num">11</div>
                             <div class="elem-name">Na</div>
                             <div class="elem-cn">钠</div>
+                            <div class="elem-pinyin">nà</div>
                         </td>
                         <td class="alkaline">
                             <div class="elem-num">12</div>
                             <div class="elem-name">Mg</div>
                             <div class="elem-cn">镁</div>
+                            <div class="elem-pinyin">měi</div>
                         </td>
                         <td class="empty"></td>
                         <td class="empty"></td>
@@ -572,31 +603,37 @@
                             <div class="elem-num">13</div>
                             <div class="elem-name">Al</div>
                             <div class="elem-cn">铝</div>
+                            <div class="elem-pinyin">lǚ</div>
                         </td>
                         <td class="metalloid">
                             <div class="elem-num">14</div>
                             <div class="elem-name">Si</div>
                             <div class="elem-cn">硅</div>
+                            <div class="elem-pinyin">guī</div>
                         </td>
                         <td class="nonmetal">
                             <div class="elem-num">15</div>
                             <div class="elem-name">P</div>
                             <div class="elem-cn">磷</div>
+                            <div class="elem-pinyin">lín</div>
                         </td>
                         <td class="nonmetal">
                             <div class="elem-num">16</div>
                             <div class="elem-name">S</div>
                             <div class="elem-cn">硫</div>
+                            <div class="elem-pinyin">liú</div>
                         </td>
                         <td class="halogen">
                             <div class="elem-num">17</div>
                             <div class="elem-name">Cl</div>
                             <div class="elem-cn">氯</div>
+                            <div class="elem-pinyin">lǜ</div>
                         </td>
                         <td class="noble">
                             <div class="elem-num">18</div>
                             <div class="elem-name">Ar</div>
                             <div class="elem-cn">氩</div>
+                            <div class="elem-pinyin">yà</div>
                         </td>
                     </tr>
                     <tr>
@@ -604,91 +641,109 @@
                             <div class="elem-num">19</div>
                             <div class="elem-name">K</div>
                             <div class="elem-cn">钾</div>
+                            <div class="elem-pinyin">jiǎ</div>
                         </td>
                         <td class="alkaline">
                             <div class="elem-num">20</div>
                             <div class="elem-name">Ca</div>
                             <div class="elem-cn">钙</div>
+                            <div class="elem-pinyin">gài</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">21</div>
                             <div class="elem-name">Sc</div>
                             <div class="elem-cn">钪</div>
+                            <div class="elem-pinyin">kàng</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">22</div>
                             <div class="elem-name">Ti</div>
                             <div class="elem-cn">钛</div>
+                            <div class="elem-pinyin">tài</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">23</div>
                             <div class="elem-name">V</div>
                             <div class="elem-cn">钒</div>
+                            <div class="elem-pinyin">fán</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">24</div>
                             <div class="elem-name">Cr</div>
                             <div class="elem-cn">铬</div>
+                            <div class="elem-pinyin">gè</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">25</div>
                             <div class="elem-name">Mn</div>
                             <div class="elem-cn">锰</div>
+                            <div class="elem-pinyin">měng</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">26</div>
                             <div class="elem-name">Fe</div>
                             <div class="elem-cn">铁</div>
+                            <div class="elem-pinyin">tiě</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">27</div>
                             <div class="elem-name">Co</div>
                             <div class="elem-cn">钴</div>
+                            <div class="elem-pinyin">gǔ</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">28</div>
                             <div class="elem-name">Ni</div>
                             <div class="elem-cn">镍</div>
+                            <div class="elem-pinyin">niè</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">29</div>
                             <div class="elem-name">Cu</div>
                             <div class="elem-cn">铜</div>
+                            <div class="elem-pinyin">tóng</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">30</div>
                             <div class="elem-name">Zn</div>
                             <div class="elem-cn">锌</div>
+                            <div class="elem-pinyin">xīn</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">31</div>
                             <div class="elem-name">Ga</div>
                             <div class="elem-cn">镓</div>
+                            <div class="elem-pinyin">jiā</div>
                         </td>
                         <td class="metalloid">
                             <div class="elem-num">32</div>
                             <div class="elem-name">Ge</div>
                             <div class="elem-cn">锗</div>
+                            <div class="elem-pinyin">zhě</div>
                         </td>
                         <td class="metalloid">
                             <div class="elem-num">33</div>
                             <div class="elem-name">As</div>
                             <div class="elem-cn">砷</div>
+                            <div class="elem-pinyin">shēn</div>
                         </td>
                         <td class="nonmetal">
                             <div class="elem-num">34</div>
                             <div class="elem-name">Se</div>
                             <div class="elem-cn">硒</div>
+                            <div class="elem-pinyin">xī</div>
                         </td>
                         <td class="halogen">
                             <div class="elem-num">35</div>
                             <div class="elem-name">Br</div>
                             <div class="elem-cn">溴</div>
+                            <div class="elem-pinyin">xiù</div>
                         </td>
                         <td class="noble">
                             <div class="elem-num">36</div>
                             <div class="elem-name">Kr</div>
                             <div class="elem-cn">氪</div>
+                            <div class="elem-pinyin">kè</div>
                         </td>
                     </tr>
                     <tr>
@@ -696,91 +751,109 @@
                             <div class="elem-num">37</div>
                             <div class="elem-name">Rb</div>
                             <div class="elem-cn">铷</div>
+                            <div class="elem-pinyin">rú</div>
                         </td>
                         <td class="alkaline">
                             <div class="elem-num">38</div>
                             <div class="elem-name">Sr</div>
                             <div class="elem-cn">锶</div>
+                            <div class="elem-pinyin">sī</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">39</div>
                             <div class="elem-name">Y</div>
                             <div class="elem-cn">钇</div>
+                            <div class="elem-pinyin">yǐ</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">40</div>
                             <div class="elem-name">Zr</div>
                             <div class="elem-cn">锆</div>
+                            <div class="elem-pinyin">gào</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">41</div>
                             <div class="elem-name">Nb</div>
                             <div class="elem-cn">铌</div>
+                            <div class="elem-pinyin">ní</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">42</div>
                             <div class="elem-name">Mo</div>
                             <div class="elem-cn">钼</div>
+                            <div class="elem-pinyin">mù</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">43</div>
                             <div class="elem-name">Tc</div>
                             <div class="elem-cn">锝</div>
+                            <div class="elem-pinyin">dé</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">44</div>
                             <div class="elem-name">Ru</div>
                             <div class="elem-cn">钌</div>
+                            <div class="elem-pinyin">liǎo</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">45</div>
                             <div class="elem-name">Rh</div>
                             <div class="elem-cn">铑</div>
+                            <div class="elem-pinyin">lǎo</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">46</div>
                             <div class="elem-name">Pd</div>
                             <div class="elem-cn">钯</div>
+                            <div class="elem-pinyin">bǎ</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">47</div>
                             <div class="elem-name">Ag</div>
                             <div class="elem-cn">银</div>
+                            <div class="elem-pinyin">yín</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">48</div>
                             <div class="elem-name">Cd</div>
                             <div class="elem-cn">镉</div>
+                            <div class="elem-pinyin">gé</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">49</div>
                             <div class="elem-name">In</div>
                             <div class="elem-cn">铟</div>
+                            <div class="elem-pinyin">yīn</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">50</div>
                             <div class="elem-name">Sn</div>
                             <div class="elem-cn">锡</div>
+                            <div class="elem-pinyin">xī</div>
                         </td>
                         <td class="metalloid">
                             <div class="elem-num">51</div>
                             <div class="elem-name">Sb</div>
                             <div class="elem-cn">锑</div>
+                            <div class="elem-pinyin">tī</div>
                         </td>
                         <td class="metalloid">
                             <div class="elem-num">52</div>
                             <div class="elem-name">Te</div>
                             <div class="elem-cn">碲</div>
+                            <div class="elem-pinyin">dì</div>
                         </td>
                         <td class="halogen">
                             <div class="elem-num">53</div>
                             <div class="elem-name">I</div>
                             <div class="elem-cn">碘</div>
+                            <div class="elem-pinyin">diǎn</div>
                         </td>
                         <td class="noble">
                             <div class="elem-num">54</div>
                             <div class="elem-name">Xe</div>
                             <div class="elem-cn">氙</div>
+                            <div class="elem-pinyin">xiān</div>
                         </td>
                     </tr>
                     <tr>
@@ -788,87 +861,109 @@
                             <div class="elem-num">55</div>
                             <div class="elem-name">Cs</div>
                             <div class="elem-cn">铯</div>
+                            <div class="elem-pinyin">sè</div>
                         </td>
                         <td class="alkaline">
                             <div class="elem-num">56</div>
                             <div class="elem-name">Ba</div>
                             <div class="elem-cn">钡</div>
+                            <div class="elem-pinyin">bèi</div>
                         </td>
-                        <td class="empty"></td>
+                        <td class="lanthanide">
+                            <div class="elem-num">57-71</div>
+                            <div class="elem-name">La-Lu</div>
+                            <div class="elem-cn">镧系</div>
+                            <div class="elem-pinyin">lán xì</div>
+                        </td>
                         <td class="trans">
                             <div class="elem-num">72</div>
                             <div class="elem-name">Hf</div>
                             <div class="elem-cn">铪</div>
+                            <div class="elem-pinyin">hā</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">73</div>
                             <div class="elem-name">Ta</div>
                             <div class="elem-cn">钽</div>
+                            <div class="elem-pinyin">tǎn</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">74</div>
                             <div class="elem-name">W</div>
                             <div class="elem-cn">钨</div>
+                            <div class="elem-pinyin">wū</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">75</div>
                             <div class="elem-name">Re</div>
                             <div class="elem-cn">铼</div>
+                            <div class="elem-pinyin">lái</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">76</div>
                             <div class="elem-name">Os</div>
                             <div class="elem-cn">锇</div>
+                            <div class="elem-pinyin">é</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">77</div>
                             <div class="elem-name">Ir</div>
                             <div class="elem-cn">铱</div>
+                            <div class="elem-pinyin">yī</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">78</div>
                             <div class="elem-name">Pt</div>
                             <div class="elem-cn">铂</div>
+                            <div class="elem-pinyin">bó</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">79</div>
                             <div class="elem-name">Au</div>
                             <div class="elem-cn">金</div>
+                            <div class="elem-pinyin">jīn</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">80</div>
                             <div class="elem-name">Hg</div>
                             <div class="elem-cn">汞</div>
+                            <div class="elem-pinyin">gǒng</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">81</div>
                             <div class="elem-name">Tl</div>
                             <div class="elem-cn">铊</div>
+                            <div class="elem-pinyin">tā</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">82</div>
                             <div class="elem-name">Pb</div>
                             <div class="elem-cn">铅</div>
+                            <div class="elem-pinyin">qiān</div>
                         </td>
                         <td class="trans">
                             <div class="elem-num">83</div>
                             <div class="elem-name">Bi</div>
                             <div class="elem-cn">铋</div>
+                            <div class="elem-pinyin">bì</div>
                         </td>
                         <td class="metalloid">
                             <div class="elem-num">84</div>
                             <div class="elem-name">Po</div>
                             <div class="elem-cn">钋</div>
+                            <div class="elem-pinyin">pō</div>
                         </td>
                         <td class="halogen">
                             <div class="elem-num">85</div>
                             <div class="elem-name">At</div>
                             <div class="elem-cn">砹</div>
+                            <div class="elem-pinyin">ài</div>
                         </td>
                         <td class="noble">
                             <div class="elem-num">86</div>
                             <div class="elem-name">Rn</div>
                             <div class="elem-cn">氡</div>
+                            <div class="elem-pinyin">dōng</div>
                         </td>
                     </tr>
                     <tr>
@@ -876,87 +971,109 @@
                             <div class="elem-num">87</div>
                             <div class="elem-name">Fr</div>
                             <div class="elem-cn">钫</div>
+                            <div class="elem-pinyin">fāng</div>
                         </td>
                         <td class="alkaline">
                             <div class="elem-num">88</div>
                             <div class="elem-name">Ra</div>
                             <div class="elem-cn">镭</div>
+                            <div class="elem-pinyin">léi</div>
                         </td>
-                        <td class="empty"></td>
                         <td class="actinide">
+                            <div class="elem-num">89-103</div>
+                            <div class="elem-name">Ac-Lr</div>
+                            <div class="elem-cn">锕系</div>
+                            <div class="elem-pinyin">ā xì</div>
+                        </td>
+                        <td class="trans">
                             <div class="elem-num">104</div>
                             <div class="elem-name">Rf</div>
                             <div class="elem-cn">𬬻</div>
+                            <div class="elem-pinyin">lú</div>
                         </td>
-                        <td class="actinide">
+                        <td class="trans">
                             <div class="elem-num">105</div>
                             <div class="elem-name">Db</div>
                             <div class="elem-cn">𬭊</div>
+                            <div class="elem-pinyin">dù</div>
                         </td>
-                        <td class="actinide">
+                        <td class="trans">
                             <div class="elem-num">106</div>
                             <div class="elem-name">Sg</div>
                             <div class="elem-cn">𬭳</div>
+                            <div class="elem-pinyin">xǐ</div>
                         </td>
-                        <td class="actinide">
+                        <td class="trans">
                             <div class="elem-num">107</div>
                             <div class="elem-name">Bh</div>
                             <div class="elem-cn">𬭛</div>
+                            <div class="elem-pinyin">bō</div>
                         </td>
-                        <td class="actinide">
+                        <td class="trans">
                             <div class="elem-num">108</div>
                             <div class="elem-name">Hs</div>
                             <div class="elem-cn">𬭶</div>
+                            <div class="elem-pinyin">hēi</div>
                         </td>
-                        <td class="actinide">
+                        <td class="trans">
                             <div class="elem-num">109</div>
                             <div class="elem-name">Mt</div>
                             <div class="elem-cn">鿏</div>
+                            <div class="elem-pinyin">mài</div>
                         </td>
-                        <td class="actinide">
+                        <td class="trans">
                             <div class="elem-num">110</div>
                             <div class="elem-name">Ds</div>
                             <div class="elem-cn">𫟼</div>
+                            <div class="elem-pinyin">dá</div>
                         </td>
-                        <td class="actinide">
+                        <td class="trans">
                             <div class="elem-num">111</div>
                             <div class="elem-name">Rg</div>
                             <div class="elem-cn">錀</div>
+                            <div class="elem-pinyin">lún</div>
                         </td>
-                        <td class="actinide">
+                        <td class="trans">
                             <div class="elem-num">112</div>
                             <div class="elem-name">Cn</div>
                             <div class="elem-cn">鎶</div>
+                            <div class="elem-pinyin">gē</div>
                         </td>
-                        <td class="actinide">
+                        <td class="trans">
                             <div class="elem-num">113</div>
                             <div class="elem-name">Nh</div>
                             <div class="elem-cn">鉨</div>
+                            <div class="elem-pinyin">nǐ</div>
                         </td>
-                        <td class="actinide">
+                        <td class="trans">
                             <div class="elem-num">114</div>
                             <div class="elem-name">Fl</div>
                             <div class="elem-cn">𫓧</div>
+                            <div class="elem-pinyin">fū</div>
                         </td>
-                        <td class="actinide">
+                        <td class="trans">
                             <div class="elem-num">115</div>
                             <div class="elem-name">Mc</div>
                             <div class="elem-cn">镆</div>
+                            <div class="elem-pinyin">mò</div>
                         </td>
-                        <td class="actinide">
+                        <td class="trans">
                             <div class="elem-num">116</div>
                             <div class="elem-name">Lv</div>
                             <div class="elem-cn">𫟷</div>
+                            <div class="elem-pinyin">lì</div>
                         </td>
-                        <td class="actinide">
+                        <td class="halogen">
                             <div class="elem-num">117</div>
                             <div class="elem-name">Ts</div>
                             <div class="elem-cn">鿬</div>
+                            <div class="elem-pinyin">tián</div>
                         </td>
                         <td class="noble">
                             <div class="elem-num">118</div>
                             <div class="elem-name">Og</div>
                             <div class="elem-cn">鿫</div>
+                            <div class="elem-pinyin">ào</div>
                         </td>
                     </tr>
                 </tbody>
@@ -970,76 +1087,91 @@
                             <div class="elem-num">57</div>
                             <div class="elem-name">La</div>
                             <div class="elem-cn">镧</div>
+                            <div class="elem-pinyin">lán</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">58</div>
                             <div class="elem-name">Ce</div>
                             <div class="elem-cn">铈</div>
+                            <div class="elem-pinyin">shì</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">59</div>
                             <div class="elem-name">Pr</div>
                             <div class="elem-cn">镨</div>
+                            <div class="elem-pinyin">pǔ</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">60</div>
                             <div class="elem-name">Nd</div>
                             <div class="elem-cn">钕</div>
+                            <div class="elem-pinyin">nǚ</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">61</div>
                             <div class="elem-name">Pm</div>
                             <div class="elem-cn">钷</div>
+                            <div class="elem-pinyin">pǒ</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">62</div>
                             <div class="elem-name">Sm</div>
                             <div class="elem-cn">钐</div>
+                            <div class="elem-pinyin">shān</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">63</div>
                             <div class="elem-name">Eu</div>
                             <div class="elem-cn">铕</div>
+                            <div class="elem-pinyin">yǒu</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">64</div>
                             <div class="elem-name">Gd</div>
                             <div class="elem-cn">钆</div>
+                            <div class="elem-pinyin">gá</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">65</div>
                             <div class="elem-name">Tb</div>
                             <div class="elem-cn">铽</div>
+                            <div class="elem-pinyin">tè</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">66</div>
                             <div class="elem-name">Dy</div>
                             <div class="elem-cn">镝</div>
+                            <div class="elem-pinyin">dī</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">67</div>
                             <div class="elem-name">Ho</div>
                             <div class="elem-cn">钬</div>
+                            <div class="elem-pinyin">huǒ</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">68</div>
                             <div class="elem-name">Er</div>
                             <div class="elem-cn">铒</div>
+                            <div class="elem-pinyin">ěr</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">69</div>
                             <div class="elem-name">Tm</div>
                             <div class="elem-cn">铥</div>
+                            <div class="elem-pinyin">diū</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">70</div>
                             <div class="elem-name">Yb</div>
                             <div class="elem-cn">镱</div>
+                            <div class="elem-pinyin">yì</div>
                         </td>
                         <td class="lanthanide">
                             <div class="elem-num">71</div>
                             <div class="elem-name">Lu</div>
                             <div class="elem-cn">镥</div>
+                            <div class="elem-pinyin">lǔ</div>
                         </td>
                     </tr>
                     <tr>
@@ -1048,76 +1180,91 @@
                             <div class="elem-num">89</div>
                             <div class="elem-name">Ac</div>
                             <div class="elem-cn">锕</div>
+                            <div class="elem-pinyin">ā</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">90</div>
                             <div class="elem-name">Th</div>
                             <div class="elem-cn">钍</div>
+                            <div class="elem-pinyin">tǔ</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">91</div>
                             <div class="elem-name">Pa</div>
                             <div class="elem-cn">镤</div>
+                            <div class="elem-pinyin">pú</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">92</div>
                             <div class="elem-name">U</div>
                             <div class="elem-cn">铀</div>
+                            <div class="elem-pinyin">yóu</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">93</div>
                             <div class="elem-name">Np</div>
                             <div class="elem-cn">镎</div>
+                            <div class="elem-pinyin">ná</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">94</div>
                             <div class="elem-name">Pu</div>
                             <div class="elem-cn">钚</div>
+                            <div class="elem-pinyin">bù</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">95</div>
                             <div class="elem-name">Am</div>
                             <div class="elem-cn">镅</div>
+                            <div class="elem-pinyin">méi</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">96</div>
                             <div class="elem-name">Cm</div>
                             <div class="elem-cn">锔</div>
+                            <div class="elem-pinyin">jú</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">97</div>
                             <div class="elem-name">Bk</div>
                             <div class="elem-cn">锫</div>
+                            <div class="elem-pinyin">péi</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">98</div>
                             <div class="elem-name">Cf</div>
                             <div class="elem-cn">锎</div>
+                            <div class="elem-pinyin">kāi</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">99</div>
                             <div class="elem-name">Es</div>
                             <div class="elem-cn">锿</div>
+                            <div class="elem-pinyin">āi</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">100</div>
                             <div class="elem-name">Fm</div>
                             <div class="elem-cn">镄</div>
+                            <div class="elem-pinyin">fèi</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">101</div>
                             <div class="elem-name">Md</div>
                             <div class="elem-cn">钔</div>
+                            <div class="elem-pinyin">mén</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">102</div>
                             <div class="elem-name">No</div>
                             <div class="elem-cn">锘</div>
+                            <div class="elem-pinyin">nuò</div>
                         </td>
                         <td class="actinide">
                             <div class="elem-num">103</div>
                             <div class="elem-name">Lr</div>
                             <div class="elem-cn">铹</div>
+                            <div class="elem-pinyin">láo</div>
                         </td>
                     </tr>
                 </tbody>
