@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel="icon" href="images/icon.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>天河集团</title>
+    <title>天河共创</title>
     <style>
         * {
             margin: 0;
@@ -139,167 +139,6 @@
             color: var(--orange);
         }
 
-        .hero {
-            padding: 80px 0 70px;
-            background: linear-gradient(135deg, #ffffff 0%, #fffaf5 100%);
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .hero-grid {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 3rem;
-        }
-
-        .hero-content {
-            flex: 1;
-            min-width: 260px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: var(--orange-light);
-            color: var(--orange);
-            padding: 0.25rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-title {
-            font-size: 3.3rem;
-            font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            color: #1f2b38;
-            margin-bottom: 1.2rem;
-        }
-
-        .hero-title strong {
-            color: var(--orange);
-            font-weight: 800;
-        }
-
-        .hero-desc {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 540px;
-            margin-bottom: 2rem;
-        }
-
-        .about-section {
-            padding: 80px 0;
-            background-color: #ffffff;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-        }
-
-        .section-title span {
-            color: var(--orange);
-        }
-
-        .section-desc {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .about-text h3 {
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            margin-bottom: 1.2rem;
-            font-weight: 600;
-        }
-
-        .about-text p {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-
-        .about-features {
-            margin-top: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1rem;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        .feature-item::before {
-            content: "·";
-            color: var(--orange);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .recruit-section {
-            padding: 80px 0;
-            background-color: var(--gray-bg);
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .recruit-card {
-            background: #fff;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .recruit-job {
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px dashed var(--border-light);
-        }
-
-        .recruit-job:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .job-title {
-            font-size: 1.3rem;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-        }
-
-        .job-desc {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
         .site-footer {
             background-color: #1e2a36;
             color: #cddcec;
@@ -374,15 +213,6 @@
             .container {
                 padding: 0 24px;
             }
-
-            .hero-title {
-                font-size: 2.6rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
         }
 
         @media (max-width: 768px) {
@@ -395,14 +225,6 @@
                 gap: 1.2rem;
             }
 
-            .hero-title {
-                font-size: 2.2rem;
-            }
-
-            .section-title {
-                font-size: 1.9rem;
-            }
-
             .footer-inner {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -410,14 +232,6 @@
         }
 
         @media (max-width: 480px) {
-            .hero {
-                padding: 50px 0;
-            }
-
-            .hero-title {
-                font-size: 1.9rem;
-            }
-
             .nav-menu {
                 gap: 0.9rem;
             }
@@ -434,11 +248,6 @@
             .submenu a {
                 white-space: normal;
                 padding: 0.5rem 1rem;
-            }
-
-            .about-section,
-            .recruit-section {
-                padding: 50px 0;
             }
         }
 
@@ -490,29 +299,6 @@
             border-color: var(--orange-dark);
             color: var(--orange-dark);
             transform: translateY(-2px);
-        }
-
-        .countdown-bar {
-            width: 100%;
-            background: linear-gradient(135deg, #ffffff 0%, #fffaf5 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2.5rem;
-            padding: 40px 0 20px;
-            flex-wrap: wrap;
-        }
-
-        .countdown-item {
-            font-size: 1.2rem;
-            color: var(--text-dark);
-            font-weight: bold;
-        }
-
-        .countdown-number {
-            color: var(--orange);
-            font-weight: 800;
-            font-size: 1.4rem;
         }
 
         .custom-slider-wrap {
@@ -637,8 +423,211 @@
             0% {
                 transform: translateX(0);
             }
+
             100% {
                 transform: translateX(-100%);
+            }
+        }
+
+        /* ========== 主内容板块分隔样式 ========== */
+        .page-section {
+            padding: 64px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .page-section--light {
+            background-color: #fffaf5;
+        }
+
+        .section-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .section-title-wrap {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .section-title-wrap h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1f2b38;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title-wrap h2::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -8px;
+            width: 60px;
+            height: 3px;
+            background-color: var(--orange);
+            border-radius: 2px;
+        }
+
+        .link-card-item {
+            transition: all 0.24s ease;
+        }
+
+        .link-card-item:hover {
+            border-color: var(--orange);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .flight-table-wrap {
+            background: #ffffff;
+            padding: 32px 20px;
+            border-radius: 14px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /*两大共创模块*/
+        .co‑create-section {
+            padding: 52px 0;
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .co‑create-wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .co‑create-head {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .co‑create-head h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1f2b38;
+            position: relative;
+            display: inline-block;
+        }
+
+        .co‑create-head h2::after {
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--orange);
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -8px;
+        }
+
+        .co‑create-desc {
+            max-width: 840px;
+            margin: 16px auto 0;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .co‑create-two-col {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 32px;
+            align-items: stretch;
+        }
+
+        .co‑create-divider {
+            width: 1px;
+            background-color: var(--border-light);
+        }
+
+        .co‑create-block {
+            padding: 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+        }
+
+        .co‑create-block h3 {
+            font-size: 1.4rem;
+            color: #1f2b38;
+            margin-bottom: 14px;
+        }
+
+        .co‑create-block>p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        .co‑create-card-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .co‑create-item {
+            background: #fefcf8;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .co‑create-item h4 {
+            font-size: 1.05rem;
+            color: #1f2b38;
+            margin-bottom: 6px;
+        }
+
+        .co‑create-item p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        .co‑create-btn-wrap {
+            margin-top: 26px;
+        }
+
+        /*新闻封面板块*/
+        .news-cover-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 28px;
+        }
+
+        .news-card-right-item {
+            transition: 0.24s ease;
+        }
+
+        .news-card-right-item:hover {
+            border-color: var(--orange);
+            transform: translateY(-2px);
+        }
+
+        @media(max-width:860px) {
+            .co‑create-two-col {
+                grid-template-columns: 1fr;
+            }
+
+            .co‑create-divider {
+                display: none;
+            }
+
+            .news-cover-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width:768px) {
+            .co‑create-wrap {
+                padding: 0 24px;
+            }
+
+            .co‑create-section {
+                padding: 36px 0;
             }
         }
     </style>
@@ -655,30 +644,29 @@
                 <li class="dropdown">
                     <a href="#">天河化学</a>
                     <ul class="submenu">
-                        <li><a href="skyriverccho">关于我们</a></li>
-                        <li><a href="chtable">元素周期表</a></li>
+                        <li><a href="skyriverccho.html">关于我们</a></li>
+                        <li><a href="chtable.html">元素周期表</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#">服务与新闻</a>
                     <ul class="submenu">
-                        <li><a href="net_map">线路图查询</a></li>
-                        <li><a href="news">新闻</a></li>
-                        <li><a href="chang_pt">更新日志</a></li>
-                        <li><a href="table">有轨电车成员表</a></li>
-                        <li><a href="links">友情链接</a></li>
+                        <li><a href="net_map.html">线路图查询</a></li>
+                        <li><a href="news.html">新闻</a></li>
+                        <li><a href="chang_pt.html">更新日志</a></li>
+                        <li><a href="table.html">有轨电车成员表</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#">项目与产品</a>
                     <ul class="submenu">
-                        <li><a href="strtable">特殊符号粘贴表</a></li>
-                        <li><a href="xpmoddownload">Xplane12插件下载</a></li>
-                        <li><a href="games">神岛地图传送</a></li>
+                        <li><a href="strtable.html">特殊符号粘贴表</a></li>
+                        <li><a href="xpmoddownload.html">Xplane12插件下载</a></li>
+                        <li><a href="games.html">神岛地图传送</a></li>
                         <li><a href="https://space.bilibili.com/1785851106">视频</a></li>
                     </ul>
                 </li>
-                <li><a href="about_us">关于我们</a></li>
+                <li><a href="about_us.html">关于我们</a></li>
             </ul>
         </div>
     </header>
@@ -704,28 +692,28 @@
                     <p>你许我在起点，我陪你到终点
                         <br>以代码铺轨，用热爱驱动
                     </p>
-                    <a href="news" class="custom-slider-btn">查看详情</a>
+                    <a href="news.html" class="custom-slider-btn">查看详情</a>
                 </div>
             </div>
             <div class="custom-slider-item" data-bg="images/img1.jpg">
                 <div class="custom-slider-content">
                     <h2>天河化竞，创新未来</h2>
                     <p>让化学成为一种乐趣<br>激发成员对共创的热情</p>
-                    <a href="skyriverccho" class="custom-slider-btn">查看详情</a>
+                    <a href="skyriverccho.html" class="custom-slider-btn">查看详情</a>
                 </div>
             </div>
             <div class="custom-slider-item" data-bg="images/img4.png">
                 <div class="custom-slider-content">
                     <h2>畅通四面 服务八方</h2>
                     <p>天河共创致力于开发更利于公众的服务<br>从飞行检查单到有机结构式编辑器</p>
-                    <a href="cklst_b738" class="custom-slider-btn">飞行检查单</a>
+                    <a href="cklst_b738.html" class="custom-slider-btn">飞行检查单</a>
                 </div>
             </div>
             <div class="custom-slider-item" data-bg="images/img2.png">
                 <div class="custom-slider-content">
                     <h2>天河岛铁 友谊常青</h2>
                     <p>我们不是孤军奋战<br>还有更多支持我们的团体</p>
-                    <a href="links" class="custom-slider-btn">友情链接</a>
+                    <a href="links.html" class="custom-slider-btn">友情链接</a>
                 </div>
             </div>
         </div>
@@ -799,157 +787,165 @@
     </script>
 
     <main>
-        <section class="about-section" id="about">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title"><span>天河集团</span> 能为你做些什么</h2>
-                    <p class="section-desc">专注于虚拟轨道交通、创意编程与社群服务，用热爱与技术打造优质体验</p>
+        <section class="page-section">
+            <div class="section-inner">
+                <div class="section-title-wrap">
+                    <h2>封面新闻</h2>
                 </div>
-                <div class="about-grid">
-                    <div class="about-text">
-                        <h3>我们是谁</h3>
-                        <p>天河集团是由一群热爱创作与技术的伙伴共创组建的创意团队，深耕虚拟轨道交通、趣味编程、Xp12插件服务/社群运营等领域，致力于打造安全、有趣、高质量的线上体验项目。</p>
-                        <p>从有轨电车系统开发、驾驶员培训考核，到每一次Xp12里的起飞，我们始终坚持“智行天下，幸福天河”的理念，陪伴每一位成员共同成长。</p>
-                        <div class="about-features">
-                            <div class="feature-item">专业神岛虚拟轨道交通运营</div>
-                            <div class="feature-item">持续更新的创意项目与工具</div>
-                            <div class="feature-item">开放友好的社群交流平台</div>
-                            <div class="feature-item">方便快捷的Xplane12插件下载</div>
+                <div style="display:grid;grid-template-columns:minmax(0,52%) 1fr;gap:28px;align-items:flex-start;">
+                    <div>
+                        <img src="images/img5.png" loading="lazy"
+                            style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;" alt="封面新闻">
+                    </div>
+                    <div>
+                        <h3 style="font-size:1.8rem;font-weight:700;margin:0 0 14px 0;line-height:1.3;">神岛地铁官方人工服务正式落幕
+                        </h3>
+                        <div style="font-size:0.95rem;color:#5b6e8c;margin-bottom:16px;">发布日期：2026年8月21日 撰写：渝渝 图源：渝渝
+                        </div>
+                        <p style="font-size:1rem;line-height:1.8;margin:0;color:#333;">
+                            前日，与我们相伴许久的友好伙伴神岛地铁迎来告别时刻，负责人何某某正式退岛，运营多年的官方人工服务就此画上句点。一路走来，神岛地铁和天河共创结下深厚情谊，在虚拟轨道的世界里一同交流、彼此扶持，留下许许多多共同创作的珍贵回忆。
+                            <br>
+                            <br>
+                            务虽已落幕，但彼此的友谊不会消散。纵然不再有官方人工值守，双方依旧保持友好的伙伴关系。感谢何某某以及神岛地铁曾经带来的所有热忱与付出，愿前路皆有光亮，期待未来仍能再度相逢。
+                            <br>
+                            <br>
+                            此外，天河共创仍将为神岛地铁提供记忆留存服务，岛铁天河友谊永远常青。
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="co‑create-section">
+            <div class="co‑create-wrap">
+                <div class="co‑create-head">
+                    <h2>两大共创方向</h2>
+                    <div class="co‑create-desc">
+                        天河共创包含两大主线：项目合作创作与化学竞赛学习，加入我们既能参与项目开发，也能在化学竞赛中共同进步
+                    </div>
+                </div>
+
+                <div class="co‑create-two-col">
+                    <div class="co‑create-block">
+                        <h3>天河项目共创</h3>
+                        <p>以代码进行团体项目开发，产出网页、模拟工具、插件等各类作品，多人协作完成构想</p>
+                        <div class="co‑create-card-list">
+                            <div class="co‑create-item">
+                                <h4>网页与工具开发</h4>
+                                <p>团体官网、各类实用小工具，面向公众使用</p>
+                            </div>
+                            <div class="co‑create-item">
+                                <h4>模拟相关创作</h4>
+                                <p>轨道交通、模拟飞行相关插件、模拟器开发</p>
+                            </div>
+                            <div class="co‑create-item">
+                                <h4>集体协作开发</h4>
+                                <p>想法互通，分工完成团体的各类创意项目</p>
+                            </div>
+                        </div>
+                        <div class="co‑create-btn-wrap">
+                            <a href="about_us" class="btn-primary">关于我们</a>
                         </div>
                     </div>
-                    <div class="about-text">
-                        <h3>我们的理念</h3>
-                        <p>我们以“你许我在起点，我陪你到终点”为核心，致力于为所有交通爱好者提供稳定、优质、创新的服务，让每一位成员都能在这里找到归属感与乐趣。</p>
-                        <p>我们坚持免费开放、持续更新、用心维护，不断完善有轨电车系统、插件资源、社群服务等内容，用行动践行承诺，用热爱连接彼此。</p>
-                        <div class="about-features">
-                            <div class="feature-item">技术创新，体验优先</div>
-                            <div class="feature-item">免费开放，共享乐趣</div>
-                            <div class="feature-item">稳定运营，长期维护</div>
-                            <div class="feature-item">友谊至上，共同成长</div>
+                    <div class="co‑create-divider"></div>
+                    <div class="co‑create-block">
+                        <h3>天河化学共创</h3>
+                        <p>面向化学竞赛方向，整理资料、自制工具，成员互相交流刷题研讨，共同提升化学能力</p>
+                        <div class="co‑create-card-list">
+                            <div class="co‑create-item">
+                                <h4>天河实验室</h4>
+                                <p>制作高精度化学实验</p>
+                            </div>
+                            <div class="co‑create-item">
+                                <h4>化学学习工具</h4>
+                                <p>元素周期表、结构式辅助工具等自研作品</p>
+                            </div>
+                            <div class="co‑create-item">
+                                <h4>成员研讨交流</h4>
+                                <p>讨论错题、推导反应，互相补齐知识短板，专业指导提供化学指导</p>
+                            </div>
+                        </div>
+                        <div class="co‑create-btn-wrap">
+                            <a href="skyriverccho" class="btn-primary">详细介绍</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div style="box-sizing: border-box; font-family: system-ui, sans-serif; margin: 20px auto; padding: 0; width: 100%;">
-            <div style="height: 10px;"></div>
-            <div style="text-align: center;">
-                <h1>未来一周航班信息 CZ3576</h1>
-            </div>
-            <div style="height: 10px"></div>
-            <table style="border-collapse: collapse; width: 65%; table-layout: fixed; margin: 0 auto; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-radius: 6px; overflow: hidden;">
-                <thead>
-                    <tr>
-                        <th style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">日期</th>
-                        <th style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">起飞机场</th>
-                        <th style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">降落机场</th>
-                        <th style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">起飞时间</th>
-                        <th style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">飞行状态</th>
-                        <th style="border: none; padding: 10px 8px; vertical-align: middle; background-color: #2563eb; color: #fff; font-weight: normal;">状态标识</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="border-bottom:1px solid #eee;">
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: visible; white-space: normal;">2026 08 12</td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">大同云冈 ZBDT</div>
-                        </td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">呼和浩特白塔 ZBHH</div>
-                        </td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">2025</div>
-                        </td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">2105</div>
-                        </td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; background-color: #474747; color:#fff; text-align:center;">结束</td>
-                    </tr>
-                    <tr style="border-bottom:1px solid #eee;">
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: visible; white-space: normal;">2026 08 13</td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">广州白云 ZGGG</div>
-                        </td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">深圳宝安 ZGSZ</div>
-                        </td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">2025</div>
-                        </td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">2105</div>
-                        </td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; background-color: #f59e0b; color:#fff; text-align:center;">计划中</td>
-                    </tr>
-                    <tr style="border-bottom:1px solid #eee;">
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: visible; white-space: normal;">2026 08 14</td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">深圳宝安 ZGSZ</div>
-                        </td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">香港 VHHH</div>
-                        </td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">2025</div>
-                        </td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; overflow: hidden; white-space: nowrap;">
-                            <div style="display: inline-block; animation: textScroll 8s linear infinite; padding-left: 100%;">2105</div>
-                        </td>
-                        <td style="border: none; padding: 12px 8px; vertical-align: middle; background-color: #f59e0b; color:#fff; text-align:center;">计划中</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <section class="page-section">
+            <div class="section-inner">
+                <div class="section-title-wrap">
+                    <h2>成员招募</h2>
+                </div>
+                <div style="max-width: 820px;">
+                    <h3 style="font-size:1.8rem;font-weight:700;margin:0 0 14px 0;line-height:1.3;">天河共创 · 成员招募</h3>
+                    <p style="font-size:1.1rem;line-height:1.8;margin:0 0 24px 0;color:#333;">
+                        天河共创现面向所有感兴趣的伙伴开放入队通道。无论你热爱网页开发、化学竞赛、虚拟轨道交通，或是擅长文案编辑、资料整理，都欢迎前来加入我们
+                        <br>
+                        这里没有严苛的门槛，看重你的热情与耐心。可以和同好一起交流创作，参与项目迭代，共同完成各类有意思的作品，或是日常一同交流玩耍、互相陪伴
+                        <br><br>
+                        期待怀揣热爱的你，与我们共同启航
+                    </p>
+                </div>
+                <a href="#"
+                    style="display:inline-block;padding:12px 32px;background:#e06310;color:#fff;border-radius:10px;font-size:1.05rem;font-weight:600;text-decoration:none;transition:0.2s ease;"
+                    onmouseover="this.style.background='#444'" onmouseout="this.style.background='#222'">
+                    立即报名加入
+                </a>
+        </section>
 
-        <section class="recruit-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">加入<span>天河</span>，携手同行</h2>
-                    <p class="section-desc">招募志同道合的伙伴加入天河服务，一起创作运维，共创辉煌</p>
+
+        <section class="co‑create-section">
+            <div class="section-inner">
+                <div class="section-title-wrap">
+                    <h2>友情链接传送</h2>
                 </div>
-                <div class="about-grid">
-                    <div class="recruit-card">
-                        <div class="recruit-job">
-                            <h3 class="job-title">天河领航员</h3>
-                            <p class="job-desc">参与日常地图更新，代码维护，告示发布，活动组织</p>
-                            <div class="about-features">
-                                <div class="feature-item">熟练运用JavaScript与神岛API，以及storage数据库与HTML网页编写</div>
-                                <div class="feature-item">善于沟通交流，脑洞十分之大</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="recruit-card">
-                        <div class="recruit-job">
-                            <h3 class="job-title">神岛轨道交通驾驶员</h3>
-                            <p class="job-desc">日常行车，保障地图可运营性</p>
-                            <div class="about-features">
-                                <div class="feature-item">熟悉行车逻辑，善于应急预案</div>
-                                <div class="feature-item">发布行车视频，吸引广大客流</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="height: 30px;"></div>
-                <div class="about-grid">
-                    <div class="recruit-card">
-                        <div class="recruit-job">
-                            <h3 class="job-title">天河飞友</h3>
-                            <p class="job-desc">在Xplane12中进行航线飞行，同时完善官网Xp12插件</p>
-                            <div class="about-features">
-                                <div class="feature-item">主力熟练执飞（如 Zibo B737-800、Toliss A320 等）</div>
-                                <div class="feature-item">善于摘取插件，更新HTML插件版块</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="recruit-card">
-                        <div class="recruit-job">
-                            <h3 class="job-title" style="text-align: center; ">加入我们，就在现在</h3>
-                            <div class="button-group" style="text-align: center; display: flex; justify-content: center;">
-                                <a href="https://qm.qq.com/q/HxjYIG4NSA" class="btn-primary" style="text-align: center;">招聘入口</a>
-                            </div>
-                        </div>
-                    </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;">
+
+                    <a href="https://dao3.fun" class="link-card-item"
+                        style="display:block;padding:16px 20px;background:rgb(255, 255, 255);border:1px solid #eaecef;border-radius:10px;text-decoration:none;">
+                        <div style="font-size:1.1rem;font-weight:700;color:#1f2b38;margin-bottom:4px;">神奇代码岛</div>
+                        <div style="font-size:0.92rem;color:#5b6e8c;">我的AI元宇宙</div>
+                    </a>
+
+                    <a href="https://shequ.codemao.cn/" class="link-card-item"
+                        style="display:block;padding:16px 20px;background:rgb(255, 255, 255);border:1px solid #eaecef;border-radius:10px;text-decoration:none;">
+                        <div style="font-size:1.1rem;font-weight:700;color:#1f2b38;margin-bottom:4px;">编程猫社区</div>
+                        <div style="font-size:0.92rem;color:#5b6e8c;">大型编程创作平台与论坛</div>
+                    </a>
+
+                    <a href="https://shendaort.netlify.app" class="link-card-item"
+                        style="display:block;padding:16px 20px;background:rgb(255, 255, 255);border:1px solid #eaecef;border-radius:10px;text-decoration:none;">
+                        <div style="font-size:1.1rem;font-weight:700;color:#1f2b38;margin-bottom:4px;">神岛地铁官网</div>
+                        <div style="font-size:0.92rem;color:#5b6e8c;">神岛高精度地铁公司官网</div>
+                    </a>
+
+                    <a href="http://www.lzljtfzx.cn" class="link-card-item"
+                        style="display:block;padding:16px 20px;background:rgb(255, 255, 255);border:1px solid #eaecef;border-radius:10px;text-decoration:none;">
+                        <div style="font-size:1.1rem;font-weight:700;color:#1f2b38;margin-bottom:4px;">泸州天府老窖中学官网</div>
+                        <div style="font-size:0.92rem;color:#5b6e8c;">魅力二中，品味天府</div>
+                    </a>
+
+                    <a href="https://www.cqmetro.cn/" class="link-card-item"
+                        style="display:block;padding:16px 20px;background:rgb(255, 255, 255);border:1px solid #eaecef;border-radius:10px;text-decoration:none;">
+                        <div style="font-size:1.1rem;font-weight:700;color:#1f2b38;margin-bottom:4px;">重庆轨道集团官网</div>
+                        <div style="font-size:0.92rem;color:#5b6e8c;">行千里，致广大</div>
+                    </a>
+
+                    <a href="https://www.chengdurail.com/" class="link-card-item"
+                        style="display:block;padding:16px 20px;background:rgb(255, 255, 255);border:1px solid #eaecef;border-radius:10px;text-decoration:none;">
+                        <div style="font-size:1.1rem;font-weight:700;color:#1f2b38;margin-bottom:4px;">成都地铁官网</div>
+                        <div style="font-size:0.92rem;color:#5b6e8c;">成都地铁，生活一脉</div>
+                    </a>
+
+                    <a href="https://www.szmc.net/" class="link-card-item"
+                        style="display:block;padding:16px 20px;background:rgb(255, 255, 255);border:1px solid #eaecef;border-radius:10px;text-decoration:none;">
+                        <div style="font-size:1.1rem;font-weight:700;color:#1f2b38;margin-bottom:4px;">深圳地铁官网</div>
+                        <div style="font-size:0.92rem;color:#5b6e8c;">从心出发，为爱到达</div>
+                    </a>
+
                 </div>
             </div>
         </section>
@@ -959,7 +955,8 @@
         <div class="container footer-inner">
             <div class="footer-left">
                 <div class="copyright">
-                    正在开发内测：自动化古诗文翻译工具 | 图形化编程 | <a href="edtor_coin" style="color: inherit; text-decoration: none;">领航员天河币查询</a>
+                    正在开发内测：自动化古诗文翻译工具 | 图形化编程 | <a href="edtor_coin.html"
+                        style="color: inherit; text-decoration: none;">领航员天河币查询</a>
                     <br>
                     © 2025-2026 天河集团 | 版权所有
                     <br>
@@ -974,12 +971,15 @@
                 </div>
             </div>
             <div class="footer-right">
-                <div class="contact-item"><span class="contact-label">联系我们</span></div>
+                <div class="contact-item"><span class="contact-label">关注我们</span></div>
                 <div class="contact-item"><span class="contact-label">渝渝QQ：</span> 3809150396</div>
-                <a href="https://space.bilibili.com/1785851106" class="contact-item" style="color:#eef3fc;"><span class="contact-label">渝渝B站：</span>https://space.bilibili.com/1785851106</a>
-                <a href="https://qm.qq.com/q/jpK9iH0VMI" class="contact-item" style="color:#eef3fc;"><span class="contact-label">QQ群：</span>553195523 岛铁共享</a>
+                <a href="https://space.bilibili.com/1785851106" class="contact-item" style="color:#eef3fc;"><span
+                        class="contact-label">渝渝B站：</span>https://space.bilibili.com/1785851106</a>
+                <a href="https://qm.qq.com/q/jpK9iH0VMI" class="contact-item" style="color:#eef3fc;"><span
+                        class="contact-label">QQ群：</span>553195523 岛铁共享</a>
             </div>
         </div>
     </footer>
 </body>
+
 </html>
